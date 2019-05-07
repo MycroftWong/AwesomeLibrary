@@ -27,13 +27,13 @@ import butterknife.ButterKnife;
 /**
  * @author wangqiang
  */
-public class PicturePreviewActivity extends BaseCommonActivity {
+public class DraweePreviewActivity extends BaseCommonActivity {
 
     private static final String EXTRA_PICTURE_URL = "picture_url.extra";
     private static final String EXTRA_CURRENT_POSITION = "current_position.extra";
 
     public static Intent getIntent(@NonNull Context context, @NonNull ArrayList<String> imageUrls, int currPos) {
-        Intent intent = new Intent(context, PicturePreviewActivity.class);
+        Intent intent = new Intent(context, DraweePreviewActivity.class);
         intent.putExtra(EXTRA_PICTURE_URL, imageUrls);
         intent.putExtra(EXTRA_CURRENT_POSITION, currPos);
         return intent;

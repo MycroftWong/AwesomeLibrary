@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
  *
  * @author mycroft
  */
-public class DragImageActivity extends BaseCommonActivity {
+public class DragDraweeActivity extends BaseCommonActivity {
 
     private final String[] normalImageUlr = new String[]{
             "http://img1.juimg.com/140908/330608-140ZP1531651.jpg",
@@ -126,7 +126,7 @@ public class DragImageActivity extends BaseCommonActivity {
         mSharedPosition = position;
 
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, view, getString(R.string.share_drawee_name));
-        Intent intent = PicturePreviewActivity.getIntent(this, mImageUrls, position);
+        Intent intent = DraweePreviewActivity.getIntent(this, mImageUrls, position);
         startActivity(intent, options.toBundle());
     }
 }

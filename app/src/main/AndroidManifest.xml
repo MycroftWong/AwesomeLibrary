@@ -60,13 +60,13 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.drag.DragImageActivity"
+            android:name=".activity.drag.DragDraweeActivity"
             android:label="@string/drag_image"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.drag.PicturePreviewActivity"
+            android:name=".activity.drag.DraweePreviewActivity"
             android:launchMode="singleTask"
             android:theme="@style/PicturePreviewTheme"
             android:screenOrientation="portrait" />
