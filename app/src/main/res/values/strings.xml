@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AwesomeLibrary</string>
+    <string name="app_description">这是一个展示非常好用的lib的Demo项目</string>
+    <string name="tab_components">Components</string>
+    <string name="agent_web">AgentWeb</string>
+    <string name="main">Awesome Library</string>
+    <string name="diooto">Diooto</string>
+    <string name="hint_drag_image">拖动图片可排序</string>
+    <string name="share_drawee_name">drawee_view</string>
+    <string name="drag_image">DragCloseHelper</string>
+</resources>

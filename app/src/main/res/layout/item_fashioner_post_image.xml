@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycroft.awesomelibrary.view.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="3dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/closeView"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="top|end"
+        android:contentDescription="@null"
+        android:padding="6dp"
+        android:src="@mipmap/icon_post_delete" />
+</com.mycroft.awesomelibrary.view.SquareLayout>

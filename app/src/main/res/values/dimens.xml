@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_toolbar">44dp</dimen>
+    <dimen name="height_main_tab">48dp</dimen>
+
+    <dimen name="common_padding_top_bottom">4dp</dimen>
+    <dimen name="common_padding_start_end">12dp</dimen>
+
+</resources>
