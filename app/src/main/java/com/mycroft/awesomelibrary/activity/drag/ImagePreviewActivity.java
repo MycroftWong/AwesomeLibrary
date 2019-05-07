@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.Window;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
@@ -12,8 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
 import com.dragclosehelper.library.DragCloseHelper;
-import com.facebook.drawee.drawable.ScalingUtils;
-import com.facebook.drawee.view.DraweeTransition;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
 
@@ -27,13 +24,13 @@ import butterknife.ButterKnife;
 /**
  * @author wangqiang
  */
-public class DraweePreviewActivity extends BaseCommonActivity {
+public class ImagePreviewActivity extends BaseCommonActivity {
 
     private static final String EXTRA_PICTURE_URL = "picture_url.extra";
     private static final String EXTRA_CURRENT_POSITION = "current_position.extra";
 
     public static Intent getIntent(@NonNull Context context, @NonNull ArrayList<String> imageUrls, int currPos) {
-        Intent intent = new Intent(context, DraweePreviewActivity.class);
+        Intent intent = new Intent(context, ImagePreviewActivity.class);
         intent.putExtra(EXTRA_PICTURE_URL, imageUrls);
         intent.putExtra(EXTRA_CURRENT_POSITION, currPos);
         return intent;
@@ -46,7 +43,7 @@ public class DraweePreviewActivity extends BaseCommonActivity {
 
     @Override
     protected int getResId() {
-        return R.layout.activity_drawee_preview;
+        return R.layout.activity_image_preview;
     }
 
     private ArrayList<String> mPictureUrls;
@@ -79,13 +76,7 @@ public class DraweePreviewActivity extends BaseCommonActivity {
     protected void initViews(@Nullable Bundle savedInstanceState) {
         ButterKnife.bind(this);
 
-        Window window = getWindow();
-        // 进入
-        window.setSharedElementEnterTransition(DraweeTransition.createTransitionSet(ScalingUtils.ScaleType.CENTER_CROP, ScalingUtils.ScaleType.FIT_CENTER));
-        // 返回
-        window.setSharedElementReturnTransition(DraweeTransition.createTransitionSet(ScalingUtils.ScaleType.FIT_CENTER, ScalingUtils.ScaleType.CENTER_CROP));
-
-        viewPager.setAdapter(new DraweePagerAdapter(mPictureUrls));
+        viewPager.setAdapter(new ImagePagerAdapter(mPictureUrls));
         viewPager.setCurrentItem(mCurrentPosition);
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -147,5 +138,4 @@ public class DraweePreviewActivity extends BaseCommonActivity {
             return super.dispatchTouchEvent(event);
         }
     }
-
 }

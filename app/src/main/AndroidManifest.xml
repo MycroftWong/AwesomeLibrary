@@ -58,18 +58,26 @@
             android:label="PictureSelector"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.drag.DragDraweeActivity"
             android:label="@string/drag_image"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.drag.DraweePreviewActivity"
             android:launchMode="singleTask"
-            android:theme="@style/PicturePreviewTheme"
+            android:screenOrientation="portrait"
+            android:theme="@style/PicturePreviewTheme" />
+
+        <activity
+            android:name=".activity.drag.DragImageActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.drag.ImagePreviewActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/PicturePreviewTheme" />
 
         <!--  -->
         <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->

@@ -13,12 +13,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.util.Utils;
 
 import net.moyokoo.diooto.Diooto;
 import net.moyokoo.diooto.config.DiootoConfig;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,15 +25,6 @@ import butterknife.ButterKnife;
  * @author mycroft
  */
 public class DiootoActivity extends BaseCommonActivity {
-
-    private final String[] normalImageUlr = new String[]{
-            "http://img1.juimg.com/140908/330608-140ZP1531651.jpg",
-            "http://img.esthetics.cn/Uploads/Picture/2019-05-06/5ccfa9a8c1f06.jpg",
-            "http://img.esthetics.cn/Uploads/Picture/2019-05-06/5ccfa463997e3.png",
-            "http://img.esthetics.cn/Uploads/Picture/2019-05-06/5ccfa1efad0f0.png",
-            "http://img.esthetics.cn/Uploads/Picture/2019-05-06/5ccf9e907373c.png",
-            "http://img.esthetics.cn/Uploads/Picture/2019-05-06/5ccf96aa9c275.png",
-    };
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -57,7 +46,7 @@ public class DiootoActivity extends BaseCommonActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        BaseQuickAdapter<String, BaseViewHolder> adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_small_picture, new ArrayList<>(Arrays.asList(normalImageUlr))) {
+        BaseQuickAdapter<String, BaseViewHolder> adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_small_picture, Utils.getSampleImages()) {
             @Override
             protected void convert(BaseViewHolder helper, String item) {
                 ImageView imageView = helper.getView(R.id.imageView);
@@ -87,7 +76,7 @@ public class DiootoActivity extends BaseCommonActivity {
     private void showPhoto(int position) {
         //图片模式
         Diooto diooto = new Diooto(this)
-                .urls(normalImageUlr)
+                .urls(Utils.getSampleImages().toArray(new String[]{}))
                 //图片或者视频
                 .type(DiootoConfig.PHOTO)
                 //当前的Activity是否为沉浸式,默认为false

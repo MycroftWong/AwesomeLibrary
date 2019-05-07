@@ -8,4 +8,5 @@
     <string name="hint_drag_image">拖动图片可排序</string>
     <string name="share_drawee_name">drawee_view</string>
     <string name="drag_image">DragCloseHelper</string>
+    <string name="share_image_name">imageView</string>
 </resources>
