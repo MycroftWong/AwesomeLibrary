@@ -1,4 +1,4 @@
-package com.mycroft.awesomelibrary.activity;
+package com.mycroft.awesomelibrary.activity.main;
 
 import android.content.Context;
 import android.content.Intent;

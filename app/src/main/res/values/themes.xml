@@ -11,6 +11,7 @@
         <item name="android:textViewStyle">@style/CommonTextViewStyle</item>
         <item name="colorControlNormal">@android:color/white</item>
         <item name="android:windowBackground">@android:color/white</item>
+        <item name="buttonStyle">@style/CommonButtonStyle</item>
     </style>
 
     <style name="PicturePreviewTheme" parent="AppTheme">
@@ -30,6 +31,11 @@
     <style name="CommonTextViewStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/common_text_color</item>
         <item name="android:textSize">@dimen/common_text_size</item>
+    </style>
+
+    <style name="CommonButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_common_button</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <dimen name="common_text_size">14dp</dimen>

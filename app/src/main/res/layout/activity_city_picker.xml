@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.main.MainActivity">
+    tools:context=".activity.city.CityPickerActivity">
 
     <include layout="@layout/common_toolbar" />
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
+    <Button
+        android:id="@+id/chooseCityButton"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:text="@string/choose_city" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+    <TextView
+        android:id="@+id/contentText"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_main_tab"
-        app:tabIndicatorHeight="0dp" />
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_padding_start_end" />
 
 </LinearLayout>

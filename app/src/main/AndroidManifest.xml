@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.splash.SplashActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -37,19 +37,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.main.MainActivity"
             android:label="@string/main"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.AgentWebActivity"
+            android:name=".activity.agent.AgentWebActivity"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true"
             android:label="@string/agent_web"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.DiootoActivity"
+            android:name=".activity.diooto.DiootoActivity"
             android:label="@string/diooto"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
@@ -68,7 +68,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/PicturePreviewTheme" />
-
         <activity
             android:name=".activity.drag.DragImageActivity"
             android:launchMode="singleTask"
@@ -78,6 +77,16 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/PicturePreviewTheme" />
+        <activity
+            android:name=".activity.badge.BadgeViewActivity"
+            android:label="@string/badge_view"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.city.CityPickerActivity"
+            android:label="@string/city_picker"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
 
         <!--  -->
         <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->

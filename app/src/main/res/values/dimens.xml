@@ -5,5 +5,6 @@
 
     <dimen name="common_padding_top_bottom">4dp</dimen>
     <dimen name="common_padding_start_end">12dp</dimen>
+    <dimen name="height_common_text">48dp</dimen>
 
 </resources>

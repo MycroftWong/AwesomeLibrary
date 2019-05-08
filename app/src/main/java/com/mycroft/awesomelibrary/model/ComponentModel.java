@@ -2,8 +2,10 @@ package com.mycroft.awesomelibrary.model;
 
 import android.app.Activity;
 
-import com.mycroft.awesomelibrary.activity.AgentWebActivity;
-import com.mycroft.awesomelibrary.activity.DiootoActivity;
+import com.mycroft.awesomelibrary.activity.agent.AgentWebActivity;
+import com.mycroft.awesomelibrary.activity.badge.BadgeViewActivity;
+import com.mycroft.awesomelibrary.activity.city.CityPickerActivity;
+import com.mycroft.awesomelibrary.activity.diooto.DiootoActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragDraweeActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragImageActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
@@ -25,6 +27,8 @@ public class ComponentModel {
         list.add(new ComponentModel(3, "PictureSelector", "Android图片选择器，仿微信的图片选择器的样式和效果。可横竖屏切换显示, 自定义配置，单选，多选，是否显示拍照，material design风格，单选裁剪，拍照裁剪，滑动翻页预览，双击放大，缩放", "https://github.com/wj576038874/PhotoSelector", PictureSelectorActivity.class));
         list.add(new ComponentModel(4, "DragCloseHelper", "仿微信朋友圈图片拖动关闭，Fresco实现", "https://github.com/bauer-bao/DragCloseHelper", DragDraweeActivity.class));
         list.add(new ComponentModel(5, "DragCloseHelper", "仿微信朋友圈图片拖动关闭，Glide实现", "https://github.com/bauer-bao/DragCloseHelper", DragImageActivity.class));
+        list.add(new ComponentModel(6, "BadgeView", "支持自由定制外观、拖拽消除的MaterialDesign风格Android BadgeView", "https://github.com/qstumn/BadgeView", BadgeViewActivity.class));
+        list.add(new ComponentModel(7, "CityPicker", "citypicker城市选择器，详细的省市区地址信息，支持仿iOS滚轮实现，仿京东样式，一级或者三级列表展示方式。", "https://github.com/crazyandcoder/citypicker", CityPickerActivity.class));
         return list;
     }
 

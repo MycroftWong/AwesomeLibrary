@@ -1,4 +1,4 @@
-package com.mycroft.awesomelibrary.activity;
+package com.mycroft.awesomelibrary.activity.agent;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;

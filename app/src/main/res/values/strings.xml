@@ -9,4 +9,11 @@
     <string name="share_drawee_name">drawee_view</string>
     <string name="drag_image">DragCloseHelper</string>
     <string name="share_image_name">imageView</string>
+    <string name="badge_view">BadgeView</string>
+    <string name="shopping_cart">ShoppingCart</string>
+    <string name="choose_city">Choose City</string>
+    <string name="city_picker">CityPicker</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+    <string name="title_choose_city">选择地区</string>
 </resources>

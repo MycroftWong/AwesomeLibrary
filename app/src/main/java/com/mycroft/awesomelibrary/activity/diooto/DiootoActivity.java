@@ -1,4 +1,4 @@
-package com.mycroft.awesomelibrary.activity;
+package com.mycroft.awesomelibrary.activity.diooto;
 
 import android.os.Bundle;
 import android.view.MenuItem;

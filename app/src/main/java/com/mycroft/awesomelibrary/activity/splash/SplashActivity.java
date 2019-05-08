@@ -1,4 +1,4 @@
-package com.mycroft.awesomelibrary.activity;
+package com.mycroft.awesomelibrary.activity.splash;
 
 import android.Manifest;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.mycroft.awesomelibrary.R;
+import com.mycroft.awesomelibrary.activity.main.MainActivity;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
