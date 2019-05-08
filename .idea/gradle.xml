@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/PhotoSelector" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/diooto" />
+            <option value="$PROJECT_DIR$/loginaction" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

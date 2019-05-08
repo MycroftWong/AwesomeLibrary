@@ -24,7 +24,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class SplashActivity extends BaseCommonActivity {
 
-    private static final int SPLASH_TIME = 3000;
+    private static final int SPLASH_TIME = 1500;
 
     @Override
     protected int getResId() {
