@@ -1,1 +1,1 @@
-include ':app', ':diooto', ':PhotoSelector', ':loginaction'
+include ':app', ':diooto', ':PhotoSelector', ':loginaction', ':titlebarview'

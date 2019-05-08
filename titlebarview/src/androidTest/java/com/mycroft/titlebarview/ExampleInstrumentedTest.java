@@ -1,4 +1,4 @@
-package com.winfo.photoselector;
+package com.mycroft.titlebarview;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.winfo.photoselector.test", appContext.getPackageName());
+        assertEquals("com.mycroft.titlebarview.test", appContext.getPackageName());
     }
 }
