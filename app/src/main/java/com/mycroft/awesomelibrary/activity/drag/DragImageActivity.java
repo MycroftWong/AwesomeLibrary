@@ -4,7 +4,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Picture;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +17,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.SharedElementCallback;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -77,26 +76,22 @@ public class DragImageActivity extends BaseCommonActivity {
 
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener((a, view, position) -> showPhoto(view, position));
+        adapter.setOnItemClickListener((a, view, position) -> showPhoto2(view, position));
         setExitSharedElementCallback(new SharedElementCallback() {
             @Override
             public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
-                super.onMapSharedElements(names, sharedElements);
-                LogUtils.e("onMapSharedElements");
+                sharedElements.put(getString(R.string.share_image_name), mTmpImageView);
+            }
 
-                LogUtils.e(sharedElements.toString());
-                if (mTmpImageView != null) {
-                    String sharedName = getString(R.string.share_image_name);
-                    sharedElements.remove(sharedName);
-                    sharedElements.put(getString(R.string.share_drawee_name), mTmpImageView);
-                }
+            @Override
+            public void onSharedElementStart(List<String> sharedElementNames, List<View> sharedElements, List<View> sharedElementSnapshots) {
+                mTmpImageView.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onSharedElementEnd(List<String> sharedElementNames, List<View> sharedElements, List<View> sharedElementSnapshots) {
-                super.onSharedElementEnd(sharedElementNames, sharedElements, sharedElementSnapshots);
-                LogUtils.e("onSharedElementEnd");
-                removeTmpView();
+//                removeTmpView();
+                mTmpImageView.setVisibility(View.GONE);
             }
         });
     }
@@ -115,15 +110,7 @@ public class DragImageActivity extends BaseCommonActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(Integer position) {
-        if (position < 0) {
-            removeTmpView();
-            return;
-        }
         RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForAdapterPosition(position);
-        if (viewHolder == null) {
-            removeTmpView();
-            return;
-        }
         if (mTmpImageView == null) {
             initTmpView(viewHolder.itemView);
         } else {
@@ -149,6 +136,11 @@ public class DragImageActivity extends BaseCommonActivity {
         }
     }
 
+    /**
+     * 根据指定的view 初始化view
+     *
+     * @param view 指定的view
+     */
     private void initTmpView(View view) {
         Bitmap bitmap = getCacheBitmapFromView(view);
         ImageView imageView = new ImageView(this);
@@ -163,24 +155,44 @@ public class DragImageActivity extends BaseCommonActivity {
 
         ((FrameLayout) getWindow().getDecorView()).addView(imageView, lp);
 
-
         mTmpImageView = imageView;
     }
 
+    /**
+     * 根据指定的view更新位置
+     *
+     * @param view 指定的view
+     */
     private void updateTmpView(View view) {
+        if (mTmpImageView != null) {
+            BitmapDrawable drawable = (BitmapDrawable) mTmpImageView.getDrawable();
+            drawable.getBitmap().recycle();
+        }
+
         Bitmap bitmap = getCacheBitmapFromView(view);
         mTmpImageView.setImageBitmap(bitmap);
         mTmpImageView.setTransitionName(getString(R.string.share_image_name));
 
         int[] xy = new int[2];
         view.getLocationOnScreen(xy);
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(view.getWidth(), view.getHeight());
+        FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mTmpImageView.getLayoutParams();
         lp.leftMargin = xy[0];
         lp.topMargin = xy[1];
 
-        ((FrameLayout) getWindow().getDecorView()).addView(mTmpImageView, lp);
+        getWindow().getDecorView().requestLayout();
     }
 
+    private void showPhoto2(View view, int position) {
+        initTmpView(view);
+        mTmpImageView.post(() -> showPhoto(mTmpImageView, position));
+    }
+
+    /**
+     * 启动显示
+     *
+     * @param view
+     * @param position
+     */
     private void showPhoto(View view, int position) {
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, view, getString(R.string.share_image_name));
         Intent intent = ImagePreviewActivity.getIntent(this, mImageUrls, position);
@@ -193,19 +205,4 @@ public class DragImageActivity extends BaseCommonActivity {
         view.draw(canvas);
         return b;
     }
-/*
-    private Bitmap getCacheBitmapFromView(View view) {
-        final boolean drawingCacheEnabled = true;
-        view.setDrawingCacheEnabled(drawingCacheEnabled);
-        view.buildDrawingCache(drawingCacheEnabled);
-        final Bitmap drawingCache = view.getDrawingCache();
-        Bitmap bitmap;
-        if (drawingCache != null) {
-            bitmap = Bitmap.createBitmap(drawingCache);
-            view.setDrawingCacheEnabled(false);
-        } else {
-            bitmap = null;
-        }
-        return bitmap;
-    }*/
 }

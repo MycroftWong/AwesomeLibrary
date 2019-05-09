@@ -2,10 +2,7 @@ package com.mycroft.awesomelibrary.activity.drag;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Matrix;
-import android.graphics.RectF;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -15,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.core.app.SharedElementCallback;
 import androidx.viewpager.widget.ViewPager;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.dragclosehelper.library.DragCloseHelper;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
@@ -99,49 +95,10 @@ public class ImagePreviewActivity extends BaseCommonActivity {
         });
         setEnterSharedElementCallback(new SharedElementCallback() {
             @Override
-            public void onSharedElementStart(List<String> sharedElementNames, List<View> sharedElements, List<View> sharedElementSnapshots) {
-                super.onSharedElementStart(sharedElementNames, sharedElements, sharedElementSnapshots);
-                LogUtils.e("onSharedElementStart");
-            }
-
-            @Override
-            public void onSharedElementEnd(List<String> sharedElementNames, List<View> sharedElements, List<View> sharedElementSnapshots) {
-                super.onSharedElementEnd(sharedElementNames, sharedElements, sharedElementSnapshots);
-                LogUtils.e("onSharedElementEnd");
-            }
-
-            @Override
-            public void onRejectSharedElements(List<View> rejectedSharedElements) {
-                super.onRejectSharedElements(rejectedSharedElements);
-                LogUtils.e("onRejectSharedElements");
-            }
-
-            @Override
             public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
-                super.onMapSharedElements(names, sharedElements);
-                LogUtils.e("onMapSharedElements");
-                LogUtils.e(sharedElements.toString());
                 if (sharedElements.isEmpty()) {
-                    sharedElements.put(getString(R.string.share_drawee_name), viewPager);
+                    sharedElements.put(getString(R.string.share_image_name), viewPager);
                 }
-            }
-
-            @Override
-            public Parcelable onCaptureSharedElementSnapshot(View sharedElement, Matrix viewToGlobalMatrix, RectF screenBounds) {
-                LogUtils.e("onCaptureSharedElementSnapshot");
-                return super.onCaptureSharedElementSnapshot(sharedElement, viewToGlobalMatrix, screenBounds);
-            }
-
-            @Override
-            public View onCreateSnapshotView(Context context, Parcelable snapshot) {
-                LogUtils.e("onCreateSnapshotView");
-                return super.onCreateSnapshotView(context, snapshot);
-            }
-
-            @Override
-            public void onSharedElementsArrived(List<String> sharedElementNames, List<View> sharedElements, OnSharedElementsReadyListener listener) {
-                super.onSharedElementsArrived(sharedElementNames, sharedElements, listener);
-                LogUtils.e("onSharedElementsArrived");
             }
         });
     }
@@ -161,7 +118,7 @@ public class ImagePreviewActivity extends BaseCommonActivity {
             @Override
             public void dragStart() {
                 //拖拽开始。可以在此额外处理一些逻辑
-                viewPager.setTransitionName(getString(R.string.share_drawee_name));
+                viewPager.setTransitionName(getString(R.string.share_image_name));
                 EventBus.getDefault().post(mCurrentPosition);
             }
 
@@ -179,7 +136,7 @@ public class ImagePreviewActivity extends BaseCommonActivity {
             public void dragClose(boolean isShareElementMode) {
                 //拖拽关闭，如果是共享元素的页面，需要执行activity的onBackPressed方法，注意如果使用finish方法，则返回的时候没有共享元素的返回动画
                 if (isShareElementMode) {
-                    onBackPressed();
+                    getWindow().getDecorView().post(() -> onBackPressed());
                 }
             }
         });
