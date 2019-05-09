@@ -30,7 +30,7 @@ public class ComponentModel {
         list.add(new ComponentModel(5, "DragCloseHelper", "仿微信朋友圈图片拖动关闭，Glide实现", "https://github.com/bauer-bao/DragCloseHelper", DragImageActivity.class));
         list.add(new ComponentModel(6, "BadgeView", "支持自由定制外观、拖拽消除的MaterialDesign风格Android BadgeView", "https://github.com/qstumn/BadgeView", BadgeViewActivity.class));
         list.add(new ComponentModel(7, "CityPicker", "citypicker城市选择器，详细的省市区地址信息，支持仿iOS滚轮实现，仿京东样式，一级或者三级列表展示方式。", "https://github.com/crazyandcoder/citypicker", CityPickerActivity.class));
-        list.add(new ComponentModel(8, "TitleBarView", "【通用标题栏】通用Android标题栏控件 A Common Titlebar For Android", "https://github.com/xiaohaibin/CustomTitleBar", TitleBarActivity.class));
+        list.add(new ComponentModel(8, "CustomTitleBar", "【通用标题栏】通用Android标题栏控件 A Common Titlebar For Android", "https://github.com/xiaohaibin/CustomTitleBar", TitleBarActivity.class));
         return list;
     }
 

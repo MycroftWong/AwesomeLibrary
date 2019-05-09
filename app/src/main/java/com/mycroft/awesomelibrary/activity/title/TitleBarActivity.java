@@ -1,16 +1,27 @@
 package com.mycroft.awesomelibrary.activity.title;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.stx.xhb.commontitlebar.CustomTitleBar;
+import com.stx.xhb.commontitlebar.widget.UIAlphaImageButton;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * @author wangqiang
  */
 public class TitleBarActivity extends BaseCommonActivity {
+
+    @BindView(R.id.titleBar)
+    CustomTitleBar titleBar;
+
     @Override
     protected int getResId() {
         return R.layout.activity_title_bar;
@@ -23,11 +34,21 @@ public class TitleBarActivity extends BaseCommonActivity {
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        ButterKnife.bind(this);
+        titleBar.setTitle(getTitle().toString());
+        UIAlphaImageButton backButton = titleBar.addLeftBackImageButton();
+        backButton.setOnClickListener(v -> finish());
 
+        titleBar.addRightImageButton(R.mipmap.icon_shopping_cart, View.generateViewId())
+                .setOnClickListener(v -> ToastUtils.showShort("shopping"));
+
+        UIAlphaImageButton searchButton = titleBar.addRightImageButton(R.mipmap.icon_search, View.generateViewId());
+        searchButton.setOnClickListener(v -> ToastUtils.showShort("search"));
     }
 
     @Override
     protected void loadData(@Nullable Bundle savedInstanceState) {
 
     }
+
 }

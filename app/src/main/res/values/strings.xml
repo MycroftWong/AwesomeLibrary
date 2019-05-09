@@ -16,4 +16,5 @@
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
     <string name="title_choose_city">选择地区</string>
+    <string name="title_bar">CustomTitleBar</string>
 </resources>

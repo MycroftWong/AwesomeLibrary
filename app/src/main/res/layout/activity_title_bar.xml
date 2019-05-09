@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.title.TitleBarActivity">
 
     <com.stx.xhb.commontitlebar.CustomTitleBar
+        android:id="@+id/titleBar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+        android:layout_height="44dp"
+        android:paddingTop="0dp"
+        app:titlebar_divider_color="#D1D1D1"
+        app:titlebar_divider_height="1px"
+        app:titlebar_image_btn_height="44dp"
+        app:titlebar_image_btn_width="44dp"
+        app:titlebar_left_back_drawable_id="@mipmap/icon_back"
+        app:titlebar_show_divider="true" />
 
 </LinearLayout>

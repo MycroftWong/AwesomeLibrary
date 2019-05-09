@@ -26,11 +26,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.title.TitleBarActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/TitleBarActivityTheme" />
-        <activity
             android:name=".activity.splash.SplashActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
@@ -91,7 +86,14 @@
             android:name=".activity.city.CityPickerActivity"
             android:label="@string/city_picker"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" /> <!--  -->
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.title.TitleBarActivity"
+            android:label="@string/title_bar"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/TitleBarActivityTheme" />
+        <!--  -->
         <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
