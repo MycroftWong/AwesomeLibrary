@@ -93,6 +93,10 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/TitleBarActivityTheme" />
+        <activity
+            android:name=".activity.swipe.SwipePanelActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <!--  -->
         <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
         <activity

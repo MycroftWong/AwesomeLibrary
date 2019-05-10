@@ -36,9 +36,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * TODO 可以实现，还有诸多问题
+ * 可以实现，还有诸多问题
+ * <p>
  * 1. 如果只是{@link RecyclerView}的child 转换，那么返回时会出现原child view间断空白的情况，解决方案：使用tmp view代替
  * 2. 如何使用 tmp view, 估计得进出时都使用tmp view代替
+ * <p>
+ * <p>
+ * 实际使用感受：不适合RecyclerView不全部显示在屏幕上的情况，使用ViewPager展示回来之后，需要保证所有的view存在，才不会出现回来时找不到对应view的情况
  *
  * @author wangqiang
  */
@@ -111,6 +115,10 @@ public class DragImageActivity extends BaseCommonActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(Integer position) {
         RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForAdapterPosition(position);
+
+        if (viewHolder == null) {
+            return;
+        }
         if (mTmpImageView == null) {
             initTmpView(viewHolder.itemView);
         } else {

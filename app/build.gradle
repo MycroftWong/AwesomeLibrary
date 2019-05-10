@@ -67,7 +67,11 @@ dependencies {
     implementation 'liji.library.dev:citypickerview:4.2.1'
 //    implementation project(path: ':titlebarview')
 
-    implementation 'com.xhb:commontitlebar:2.1.1'//将latestVersion替换成上面最新的版本号
+    // 通用 title bar
+    implementation 'com.xhb:commontitlebar:2.1.1'
+
+    // 侧滑返回
+    implementation 'com.blankj:swipe-panel:1.0'
 
 }
 repositories {
