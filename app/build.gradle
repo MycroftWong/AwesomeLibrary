@@ -73,6 +73,11 @@ dependencies {
     // 侧滑返回
     implementation 'com.blankj:swipe-panel:1.0'
 
+    // 伸缩文字
+    implementation 'com.ms-square:expandableTextView:0.1.4'
+
+    implementation 'com.dinuscxj:recycleritemdecoration:1.0.0'
+
 }
 repositories {
     mavenCentral()

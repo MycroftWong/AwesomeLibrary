@@ -5,9 +5,11 @@ import android.app.Activity;
 import com.mycroft.awesomelibrary.activity.agent.AgentWebActivity;
 import com.mycroft.awesomelibrary.activity.badge.BadgeViewActivity;
 import com.mycroft.awesomelibrary.activity.city.CityPickerActivity;
+import com.mycroft.awesomelibrary.activity.decoration.ItemDecorationActivity;
 import com.mycroft.awesomelibrary.activity.diooto.DiootoActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragDraweeActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragImageActivity;
+import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
 import com.mycroft.awesomelibrary.activity.swipe.SwipePanelActivity;
 import com.mycroft.awesomelibrary.activity.title.TitleBarActivity;
@@ -33,6 +35,8 @@ public class ComponentModel {
         list.add(new ComponentModel(7, "CityPicker", "citypicker城市选择器，详细的省市区地址信息，支持仿iOS滚轮实现，仿京东样式，一级或者三级列表展示方式。", "https://github.com/crazyandcoder/citypicker", CityPickerActivity.class));
         list.add(new ComponentModel(8, "CustomTitleBar", "【通用标题栏】通用Android标题栏控件 A Common Titlebar For Android", "https://github.com/xiaohaibin/CustomTitleBar", TitleBarActivity.class));
         list.add(new ComponentModel(9, "SwipePanel", "Android 侧划，如斯优雅", "https://github.com/Blankj/SwipePanel", SwipePanelActivity.class));
+        list.add(new ComponentModel(10, "ExpandableTextView", "Android's TextView that can expand/collapse like the Google Play's app description", "https://github.com/Manabu-GT/ExpandableTextView", ExpandableTextViewActivity.class));
+        list.add(new ComponentModel(11, "RecyclerItemDecoration", "An Android ItemDecorations library which easily add ItemDecoration to RecyclerView items. Currently Contains PinnedHeaderItemDecoration, DividerItemDecoration, OffsetsItemDecoration, ShaderItemDecoration", "https://github.com/dinuscxj/RecyclerItemDecoration", ItemDecorationActivity.class));
         return list;
     }
 

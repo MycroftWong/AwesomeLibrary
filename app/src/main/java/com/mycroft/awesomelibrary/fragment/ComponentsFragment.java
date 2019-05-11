@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dinuscxj.itemdecoration.GridDividerItemDecoration;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.fragment.common.BaseCommonFragment;
 import com.mycroft.awesomelibrary.model.ComponentModel;
@@ -38,19 +39,17 @@ public class ComponentsFragment extends BaseCommonFragment {
 
     private final List<ComponentModel> mComponentModels = new ArrayList<>();
 
-    private RecyclerView recyclerView;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_components, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         ComponentAdapter adapter = new ComponentAdapter(mComponentModels);
         adapter.setOnItemClickListener((a, v, position) -> startActivity(new Intent(getContext(), mComponentModels.get(position).getKlazz())));
 
         recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), GridDividerItemDecoration.GRID_DIVIDER_VERTICAL));
 
         return view;
     }
