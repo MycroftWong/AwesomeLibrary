@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.text.HTextViewActivity">
+
+    <include layout="@layout/common_toolbar" />
+
+    <com.hanks.htextview.line.LineTextView
+        android:id="@+id/lineText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/common_padding_start_end"
+        android:gravity="center"
+        android:paddingRight="10dp"
+        android:text="This is LineTextView"
+        android:textSize="16sp"
+        app:animationDuration="3000"
+        app:lineColor="@color/common_text_color"
+        app:lineWidth="4dp" />
+
+    <com.hanks.htextview.fade.FadeTextView
+        android:id="@+id/fadeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing="0.08"
+        android:lineSpacingMultiplier="1.3"
+        android:text="This is FadeTextView"
+        android:textSize="20sp"
+        app:animationDuration="1500" />
+
+    <com.hanks.htextview.typer.TyperTextView
+        android:id="@+id/typerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="this is init sentence."
+        app:charIncrease="3"
+        app:typerSpeed="80" />
+
+    <com.hanks.htextview.rainbow.RainbowTextView
+        android:id="@+id/rainbowText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="this is init sentence"
+        android:textSize="20sp"
+        app:colorSpace="150dp"
+        app:colorSpeed="4dp" />
+
+    <com.hanks.htextview.scale.ScaleTextView
+        android:id="@+id/scaleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="this is init sentence"
+        android:textSize="16sp" />
+
+    <com.hanks.htextview.evaporate.EvaporateTextView
+        android:id="@+id/evaporateText"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:text="this is init sentence"
+        android:textSize="20sp" />
+
+    <com.hanks.htextview.fall.FallTextView
+        android:id="@+id/fallText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="20dp"
+        android:text="this is init sentence"
+        android:textSize="16sp" />
+</LinearLayout>

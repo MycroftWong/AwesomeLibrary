@@ -25,6 +25,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.text.HTextViewActivity"></activity>
         <activity
             android:name=".activity.splash.SplashActivity"
             android:launchMode="singleTask"
@@ -125,7 +126,6 @@
             android:name=".activity.text.FadingTextViewActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.github.GithubActivity"
             android:label="@string/github"
