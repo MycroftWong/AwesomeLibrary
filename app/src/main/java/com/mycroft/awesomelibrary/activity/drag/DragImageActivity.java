@@ -6,14 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.SharedElementCallback;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +19,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 import com.mycroft.awesomelibrary.util.Utils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -46,10 +44,8 @@ import butterknife.ButterKnife;
  *
  * @author wangqiang
  */
-public class DragImageActivity extends BaseCommonActivity {
+public class DragImageActivity extends BaseCommonComponentActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -62,14 +58,14 @@ public class DragImageActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
+        super.initFields(savedInstanceState);
         mImageUrls.addAll(Utils.getSampleImages());
     }
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         BaseQuickAdapter<String, BaseViewHolder> adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_drag_image, mImageUrls) {
             @Override
             protected void convert(BaseViewHolder helper, String item) {
@@ -124,15 +120,6 @@ public class DragImageActivity extends BaseCommonActivity {
         } else {
             updateTmpView(viewHolder.itemView);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (android.R.id.home == item.getItemId()) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private ImageView mTmpImageView;

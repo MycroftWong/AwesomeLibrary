@@ -1,18 +1,16 @@
 package com.mycroft.awesomelibrary.activity.diooto;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 import com.mycroft.awesomelibrary.util.Utils;
 
 import net.moyokoo.diooto.Diooto;
@@ -24,10 +22,8 @@ import butterknife.ButterKnife;
 /**
  * @author mycroft
  */
-public class DiootoActivity extends BaseCommonActivity {
+public class DiootoActivity extends BaseCommonComponentActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -38,13 +34,13 @@ public class DiootoActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
+        super.initFields(savedInstanceState);
     }
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         BaseQuickAdapter<String, BaseViewHolder> adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_small_picture, Utils.getSampleImages()) {
             @Override
@@ -62,15 +58,6 @@ public class DiootoActivity extends BaseCommonActivity {
     @Override
     protected void loadData(@Nullable Bundle savedInstanceState) {
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (android.R.id.home == item.getItemId()) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void showPhoto(int position) {

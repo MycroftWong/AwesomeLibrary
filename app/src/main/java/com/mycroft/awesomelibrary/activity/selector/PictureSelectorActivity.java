@@ -3,10 +3,8 @@ package com.mycroft.awesomelibrary.activity.selector;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.facebook.fresco.helper.photoview.PhotoX;
 import com.facebook.fresco.helper.photoview.entity.PhotoInfo;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 import com.winfo.photoselector.PhotoSelector;
 
 import java.util.ArrayList;
@@ -27,7 +25,7 @@ import butterknife.ButterKnife;
  *
  * @author mycroft
  */
-public class PictureSelectorActivity extends BaseCommonActivity {
+public class PictureSelectorActivity extends BaseCommonComponentActivity {
 
     private static final int REQUEST_SELECTOR = 0x110;
 
@@ -40,11 +38,9 @@ public class PictureSelectorActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
-
+        super.initFields(savedInstanceState);
     }
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -53,9 +49,8 @@ public class PictureSelectorActivity extends BaseCommonActivity {
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAdapter = new DraggableImageAdapter(mImages, mItemClickListener);
         recyclerView.setAdapter(mAdapter);
@@ -69,15 +64,6 @@ public class PictureSelectorActivity extends BaseCommonActivity {
     @Override
     protected void loadData(@Nullable Bundle savedInstanceState) {
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (android.R.id.home == item.getItemId()) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private final OnItemActionListener mItemClickListener = new OnItemActionListener() {

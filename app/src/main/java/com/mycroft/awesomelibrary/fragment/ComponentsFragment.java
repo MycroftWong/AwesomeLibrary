@@ -8,12 +8,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dinuscxj.itemdecoration.GridDividerItemDecoration;
 import com.mycroft.awesomelibrary.R;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 import com.mycroft.awesomelibrary.fragment.common.BaseCommonFragment;
 import com.mycroft.awesomelibrary.model.ComponentModel;
 
@@ -46,7 +45,12 @@ public class ComponentsFragment extends BaseCommonFragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         ComponentAdapter adapter = new ComponentAdapter(mComponentModels);
-        adapter.setOnItemClickListener((a, v, position) -> startActivity(new Intent(getContext(), mComponentModels.get(position).getKlazz())));
+        adapter.setOnItemClickListener((a, v, position) -> {
+            ComponentModel model = mComponentModels.get(position);
+            Intent intent = new Intent(getContext(), model.getKlazz());
+            intent.putExtra(BaseCommonComponentActivity.EXTRA_GITHUB_URL, model.getGithubUrl());
+            startActivity(intent);
+        });
 
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), GridDividerItemDecoration.GRID_DIVIDER_VERTICAL));

@@ -3,10 +3,8 @@ package com.mycroft.awesomelibrary.activity.decoration;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +13,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,10 +27,8 @@ import butterknife.ButterKnife;
  *
  * @author mycroft
  */
-public class ItemDecorationActivity extends BaseCommonActivity {
+public class ItemDecorationActivity extends BaseCommonComponentActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -44,14 +41,14 @@ public class ItemDecorationActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
+        super.initFields(savedInstanceState);
         mItemDecorationModels.addAll(Arrays.asList(MODELS));
     }
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ItemDecorationAdapter adapter = new ItemDecorationAdapter(mItemDecorationModels);
         adapter.setOnItemClickListener((a, view, position) -> startActivity(new Intent(this, mItemDecorationModels.get(position).klazz)));
@@ -61,15 +58,6 @@ public class ItemDecorationActivity extends BaseCommonActivity {
 
     @Override
     protected void loadData(@Nullable Bundle savedInstanceState) {
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (android.R.id.home == item.getItemId()) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     static class ItemDecorationAdapter extends BaseQuickAdapter<ItemDecorationModel, BaseViewHolder> {

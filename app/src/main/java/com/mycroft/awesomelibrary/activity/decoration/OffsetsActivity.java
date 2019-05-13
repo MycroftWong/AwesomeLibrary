@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 
 /**
  * offset item decoration, 偏移的距离中间没有任何修饰
+ *
  * @author mycroft
  */
 public class OffsetsActivity extends BaseCommonActivity {

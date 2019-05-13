@@ -4,11 +4,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 
 import com.blankj.swipepanel.SwipePanel;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,10 +17,8 @@ import butterknife.ButterKnife;
  *
  * @author mycroft
  */
-public class SwipePanelActivity extends BaseCommonActivity {
+public class SwipePanelActivity extends BaseCommonComponentActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.swipePanel)
     SwipePanel swipePanel;
 
@@ -32,28 +29,19 @@ public class SwipePanelActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
-
+        super.initFields(savedInstanceState);
     }
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         swipePanel.setOnFullSwipeListener(direction -> finish());
     }
 
     @Override
     protected void loadData(@Nullable Bundle savedInstanceState) {
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (android.R.id.home == item.getItemId()) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

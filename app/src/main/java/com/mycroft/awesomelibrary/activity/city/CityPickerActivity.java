@@ -1,12 +1,10 @@
 package com.mycroft.awesomelibrary.activity.city;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 
 import com.lljjcoder.Interface.OnCityItemClickListener;
 import com.lljjcoder.bean.CityBean;
@@ -15,17 +13,18 @@ import com.lljjcoder.bean.ProvinceBean;
 import com.lljjcoder.citywheel.CityConfig;
 import com.lljjcoder.style.citypickerview.CityPickerView;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 
 import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CityPickerActivity extends BaseCommonActivity {
+/**
+ * @author mycroft
+ */
+public class CityPickerActivity extends BaseCommonComponentActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.chooseCityButton)
     Button chooseCityButton;
     @BindView(R.id.contentText)
@@ -38,16 +37,15 @@ public class CityPickerActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
-
+        super.initFields(savedInstanceState);
     }
 
     private final CityPickerView mCityPickerView = new CityPickerView();
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         chooseCityButton.setOnClickListener(v -> chooseCity());
 
@@ -86,15 +84,6 @@ public class CityPickerActivity extends BaseCommonActivity {
 
     @Override
     protected void loadData(@Nullable Bundle savedInstanceState) {
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (android.R.id.home == item.getItemId()) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void chooseCity() {

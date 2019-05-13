@@ -2,15 +2,13 @@ package com.mycroft.awesomelibrary.activity.badge;
 
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,10 +18,8 @@ import q.rorbin.badgeview.QBadgeView;
 /**
  * @author mycroft
  */
-public class BadgeViewActivity extends BaseCommonActivity {
+public class BadgeViewActivity extends BaseCommonComponentActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.cartText)
     TextView cartText;
 
@@ -34,16 +30,15 @@ public class BadgeViewActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
-
+        super.initFields(savedInstanceState);
     }
 
     private Badge mBadge;
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mBadge = new QBadgeView(this)
                 .bindTarget(cartText)
@@ -70,12 +65,4 @@ public class BadgeViewActivity extends BaseCommonActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (android.R.id.home == item.getItemId()) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -2,14 +2,12 @@ package com.mycroft.awesomelibrary.activity.expand;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,10 +17,8 @@ import butterknife.ButterKnife;
  *
  * @author mycroft
  */
-public class ExpandableTextViewActivity extends BaseCommonActivity {
+public class ExpandableTextViewActivity extends BaseCommonComponentActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.expandable_text_view)
     ExpandableTextView expandableTextView;
 
@@ -33,14 +29,13 @@ public class ExpandableTextViewActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
-
+        super.initFields(savedInstanceState);
     }
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         expandableTextView.setText(getString(R.string.expandable_text));
     }

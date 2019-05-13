@@ -3,29 +3,23 @@ package com.mycroft.awesomelibrary.activity.agent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.DefaultWebClient;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 
 /**
  * @author mycroft
  */
-public class AgentWebActivity extends BaseCommonActivity {
+public class AgentWebActivity extends BaseCommonComponentActivity {
 
     @Override
     protected int getResId() {
@@ -34,22 +28,14 @@ public class AgentWebActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
-
+        super.initFields(savedInstanceState);
     }
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
 
     private AgentWeb mAgentWeb;
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
-        ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        super.initViews(savedInstanceState);
 
         mAgentWeb = AgentWeb.with(this)
                 .setAgentWebParent(findViewById(R.id.webContainer), new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
@@ -86,15 +72,6 @@ public class AgentWebActivity extends BaseCommonActivity {
             //do you work
         }
     };
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (android.R.id.home == item.getItemId()) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

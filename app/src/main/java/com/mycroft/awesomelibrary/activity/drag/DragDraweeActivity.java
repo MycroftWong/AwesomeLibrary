@@ -4,11 +4,9 @@ import android.app.ActivityOptions;
 import android.app.SharedElementCallback;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -16,7 +14,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.fresco.helper.ImageLoader;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 import com.mycroft.awesomelibrary.util.Utils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -35,10 +33,8 @@ import butterknife.ButterKnife;
  *
  * @author mycroft
  */
-public class DragDraweeActivity extends BaseCommonActivity {
+public class DragDraweeActivity extends BaseCommonComponentActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -51,14 +47,14 @@ public class DragDraweeActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
+        super.initFields(savedInstanceState);
         mImageUrls.addAll(Utils.getSampleImages());
     }
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         BaseQuickAdapter<String, BaseViewHolder> adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_drag_drawee, mImageUrls) {
             @Override
             protected void convert(BaseViewHolder helper, String item) {
@@ -102,15 +98,6 @@ public class DragDraweeActivity extends BaseCommonActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(Integer position) {
         mSharedPosition = position;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (android.R.id.home == item.getItemId()) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void showPhoto(View view, int position) {

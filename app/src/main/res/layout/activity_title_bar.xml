@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context=".activity.title.TitleBarActivity">
 
+    <include layout="@layout/common_toolbar" />
+
     <com.stx.xhb.commontitlebar.CustomTitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"

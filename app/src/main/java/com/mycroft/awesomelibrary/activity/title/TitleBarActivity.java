@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 import com.stx.xhb.commontitlebar.CustomTitleBar;
 import com.stx.xhb.commontitlebar.widget.UIAlphaImageButton;
 
@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 /**
  * @author wangqiang
  */
-public class TitleBarActivity extends BaseCommonActivity {
+public class TitleBarActivity extends BaseCommonComponentActivity {
 
     @BindView(R.id.titleBar)
     CustomTitleBar titleBar;
@@ -29,12 +29,14 @@ public class TitleBarActivity extends BaseCommonActivity {
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
-
+        super.initFields(savedInstanceState);
     }
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         ButterKnife.bind(this);
+
         titleBar.setTitle(getTitle().toString());
         UIAlphaImageButton backButton = titleBar.addLeftBackImageButton();
         backButton.setOnClickListener(v -> finish());

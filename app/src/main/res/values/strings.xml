@@ -18,4 +18,7 @@
     <string name="title_choose_city">选择地区</string>
     <string name="title_bar">CustomTitleBar</string>
     <string name="expandable_text">ExpandableTextView is an Android library that allows developers to easily create an TextView which can expand/collapse just like the Google Play\'s app description. Feel free to use it all you want in your Android apps provided that you cite this project.</string>
+    <string name="github">github</string>
+    <string name="copy_github">Copy</string>
+    <string name="toast_clip_github_url">已复制到剪切板</string>
 </resources>
