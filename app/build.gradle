@@ -77,4 +77,7 @@ dependencies {
 
     // item decoration
     implementation 'com.dinuscxj:recycleritemdecoration:1.0.0'
+
+    // fading text
+    implementation 'com.tomer:fadingtextview:2.5'
 }

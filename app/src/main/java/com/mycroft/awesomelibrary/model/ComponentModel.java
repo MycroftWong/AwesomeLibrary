@@ -12,6 +12,7 @@ import com.mycroft.awesomelibrary.activity.drag.DragImageActivity;
 import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
 import com.mycroft.awesomelibrary.activity.swipe.SwipePanelActivity;
+import com.mycroft.awesomelibrary.activity.text.FadingTextViewActivity;
 import com.mycroft.awesomelibrary.activity.title.TitleBarActivity;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class ComponentModel {
         list.add(new ComponentModel(9, "SwipePanel", "Android 侧划，如斯优雅", "https://github.com/Blankj/SwipePanel", SwipePanelActivity.class));
         list.add(new ComponentModel(10, "ExpandableTextView", "Android's TextView that can expand/collapse like the Google Play's app description", "https://github.com/Manabu-GT/ExpandableTextView", ExpandableTextViewActivity.class));
         list.add(new ComponentModel(11, "RecyclerItemDecoration", "An Android ItemDecorations library which easily add ItemDecoration to RecyclerView items. Currently Contains PinnedHeaderItemDecoration, DividerItemDecoration, OffsetsItemDecoration, ShaderItemDecoration", "https://github.com/dinuscxj/RecyclerItemDecoration", ItemDecorationActivity.class));
+        list.add(new ComponentModel(12, "FadingTextView", "A TextView that changes its content automatically every few seconds", "https://github.com/rosenpin/fading-text-view", FadingTextViewActivity.class));
         return list;
     }
 

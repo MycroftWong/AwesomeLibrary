@@ -10,3 +10,5 @@
 [TimeLine](https://github.com/vivian8725118/TimeLine)的使用
 
 [RxBinding](https://github.com/JakeWharton/RxBinding)的使用
+
+[HTextView](https://github.com/hanks-zyh/HTextView)的使用
