@@ -11,6 +11,7 @@ import com.mycroft.awesomelibrary.activity.drag.DragDraweeActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragImageActivity;
 import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
+import com.mycroft.awesomelibrary.activity.selector.RxGalleyActivity;
 import com.mycroft.awesomelibrary.activity.swipe.SwipePanelActivity;
 import com.mycroft.awesomelibrary.activity.text.FadingTextViewActivity;
 import com.mycroft.awesomelibrary.activity.text.HTextViewActivity;
@@ -41,6 +42,7 @@ public class ComponentModel {
         list.add(new ComponentModel(11, "RecyclerItemDecoration", "An Android ItemDecorations library which easily add ItemDecoration to RecyclerView items. Currently Contains PinnedHeaderItemDecoration, DividerItemDecoration, OffsetsItemDecoration, ShaderItemDecoration", "https://github.com/dinuscxj/RecyclerItemDecoration", ItemDecorationActivity.class));
         list.add(new ComponentModel(12, "FadingTextView", "A TextView that changes its content automatically every few seconds", "https://github.com/rosenpin/fading-text-view", FadingTextViewActivity.class));
         list.add(new ComponentModel(13, "HTextView", "Animation effects to text, not really textview", "https://github.com/hanks-zyh/HTextView", HTextViewActivity.class));
+        list.add(new ComponentModel(14, "RxGalleryFinal", "图片选择库，单选/多选、拍照、裁剪、压缩，自定义。包括视频选择和录制。", "https://github.com/FinalTeam/RxGalleryFinal", RxGalleyActivity.class));
         return list;
     }
 

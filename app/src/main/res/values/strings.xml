@@ -21,4 +21,5 @@
     <string name="github">github</string>
     <string name="copy_github">Copy</string>
     <string name="toast_clip_github_url">已复制到剪切板</string>
+    <string name="choose_single">选择单张剪切图片</string>
 </resources>

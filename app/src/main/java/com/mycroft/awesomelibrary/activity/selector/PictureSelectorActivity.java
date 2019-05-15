@@ -36,11 +36,6 @@ public class PictureSelectorActivity extends BaseCommonComponentActivity {
         return R.layout.activity_picture_selector;
     }
 
-    @Override
-    protected void initFields(@Nullable Bundle savedInstanceState) {
-        super.initFields(savedInstanceState);
-    }
-
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 

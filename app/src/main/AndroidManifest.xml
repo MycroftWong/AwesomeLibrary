@@ -25,7 +25,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.text.HTextViewActivity"></activity>
         <activity
             android:name=".activity.splash.SplashActivity"
             android:launchMode="singleTask"
@@ -131,6 +130,16 @@
             android:label="@string/github"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" /> <!--  -->
+        <activity
+            android:name=".activity.text.HTextViewActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.selector.RxGalleyActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+
         <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
@@ -147,6 +156,12 @@
         <activity
             android:name="com.winfo.photoselector.RvPreviewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>
 
