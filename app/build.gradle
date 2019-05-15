@@ -91,4 +91,7 @@ dependencies {
     implementation "com.hanks:htextview-scale:0.1.6"
     implementation "com.hanks:htextview-evaporate:0.1.6"
     implementation "com.hanks:htextview-fall:0.1.6"
+
+    // 选图
+    implementation 'cn.finalteam.rxgalleryfinal:library:1.1.3'
 }
