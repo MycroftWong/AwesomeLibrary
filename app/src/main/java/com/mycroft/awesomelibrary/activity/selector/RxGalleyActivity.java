@@ -16,9 +16,7 @@ import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,9 +29,12 @@ import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultDisposable;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
+import cn.finalteam.rxgalleryfinal.ui.RxGalleryListener;
+import cn.finalteam.rxgalleryfinal.ui.base.IMultiImageCheckedListener;
+import cn.finalteam.rxgalleryfinal.ui.base.IRadioImageCheckedListener;
 
 /**
- * 图片选择
+ * 图片选择，不好用的库，这样使用rx不如正常启动，然后在onActivityResult中处理结果
  *
  * @author wangqiang
  */
@@ -104,62 +105,80 @@ public class RxGalleyActivity extends BaseCommonComponentActivity {
         }
     };
 
+    private RxGalleryFinalApi mRxGalleryFinalApi;
+
     private void selectPictures() {
         int size = MAX_IMAGE_COUNT - mImages.size();
         if (size <= 0) {
             return;
         }
 
-        final Set<MediaBean> mediaBeans = new LinkedHashSet<>();
-        RxGalleryFinal
-                .with(this)
+        RxGalleryFinal.with(this)
+                .imageLoader(ImageLoaderType.FRESCO)
                 .image()
                 .multiple()
                 .maxSize(size)
-                .imageLoader(ImageLoaderType.FRESCO)
+                .hideCamera()
                 .subscribe(new RxBusResultDisposable<ImageMultipleResultEvent>() {
                     @Override
-                    protected void onEvent(ImageMultipleResultEvent multipleResultEvent) {
-                        LogUtils.e(GsonUtils.toJson(multipleResultEvent.getResult()));
-                        mediaBeans.addAll(multipleResultEvent.getResult());
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        LogUtils.e("complete");
-                        for (MediaBean item : mediaBeans) {
+                    protected void onEvent(ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
+                        LogUtils.e(GsonUtils.toJson(imageMultipleResultEvent.getResult()));
+                        for (MediaBean item : imageMultipleResultEvent.getResult()) {
                             mImages.add(item.getOriginalPath());
                         }
                         mAdapter.notifyDataSetChanged();
                     }
+
+                    @Override
+                    public void onComplete() {
+                        LogUtils.e("onComplete");
+                    }
                 })
                 .openGallery();
+
+        RxGalleryListener.getInstance()
+                .setMultiImageCheckedListener(new IMultiImageCheckedListener() {
+                    @Override
+                    public void selectedImg(Object t, boolean isChecked) {
+                        LogUtils.e(t.getClass().getName());
+                    }
+
+                    @Override
+                    public void selectedImgMax(Object t, boolean isChecked, int maxSize) {
+                        LogUtils.e(GsonUtils.toJson(t));
+                    }
+                });
     }
 
     @OnClick(R.id.chooseSingleButton)
     public void onViewClicked() {
+        // 因为glide版本冲突，所以无法使用，有bug
         final List<ImageCropBean> cropBeans = new ArrayList<>(1);
-        RxGalleryFinal
-                .with(this)
-                .image()
-                .radio()
-                .crop()
-                .cropWithAspectRatio(1f, 1f)
-                .imageLoader(ImageLoaderType.FRESCO)
-                .subscribe(new RxBusResultDisposable<ImageRadioResultEvent>() {
+        RxGalleryFinalApi
+                .onCrop(true)
+                .openGalleryRadioImgDefault(new RxBusResultDisposable<ImageRadioResultEvent>() {
                     @Override
-                    protected void onEvent(ImageRadioResultEvent radioResultEvent) {
+                    protected void onEvent(ImageRadioResultEvent radioResultEvent) throws Exception {
+                        LogUtils.e(GsonUtils.toJson(radioResultEvent.getResult()));
                         cropBeans.clear();
                         cropBeans.add(radioResultEvent.getResult());
                     }
-
+                })
+                .onCropImageResult(new IRadioImageCheckedListener() {
                     @Override
-                    public void onComplete() {
+                    public void cropAfter(Object t) {
+                        LogUtils.e(GsonUtils.toJson(t));
+
                         if (!cropBeans.isEmpty()) {
                             ImageLoader.loadImage(draweeView, cropBeans.get(0).getCropPath());
                         }
                     }
-                })
-                .openGallery();
+
+                    @Override
+                    public boolean isActivityFinish() {
+                        LogUtils.e("isActivityFinish");
+                        return true;
+                    }
+                });
     }
 }
