@@ -9,11 +9,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Lifecycle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
 import com.mycroft.awesomelibrary.fragment.ComponentsFragment;
+import com.mycroft.awesomelibrary.fragment.HelpersFragment;
 
 /**
  * @author mycroft
@@ -46,6 +48,7 @@ public class MainActivity extends BaseCommonActivity {
         setSupportActionBar(toolbar);
 
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_components));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_helpers));
 
         tabLayout.addOnTabSelectedListener(mOnTabSelectedListener);
         mOnTabSelectedListener.onTabSelected(tabLayout.getTabAt(0));
@@ -60,6 +63,8 @@ public class MainActivity extends BaseCommonActivity {
         switch (position) {
             case 0:
                 return ComponentsFragment.newInstance();
+            case 1:
+                return HelpersFragment.newInstance();
             default:
                 return ComponentsFragment.newInstance();
         }
@@ -87,7 +92,7 @@ public class MainActivity extends BaseCommonActivity {
         FragmentTransaction ft = getSupportFragmentManager()
                 .beginTransaction();
 
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag(makeFragmentName(R.id.fragmentContainer, pos));
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(makeFragmentName(pos));
 
         if (fragment == null) {
             fragment = getItem(pos);
@@ -96,13 +101,16 @@ public class MainActivity extends BaseCommonActivity {
                 ft.hide(mCurrentFragment);
             }
 
-            ft.add(R.id.fragmentContainer, fragment, makeFragmentName(R.id.fragmentContainer, pos));
+            ft.add(R.id.fragmentContainer, fragment, makeFragmentName(pos))
+                    .setMaxLifecycle(fragment, Lifecycle.State.RESUMED);
             mCurrentFragment = fragment;
         } else {
             if (fragment != mCurrentFragment) {
-                ft.show(fragment);
+                ft.show(fragment)
+                        .setMaxLifecycle(fragment, Lifecycle.State.RESUMED);
                 if (mCurrentFragment != null) {
-                    ft.hide(mCurrentFragment);
+                    ft.hide(mCurrentFragment)
+                            .setMaxLifecycle(mCurrentFragment, Lifecycle.State.STARTED);
                 }
                 mCurrentFragment = fragment;
             }
@@ -111,7 +119,7 @@ public class MainActivity extends BaseCommonActivity {
         ft.commitAllowingStateLoss();
     }
 
-    private static String makeFragmentName(int viewId, long id) {
-        return "android:switcher:" + viewId + ":" + id;
+    private static String makeFragmentName(long id) {
+        return "android:switcher:" + R.id.fragmentContainer + ":" + id;
     }
 }

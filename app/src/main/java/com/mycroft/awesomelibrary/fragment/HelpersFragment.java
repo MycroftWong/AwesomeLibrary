@@ -22,21 +22,23 @@ import java.util.List;
 /**
  * @author mycroft
  */
-public class ComponentsFragment extends BaseCommonFragment {
+public class HelpersFragment extends BaseCommonFragment {
 
-    public static ComponentsFragment newInstance() {
+    public static HelpersFragment newInstance() {
+
         Bundle args = new Bundle();
-        ComponentsFragment fragment = new ComponentsFragment();
+
+        HelpersFragment fragment = new HelpersFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
-        mComponentModels.addAll(ComponentModel.getComponents());
+        mHelperModels.addAll(ComponentModel.getHelpers());
     }
 
-    private final List<ComponentModel> mComponentModels = new ArrayList<>();
+    private final List<ComponentModel> mHelperModels = new ArrayList<>();
 
     @Nullable
     @Override
@@ -44,9 +46,9 @@ public class ComponentsFragment extends BaseCommonFragment {
         View view = inflater.inflate(R.layout.fragment_components, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        ComponentAdapter adapter = new ComponentAdapter(mComponentModels);
+        ComponentAdapter adapter = new ComponentAdapter(mHelperModels);
         adapter.setOnItemClickListener((a, v, position) -> {
-            ComponentModel model = mComponentModels.get(position);
+            ComponentModel model = mHelperModels.get(position);
             Intent intent = new Intent(getContext(), model.getKlazz());
             intent.putExtra(BaseCommonComponentActivity.EXTRA_GITHUB_URL, model.getGithubUrl());
             startActivity(intent);

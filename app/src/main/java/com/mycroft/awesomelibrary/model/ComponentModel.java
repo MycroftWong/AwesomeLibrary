@@ -4,12 +4,14 @@ import android.app.Activity;
 
 import com.mycroft.awesomelibrary.activity.agent.AgentWebActivity;
 import com.mycroft.awesomelibrary.activity.badge.BadgeViewActivity;
+import com.mycroft.awesomelibrary.activity.check.CheckHelperActivity;
 import com.mycroft.awesomelibrary.activity.city.CityPickerActivity;
 import com.mycroft.awesomelibrary.activity.decoration.ItemDecorationActivity;
 import com.mycroft.awesomelibrary.activity.diooto.DiootoActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragDraweeActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragImageActivity;
 import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
+import com.mycroft.awesomelibrary.activity.picker.PickerViewActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
 import com.mycroft.awesomelibrary.activity.selector.RxGalleyActivity;
 import com.mycroft.awesomelibrary.activity.swipe.SwipePanelActivity;
@@ -27,23 +29,38 @@ import java.util.List;
  */
 public class ComponentModel {
 
-    public static List<ComponentModel> get() {
-        ArrayList<ComponentModel> list = new ArrayList<>();
-        list.add(new ComponentModel(1, "AgentWeb", "AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库，提供了 Android WebView 一系列的问题解决方案 ，并且轻量和极度灵活，体验请下载的 agentweb.apk， 或者你也可以到 Google Play 里面下载 AgentWeb ， 详细使用请参照上面的 Sample 。", "https://github.com/Justson/AgentWeb", AgentWebActivity.class));
-        list.add(new ComponentModel(2, "Diooto", "微博,微信图库效果,微信视频拖放效果,适配状态栏 、屏幕旋转 、全屏 、长图、GIF、视频", "https://github.com/moyokoo/Diooto", DiootoActivity.class));
-        list.add(new ComponentModel(3, "PictureSelector", "Android图片选择器，仿微信的图片选择器的样式和效果。可横竖屏切换显示, 自定义配置，单选，多选，是否显示拍照，material design风格，单选裁剪，拍照裁剪，滑动翻页预览，双击放大，缩放", "https://github.com/wj576038874/PhotoSelector", PictureSelectorActivity.class));
-        list.add(new ComponentModel(4, "DragCloseHelper", "仿微信朋友圈图片拖动关闭，Fresco实现", "https://github.com/bauer-bao/DragCloseHelper", DragDraweeActivity.class));
-        list.add(new ComponentModel(5, "DragCloseHelper", "仿微信朋友圈图片拖动关闭，Glide实现", "https://github.com/bauer-bao/DragCloseHelper", DragImageActivity.class));
-        list.add(new ComponentModel(6, "BadgeView", "支持自由定制外观、拖拽消除的MaterialDesign风格Android BadgeView", "https://github.com/qstumn/BadgeView", BadgeViewActivity.class));
-        list.add(new ComponentModel(7, "CityPicker", "citypicker城市选择器，详细的省市区地址信息，支持仿iOS滚轮实现，仿京东样式，一级或者三级列表展示方式。", "https://github.com/crazyandcoder/citypicker", CityPickerActivity.class));
-        list.add(new ComponentModel(8, "CustomTitleBar", "【通用标题栏】通用Android标题栏控件 A Common Titlebar For Android", "https://github.com/xiaohaibin/CustomTitleBar", TitleBarActivity.class));
-        list.add(new ComponentModel(9, "SwipePanel", "Android 侧划，如斯优雅", "https://github.com/Blankj/SwipePanel", SwipePanelActivity.class));
-        list.add(new ComponentModel(10, "ExpandableTextView", "Android's TextView that can expand/collapse like the Google Play's app description", "https://github.com/Manabu-GT/ExpandableTextView", ExpandableTextViewActivity.class));
-        list.add(new ComponentModel(11, "RecyclerItemDecoration", "An Android ItemDecorations library which easily add ItemDecoration to RecyclerView items. Currently Contains PinnedHeaderItemDecoration, DividerItemDecoration, OffsetsItemDecoration, ShaderItemDecoration", "https://github.com/dinuscxj/RecyclerItemDecoration", ItemDecorationActivity.class));
-        list.add(new ComponentModel(12, "FadingTextView", "A TextView that changes its content automatically every few seconds", "https://github.com/rosenpin/fading-text-view", FadingTextViewActivity.class));
-        list.add(new ComponentModel(13, "HTextView", "Animation effects to text, not really textview", "https://github.com/hanks-zyh/HTextView", HTextViewActivity.class));
-        list.add(new ComponentModel(14, "RxGalleryFinal", "图片选择库，单选/多选、拍照、裁剪、压缩，自定义。包括视频选择和录制。", "https://github.com/FinalTeam/RxGalleryFinal", RxGalleyActivity.class));
-        return list;
+    private static final List<ComponentModel> COMPONENT_MODEL_LIST = new ArrayList<>();
+
+    static {
+        COMPONENT_MODEL_LIST.add(new ComponentModel(1, "AgentWeb", "AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库，提供了 Android WebView 一系列的问题解决方案 ，并且轻量和极度灵活，体验请下载的 agentweb.apk， 或者你也可以到 Google Play 里面下载 AgentWeb ， 详细使用请参照上面的 Sample 。", "https://github.com/Justson/AgentWeb", AgentWebActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(2, "Diooto", "微博,微信图库效果,微信视频拖放效果,适配状态栏 、屏幕旋转 、全屏 、长图、GIF、视频", "https://github.com/moyokoo/Diooto", DiootoActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(3, "PictureSelector", "Android图片选择器，仿微信的图片选择器的样式和效果。可横竖屏切换显示, 自定义配置，单选，多选，是否显示拍照，material design风格，单选裁剪，拍照裁剪，滑动翻页预览，双击放大，缩放", "https://github.com/wj576038874/PhotoSelector", PictureSelectorActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(4, "DragCloseHelper", "仿微信朋友圈图片拖动关闭，Fresco实现", "https://github.com/bauer-bao/DragCloseHelper", DragDraweeActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(5, "DragCloseHelper", "仿微信朋友圈图片拖动关闭，Glide实现", "https://github.com/bauer-bao/DragCloseHelper", DragImageActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(6, "BadgeView", "支持自由定制外观、拖拽消除的MaterialDesign风格Android BadgeView", "https://github.com/qstumn/BadgeView", BadgeViewActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(7, "CityPicker", "citypicker城市选择器，详细的省市区地址信息，支持仿iOS滚轮实现，仿京东样式，一级或者三级列表展示方式。", "https://github.com/crazyandcoder/citypicker", CityPickerActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(8, "CustomTitleBar", "【通用标题栏】通用Android标题栏控件 A Common Titlebar For Android", "https://github.com/xiaohaibin/CustomTitleBar", TitleBarActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(9, "SwipePanel", "Android 侧划，如斯优雅", "https://github.com/Blankj/SwipePanel", SwipePanelActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(10, "ExpandableTextView", "Android's TextView that can expand/collapse like the Google Play's app description", "https://github.com/Manabu-GT/ExpandableTextView", ExpandableTextViewActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(11, "RecyclerItemDecoration", "An Android ItemDecorations library which easily add ItemDecoration to RecyclerView items. Currently Contains PinnedHeaderItemDecoration, DividerItemDecoration, OffsetsItemDecoration, ShaderItemDecoration", "https://github.com/dinuscxj/RecyclerItemDecoration", ItemDecorationActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(12, "FadingTextView", "A TextView that changes its content automatically every few seconds", "https://github.com/rosenpin/fading-text-view", FadingTextViewActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(13, "HTextView", "Animation effects to text, not really textview", "https://github.com/hanks-zyh/HTextView", HTextViewActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(14, "RxGalleryFinal", "图片选择库，单选/多选、拍照、裁剪、压缩，自定义。包括视频选择和录制。", "https://github.com/FinalTeam/RxGalleryFinal", RxGalleyActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(15, "Android-PickerView", "This is a picker view for android , support linkage effect, timepicker and optionspicker.（时间选择器、省市区三级联动）", "https://github.com/Bigkoo/Android-PickerView", PickerViewActivity.class));
+    }
+
+    private static final List<ComponentModel> HELPER_LIST = new ArrayList<>();
+
+    static {
+        HELPER_LIST.add(new ComponentModel(1001, "CheckHelper", "ReyclerView 列表选择工具，提供单选、多选等解耦 Api", "https://github.com/gminibird/CheckHelper", CheckHelperActivity.class));
+    }
+
+    public static List<ComponentModel> getComponents() {
+        return COMPONENT_MODEL_LIST;
+    }
+
+    public static List<ComponentModel> getHelpers() {
+        return HELPER_LIST;
     }
 
     private int id;

@@ -22,4 +22,8 @@
     <string name="copy_github">Copy</string>
     <string name="toast_clip_github_url">已复制到剪切板</string>
     <string name="choose_single">选择单张剪切图片</string>
+    <string name="choose_date">选择日期</string>
+    <string name="choose_time">选择时间</string>
+    <string name="not_support_now">暂时未实现</string>
+    <string name="tab_helpers">Helpers</string>
 </resources>

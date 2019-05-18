@@ -138,8 +138,15 @@
             android:name=".activity.selector.RxGalleyActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.picker.PickerViewActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
 
-
+        <activity
+            android:name=".activity.check.CheckHelperActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
@@ -157,7 +164,6 @@
             android:name="com.winfo.photoselector.RvPreviewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
             android:exported="true"
