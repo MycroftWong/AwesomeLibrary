@@ -2,6 +2,8 @@ package com.mycroft.awesomelibrary.model;
 
 import android.app.Activity;
 
+import com.mycroft.awesomelibrary.activity.addsub.AnimShopButtonActivity;
+import com.mycroft.awesomelibrary.activity.addsub.ShoppingCartAddSubActivity;
 import com.mycroft.awesomelibrary.activity.agent.AgentWebActivity;
 import com.mycroft.awesomelibrary.activity.badge.BadgeViewActivity;
 import com.mycroft.awesomelibrary.activity.check.CheckHelperActivity;
@@ -12,6 +14,7 @@ import com.mycroft.awesomelibrary.activity.drag.DragDraweeActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragImageActivity;
 import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
 import com.mycroft.awesomelibrary.activity.picker.PickerViewActivity;
+import com.mycroft.awesomelibrary.activity.room.RoomActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
 import com.mycroft.awesomelibrary.activity.selector.RxGalleyActivity;
 import com.mycroft.awesomelibrary.activity.swipe.SwipePanelActivity;
@@ -47,12 +50,15 @@ public class ComponentModel {
         COMPONENT_MODEL_LIST.add(new ComponentModel(13, "HTextView", "Animation effects to text, not really textview", "https://github.com/hanks-zyh/HTextView", HTextViewActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(14, "RxGalleryFinal", "图片选择库，单选/多选、拍照、裁剪、压缩，自定义。包括视频选择和录制。", "https://github.com/FinalTeam/RxGalleryFinal", RxGalleyActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(15, "Android-PickerView", "This is a picker view for android , support linkage effect, timepicker and optionspicker.（时间选择器、省市区三级联动）", "https://github.com/Bigkoo/Android-PickerView", PickerViewActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(16, "AddSubUtils", "对购物车加减按钮控件的简单封装，几行代码就搞定，采用链式调用，而且样式支持自定义，最重要的是在ListView中和RecyclerView中处理了复用item导致数据错乱的问题。", "https://github.com/Jmengfei/AddSubUtils", ShoppingCartAddSubActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(16, "AnimShopButton", "A shopping cart button with a telescopic displacement rotation animation ...一个带伸缩位移旋转动画的购物车按钮", "https://github.com/mcxtzhang/AnimShopButton", AnimShopButtonActivity.class));
     }
 
     private static final List<ComponentModel> HELPER_LIST = new ArrayList<>();
 
     static {
         HELPER_LIST.add(new ComponentModel(1001, "CheckHelper", "ReyclerView 列表选择工具，提供单选、多选等解耦 Api", "https://github.com/gminibird/CheckHelper", CheckHelperActivity.class));
+        HELPER_LIST.add(new ComponentModel(1002, "Room", "Room 数据库框架", "https://github.com/humazed/RoomAsset", RoomActivity.class));
     }
 
     public static List<ComponentModel> getComponents() {

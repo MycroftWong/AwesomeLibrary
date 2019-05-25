@@ -26,4 +26,8 @@
     <string name="choose_time">选择时间</string>
     <string name="not_support_now">暂时未实现</string>
     <string name="tab_helpers">Helpers</string>
+    <string name="query_province">Query Province</string>
+    <string name="query_city">Query City</string>
+    <string name="query_county">Query County</string>
+    <string name="query_street">Query Street</string>
 </resources>

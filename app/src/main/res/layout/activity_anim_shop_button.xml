@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.addsub.AnimShopButtonActivity">
+
+    <include layout="@layout/common_toolbar" />
+
+    <!--使用默认UI属性-->
+    <com.mcxtzhang.lib.AnimShopButton
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:maxCount="3" />
+    <!--设置了两圆间距-->
+    <com.mcxtzhang.lib.AnimShopButton
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:count="3"
+        app:gapBetweenCircle="90dp"
+        app:maxCount="99" />
+    <!--仿饿了么-->
+    <com.mcxtzhang.lib.AnimShopButton
+        android:id="@+id/btnEle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:addEnableBgColor="#3190E8"
+        app:addEnableFgColor="#ffffff"
+        app:hintBgColor="#3190E8"
+        app:hintBgRoundValue="15dp"
+        app:hintFgColor="#ffffff"
+        app:maxCount="99" />
+</LinearLayout>

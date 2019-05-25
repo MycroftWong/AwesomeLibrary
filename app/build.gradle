@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -106,6 +107,23 @@ dependencies {
     implementation 'com.github.gminibird:CheckHelper:1.1', {
         exclude group: 'com.android.support'
     }
+
+    // 购物车加减
+    implementation 'com.mengfei:AddSubUtils:1.5.0'
+    implementation 'com.github.mcxtzhang:AnimShopButton:V1.2.0'
+
+
+    // room
+    implementation 'androidx.room:room-runtime:2.0.0'
+    kapt 'androidx.room:room-compiler:2.0.0'
+    implementation 'androidx.room:room-testing:2.0.0'
+
+    implementation 'com.github.humazed:RoomAsset:1.0.3'
+
+
+    //添加下面两行到依赖中
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.27.0-eap13"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.27.0-eap13"
 }
 repositories {
     mavenCentral()

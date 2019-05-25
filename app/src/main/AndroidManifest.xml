@@ -25,6 +25,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.room.RoomActivity"></activity>
+        <activity android:name=".activity.addsub.AnimShopButtonActivity" />
+        <activity android:name=".activity.addsub.ShoppingCartAddSubActivity" />
         <activity
             android:name=".activity.splash.SplashActivity"
             android:launchMode="singleTask"
@@ -142,12 +145,10 @@
             android:name=".activity.picker.PickerViewActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.check.CheckHelperActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
+            android:screenOrientation="portrait" /> <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.addsub.ShoppingCartAddSubActivity">
+
+    <include layout="@layout/common_toolbar" />
+
+    <com.jmf.addsubutils.AddSubUtils
+        android:id="@+id/addSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.mycroft.awesomelibrary.view.ShopButton
+        android:layout_width="90dp"
+        android:layout_height="32dp"
+        android:layout_margin="24dp"
+        android:divider="@drawable/divider_horizontal"
+        android:dividerPadding="0px"
+        android:showDividers="middle"
+        app:buttonTextSize="18dp"
+        app:buttonWidth="24dp"
+        app:countTextColor="@android:color/holo_red_dark"
+        app:countTextSize="18dp"
+        app:max="5"
+        app:min="1" />
+
+</LinearLayout>
