@@ -30,4 +30,5 @@
     <string name="query_city">Query City</string>
     <string name="query_county">Query County</string>
     <string name="query_street">Query Street</string>
+    <string name="choose_picture">Choose Picture</string>
 </resources>

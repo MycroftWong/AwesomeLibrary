@@ -3,11 +3,9 @@ package com.mycroft.awesomelibrary.activity.room
 import android.os.Bundle
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.huma.room_for_asset.RoomAsset
 import com.mycroft.awesomelibrary.R
 import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity
 import com.mycroft.awesomelibrary.activity.room.dao.AddressDao
-import com.mycroft.awesomelibrary.activity.room.dao.AddressDatabase
 import kotlinx.android.synthetic.main.activity_room.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -28,14 +26,6 @@ class RoomActivity : BaseCommonComponentActivity() {
             }
         }
 
-        val database = RoomAsset.databaseBuilder(this, AddressDatabase::class.java, DB_FILE)
-                .build()
-
-        val dao = database.addressDao()
-
-        queryProvince.setOnClickListener {
-            queryProvince(dao)
-        }
     }
 
     private fun queryProvince(dao: AddressDao) {
