@@ -20,19 +20,19 @@ import com.winfo.photoselector.entity.Image;
 
 import java.util.List;
 
-public class BottomPreviewAdapter extends RecyclerView.Adapter<BottomPreviewAdapter.CustomeHolder> {
+public class BottomPreviewAdapter extends RecyclerView.Adapter<BottomPreviewAdapter.CustomHolder> {
 
     private Context context;
     private List<Image> imagesList;
 
-    public interface OnItemClcikLitener {
-        void OnItemClcik(int position,Image image);
+    public interface OnItemClickListener {
+        void onItemClick(int position, Image image);
     }
 
-    public OnItemClcikLitener onItemClcikLitener;
+    public OnItemClickListener mOnItemClickListener;
 
-    public void setOnItemClcikLitener(OnItemClcikLitener onItemClcikLitener) {
-        this.onItemClcikLitener = onItemClcikLitener;
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
     }
 
     public interface OnDataChangeFinishListener {
@@ -50,16 +50,15 @@ public class BottomPreviewAdapter extends RecyclerView.Adapter<BottomPreviewAdap
         this.imagesList = imagesList;
     }
 
-
     @NonNull
     @Override
-    public CustomeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CustomeHolder(LayoutInflater.from(context).inflate(R.layout.bootm_preview_item, parent, false));
+    public CustomHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new CustomHolder(LayoutInflater.from(context).inflate(R.layout.bootm_preview_item, parent, false));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    public void onBindViewHolder(@NonNull final CustomeHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CustomHolder holder, int position) {
         imagesList.get(position).setSelectPosition(position);
         Glide.with(context).load(imagesList.get(holder.getAdapterPosition()).getPath())
 //                    .transition(new GenericTransitionOptions<>().transition(R.anim.glide_anim))
@@ -70,17 +69,14 @@ public class BottomPreviewAdapter extends RecyclerView.Adapter<BottomPreviewAdap
                         .override(800, 800))
                 .thumbnail(0.5f)
                 .into(holder.imageView);
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (Image image : imagesList) {
-                    image.setChecked(false);
-                }
-                imagesList.get(holder.getAdapterPosition()).setChecked(true);
-                if (onItemClcikLitener != null) {
-                    int a = holder.getAdapterPosition();
-                    onItemClcikLitener.OnItemClcik(holder.getAdapterPosition(),imagesList.get(holder.getAdapterPosition()));
-                }
+        holder.imageView.setOnClickListener(v -> {
+            for (Image image : imagesList) {
+                image.setChecked(false);
+            }
+            imagesList.get(holder.getAdapterPosition()).setChecked(true);
+            if (mOnItemClickListener != null) {
+                int a = holder.getAdapterPosition();
+                mOnItemClickListener.onItemClick(holder.getAdapterPosition(), imagesList.get(holder.getAdapterPosition()));
             }
         });
         if (imagesList.get(position).isChecked()) {
@@ -95,17 +91,17 @@ public class BottomPreviewAdapter extends RecyclerView.Adapter<BottomPreviewAdap
         return imagesList.size();
     }
 
-    class CustomeHolder extends RecyclerView.ViewHolder {
+    class CustomHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
 
-        public CustomeHolder(View itemView) {
+        public CustomHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.bottom_imageview_item);
         }
     }
 
-    public void referesh(List<Image> newData) {
+    public void refresh(List<Image> newData) {
         this.imagesList = newData;
         notifyDataSetChanged();
     }

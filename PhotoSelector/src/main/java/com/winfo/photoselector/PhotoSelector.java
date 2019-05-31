@@ -11,10 +11,10 @@ import androidx.annotation.NonNull;
 
 import com.winfo.photoselector.utils.PermissionsUtils;
 import com.yalantis.ucrop.UCrop;
+
 import java.util.ArrayList;
 
 public class PhotoSelector {
-
 
     public static final int CROP_RECTANG = 1;
     public static final int CROP_CIRCLE = 2;
@@ -33,7 +33,6 @@ public class PhotoSelector {
      * 默认的requesrCode
      */
     public static final int DEFAULT_REQUEST_CODE = 999;
-
 
     public static final int RESULT_CODE = 1000;
 
@@ -91,7 +90,6 @@ public class PhotoSelector {
      */
     public static final String EXTRA_MATERIAL_DESIGN = "material_design";
 
-
     /**
      * toolBar的颜色值
      */
@@ -118,9 +116,7 @@ public class PhotoSelector {
      */
     public static final String EXTRA_ISPREVIEW = "isPreview";
 
-
     public static final String IS_CONFIRM = "is_confirm";
-
 
     /**
      * 获取裁剪之后的图片的uri
@@ -131,7 +127,6 @@ public class PhotoSelector {
     public static Uri getCropImageUri(@NonNull Intent intent) {
         return UCrop.getOutput(intent);
     }
-
 
     public static PhotoSelectorBuilder builder() {
         return new PhotoSelectorBuilder();

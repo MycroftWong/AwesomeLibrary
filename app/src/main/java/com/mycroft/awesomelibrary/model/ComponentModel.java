@@ -8,6 +8,7 @@ import com.mycroft.awesomelibrary.activity.agent.AgentWebActivity;
 import com.mycroft.awesomelibrary.activity.badge.BadgeViewActivity;
 import com.mycroft.awesomelibrary.activity.check.CheckHelperActivity;
 import com.mycroft.awesomelibrary.activity.city.CityPickerActivity;
+import com.mycroft.awesomelibrary.activity.crop.SmartCropperActivity;
 import com.mycroft.awesomelibrary.activity.decoration.ItemDecorationActivity;
 import com.mycroft.awesomelibrary.activity.diooto.DiootoActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragDraweeActivity;
@@ -56,6 +57,7 @@ public class ComponentModel {
         COMPONENT_MODEL_LIST.add(new ComponentModel(16, "AnimShopButton", "A shopping cart button with a telescopic displacement rotation animation ...一个带伸缩位移旋转动画的购物车按钮", "https://github.com/mcxtzhang/AnimShopButton", AnimShopButtonActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(17, "FormatEditText", "FormatEditText can be used as a number formatted text input box, which can be used to format phone numbers, format ID numbers, format bank card numbers, etc. 可配置自定义规则来格式化号码的输入框，可用来格式化电话号码、身份证号码、银行卡号码等。", "https://github.com/dkzwm/FormatEditText", FormatEditTextActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(18, "VerificationCodeView", "正方形验证码输入框", "https://github.com/JackTuoTuo/VerificationCodeView", VerificationCodeViewActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(19, "SmartCropper", " A library for cropping image in a smart way that can identify the border and correct the cropped image. 智能图片裁剪框架。自动识别边框，手动调节选区，使用透视变换裁剪并矫正选区；适用于身份证，名片，文档等照片的裁剪。", "https://github.com/pqpo/SmartCropper", SmartCropperActivity.class));
     }
 
     private static final List<ComponentModel> HELPER_LIST = new ArrayList<>();

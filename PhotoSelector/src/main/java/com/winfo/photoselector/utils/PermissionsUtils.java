@@ -12,12 +12,14 @@ import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
+/**
+ * 权限检查类
+ *
+ * @author wangqiang
+ */
 public class PermissionsUtils {
 
     public static boolean checkReadStoragePermission(Activity activity) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            return true;
-        }
         int readStoragePermissionState =
                 ContextCompat.checkSelfPermission(activity, READ_EXTERNAL_STORAGE);
 

@@ -49,7 +49,6 @@ public class ImageCaptureManager {
         return image;
     }
 
-
     public Intent dispatchTakePictureIntent() throws IOException {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's glide_anim camera activity to handle the intent
@@ -58,8 +57,6 @@ public class ImageCaptureManager {
             File file = createImageFile();
             Uri photoFile = null;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//        String authority = mContext.getApplicationInfo().packageName + ".provider";
-//        photoFile = FileProvider.getUriForFile(this.mContext.getApplicationContext(), authority, file);
                 //兼容android7.0 使用共享文件的形式
                 ContentValues contentValues = new ContentValues(1);
                 contentValues.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());
@@ -78,7 +75,6 @@ public class ImageCaptureManager {
         return takePictureIntent;
     }
 
-
     public void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
 
@@ -92,11 +88,9 @@ public class ImageCaptureManager {
         mContext.sendBroadcast(mediaScanIntent);
     }
 
-
     public String getCurrentPhotoPath() {
         return mCurrentPhotoPath;
     }
-
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null && mCurrentPhotoPath != null) {

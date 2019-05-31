@@ -59,14 +59,11 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
             holder.ivImage.setImageBitmap(null);
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSelectItem = holder.getAdapterPosition();
-                notifyDataSetChanged();
-                if (mListener != null) {
-                    mListener.OnFolderSelect(folder);
-                }
+        holder.itemView.setOnClickListener(v -> {
+            mSelectItem = holder.getAdapterPosition();
+            notifyDataSetChanged();
+            if (mListener != null) {
+                mListener.onFolderSelect(folder);
             }
         });
     }
@@ -97,7 +94,12 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
     }
 
     public interface OnFolderSelectListener {
-        void OnFolderSelect(Folder folder);
+        /**
+         * 文件夹选取监听器
+         *
+         * @param folder
+         */
+        void onFolderSelect(Folder folder);
     }
 
 }
