@@ -26,7 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.edit.VerificationCodeViewActivity"></activity>
+        <activity android:name=".activity.compressor.CompressorActivity"></activity>
+        <activity android:name=".activity.edit.VerificationCodeViewActivity" />
         <activity android:name=".activity.edit.FormatEditTextActivity" />
         <activity
             android:name=".activity.splash.SplashActivity"

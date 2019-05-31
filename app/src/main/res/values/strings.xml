@@ -39,4 +39,8 @@
     <string name="insert">插入数据</string>
     <string name="query">查询</string>
     <string name="choose_address">选择地址</string>
+    <string name="toast_component_is_bad">组件功能太差，不能使用</string>
+    <string name="text_image_before_compress">压缩前的图片</string>
+    <string name="text_image_after_compress">压缩后的图片</string>
+    <string name="toast_compress_error">压缩失败</string>
 </resources>

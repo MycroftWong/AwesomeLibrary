@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.dinuscxj.itemdecoration.GridDividerItemDecoration;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
@@ -47,6 +48,10 @@ public class ComponentsFragment extends BaseCommonFragment {
         ComponentAdapter adapter = new ComponentAdapter(mComponentModels);
         adapter.setOnItemClickListener((a, v, position) -> {
             ComponentModel model = mComponentModels.get(position);
+            if (model.isDeprecated()) {
+                ToastUtils.showShort(R.string.toast_component_is_bad);
+                return;
+            }
             Intent intent = new Intent(getContext(), model.getKlazz());
             intent.putExtra(BaseCommonComponentActivity.EXTRA_GITHUB_URL, model.getGithubUrl());
             startActivity(intent);

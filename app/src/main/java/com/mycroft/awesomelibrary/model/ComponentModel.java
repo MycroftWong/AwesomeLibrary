@@ -8,6 +8,7 @@ import com.mycroft.awesomelibrary.activity.agent.AgentWebActivity;
 import com.mycroft.awesomelibrary.activity.badge.BadgeViewActivity;
 import com.mycroft.awesomelibrary.activity.check.CheckHelperActivity;
 import com.mycroft.awesomelibrary.activity.city.CityPickerActivity;
+import com.mycroft.awesomelibrary.activity.compressor.CompressorActivity;
 import com.mycroft.awesomelibrary.activity.decoration.ItemDecorationActivity;
 import com.mycroft.awesomelibrary.activity.diooto.DiootoActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragDraweeActivity;
@@ -63,6 +64,7 @@ public class ComponentModel {
     static {
         HELPER_LIST.add(new ComponentModel(1001, "CheckHelper", "RecylerView 列表选择工具，提供单选、多选等解耦 Api", "https://github.com/gminibird/CheckHelper", CheckHelperActivity.class));
         HELPER_LIST.add(new ComponentModel(1002, "Room", "Room 数据库框架", "https://github.com/humazed/RoomAsset", RoomActivity.class));
+        HELPER_LIST.add(new ComponentModel(1003, "Compressor", "Modern and advanced: an easy to use image compress library for Android.", "https://github.com/Shouheng88/Compressor", CompressorActivity.class));
     }
 
     public static List<ComponentModel> getComponents() {
