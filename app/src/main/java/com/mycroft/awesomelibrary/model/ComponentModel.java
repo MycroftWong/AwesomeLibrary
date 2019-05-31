@@ -12,8 +12,9 @@ import com.mycroft.awesomelibrary.activity.decoration.ItemDecorationActivity;
 import com.mycroft.awesomelibrary.activity.diooto.DiootoActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragDraweeActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragImageActivity;
+import com.mycroft.awesomelibrary.activity.edit.FormatEditTextActivity;
+import com.mycroft.awesomelibrary.activity.edit.VerificationCodeViewActivity;
 import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
-import com.mycroft.awesomelibrary.activity.matisse.MatisseActivity;
 import com.mycroft.awesomelibrary.activity.picker.PickerViewActivity;
 import com.mycroft.awesomelibrary.activity.room.RoomActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
@@ -53,13 +54,14 @@ public class ComponentModel {
         COMPONENT_MODEL_LIST.add(new ComponentModel(15, "Android-PickerView", "This is a picker view for android , support linkage effect, timepicker and optionspicker.（时间选择器、省市区三级联动）", "https://github.com/Bigkoo/Android-PickerView", PickerViewActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(16, "AddSubUtils", "对购物车加减按钮控件的简单封装，几行代码就搞定，采用链式调用，而且样式支持自定义，最重要的是在ListView中和RecyclerView中处理了复用item导致数据错乱的问题。", "https://github.com/Jmengfei/AddSubUtils", ShoppingCartAddSubActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(16, "AnimShopButton", "A shopping cart button with a telescopic displacement rotation animation ...一个带伸缩位移旋转动画的购物车按钮", "https://github.com/mcxtzhang/AnimShopButton", AnimShopButtonActivity.class));
-        COMPONENT_MODEL_LIST.add(new ComponentModel(17, "FormatEditText", "FormatEditText can be used as a number formatted text input box, which can be used to format phone numbers, format ID numbers, format bank card numbers, etc. 可配置自定义规则来格式化号码的输入框，可用来格式化电话号码、身份证号码、银行卡号码等。", "https://github.com/dkzwm/FormatEditText", MatisseActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(17, "FormatEditText", "FormatEditText can be used as a number formatted text input box, which can be used to format phone numbers, format ID numbers, format bank card numbers, etc. 可配置自定义规则来格式化号码的输入框，可用来格式化电话号码、身份证号码、银行卡号码等。", "https://github.com/dkzwm/FormatEditText", FormatEditTextActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(18, "VerificationCodeView", "正方形验证码输入框", "https://github.com/JackTuoTuo/VerificationCodeView", VerificationCodeViewActivity.class));
     }
 
     private static final List<ComponentModel> HELPER_LIST = new ArrayList<>();
 
     static {
-        HELPER_LIST.add(new ComponentModel(1001, "CheckHelper", "ReyclerView 列表选择工具，提供单选、多选等解耦 Api", "https://github.com/gminibird/CheckHelper", CheckHelperActivity.class));
+        HELPER_LIST.add(new ComponentModel(1001, "CheckHelper", "RecylerView 列表选择工具，提供单选、多选等解耦 Api", "https://github.com/gminibird/CheckHelper", CheckHelperActivity.class));
         HELPER_LIST.add(new ComponentModel(1002, "Room", "Room 数据库框架", "https://github.com/humazed/RoomAsset", RoomActivity.class));
     }
 

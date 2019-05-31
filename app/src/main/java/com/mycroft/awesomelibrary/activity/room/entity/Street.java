@@ -1,17 +1,21 @@
 package com.mycroft.awesomelibrary.activity.room.entity;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
+import androidx.room.*;
+import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "street")
+@Entity(tableName = "street",
+        foreignKeys = @ForeignKey(entity = County.class, parentColumns = "id", childColumns = "county_id"),
+        indices = @Index("county_id"))
 public class Street {
+
     @PrimaryKey
     @ColumnInfo(name = "id")
     public int id;
+
+    @SerializedName("county_id")
     @ColumnInfo(name = "county_id")
-    public int county_id;
+    public int countyId;
+
     @ColumnInfo(name = "name")
     public String name;
 
@@ -19,9 +23,9 @@ public class Street {
     }
 
     @Ignore
-    public Street(int id, int county_id, String name) {
+    public Street(int id, int countyId, String name) {
         this.id = id;
-        this.county_id = county_id;
+        this.countyId = countyId;
         this.name = name;
     }
 
@@ -33,12 +37,12 @@ public class Street {
         this.id = id;
     }
 
-    public int getCounty_id() {
-        return county_id;
+    public int getCountyId() {
+        return countyId;
     }
 
-    public void setCounty_id(int county_id) {
-        this.county_id = county_id;
+    public void setCountyId(int countyId) {
+        this.countyId = countyId;
     }
 
     public String getName() {

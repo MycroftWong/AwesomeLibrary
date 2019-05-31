@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.edit.VerificationCodeViewActivity">
+
+    <include layout="@layout/common_toolbar" />
+
+    <com.tuo.customview.VerificationCodeView
+        android:id="@+id/verificationCodeView"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:icv_et_bg_focus="@drawable/bg_focus_verification_code_view"
+        app:icv_et_bg_normal="@drawable/bg_normal_verification_code_view"
+        app:icv_et_number="6"
+        app:icv_et_text_color="@color/common_text_color"
+        app:icv_et_text_size="14sp"
+        app:icv_et_width="36dp" />
+
+    <com.tuo.customview.VerificationCodeView
+        android:id="@+id/verificationPwdCodeView"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:icv_et_bg_focus="@drawable/bg_focus_verification_code_view"
+        app:icv_et_bg_normal="@drawable/bg_normal_verification_code_view"
+        app:icv_et_number="6"
+        app:icv_et_pwd="true"
+        app:icv_et_pwd_radius="8dp"
+        app:icv_et_text_color="@color/common_text_color"
+        app:icv_et_width="36dp" />
+
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/clear" />
+
+    <TextView
+        android:id="@+id/contentText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/common_padding_start_end" />
+
+</LinearLayout>

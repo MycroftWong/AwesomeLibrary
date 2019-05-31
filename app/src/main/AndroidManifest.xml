@@ -26,6 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.edit.VerificationCodeViewActivity"></activity>
+        <activity android:name=".activity.edit.FormatEditTextActivity" />
         <activity
             android:name=".activity.splash.SplashActivity"
             android:launchMode="singleTask"
@@ -162,14 +164,14 @@
         <activity
             android:name=".activity.addsub.ShoppingCartAddSubActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-
-        <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
-        <!--<activity
+            android:screenOrientation="portrait" /> <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
+        <!--
+<activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             tools:replace="android:theme
-            android:theme="@style/AppTheme" />-->
+            android:theme="@style/AppTheme" />
+        -->
         <activity
             android:name="com.winfo.photoselector.ImageSelectorActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

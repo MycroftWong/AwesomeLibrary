@@ -1,5 +1,6 @@
 package com.mycroft.awesomelibrary.activity.room.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -9,11 +10,20 @@ import com.mycroft.awesomelibrary.activity.room.entity.City;
 import com.mycroft.awesomelibrary.activity.room.entity.County;
 import com.mycroft.awesomelibrary.activity.room.entity.Province;
 import com.mycroft.awesomelibrary.activity.room.entity.Street;
+import com.mycroft.roomdemo.entity.StreetDetailInfo;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
+
+/**
+ * @author mycroft
+ */
 @Dao
 public interface AddressDao {
+
+    @Query("SELECT * FROM StreetDetailInfo WHERE id=:id")
+    StreetDetailInfo loadStreetDetail(int id);
 
     /**
      * @return
@@ -22,13 +32,22 @@ public interface AddressDao {
     List<Province> loadAllProvinces();
 
     @Query("SELECT * FROM city")
-    List<City> loadAllCities();
+    Flowable<List<City>> loadAllCities();
+
+    @Query("SELECT * FROM city where province_id=:id")
+    List<City> loadCitiesByProvinceId(int id);
 
     @Query("SELECT * FROM county")
-    List<County> loadAllCounties();
+    LiveData<List<County>> loadAllCounties();
+
+    @Query("SELECT * FROM county where city_id=:id")
+    List<County> loadCountiesByCityId(int id);
 
     @Query("SELECT * FROM street")
     List<Street> loadAllStreets();
+
+    @Query("SELECT * FROM street where county_Id=:id")
+    List<Street> loadStreetsByCountyId(int id);
 
     @Query("SELECT * FROM city where id=:id")
     List<City> loadCitiesById(int id);

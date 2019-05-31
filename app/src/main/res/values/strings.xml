@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AwesomeLibrary</string>
+
     <string name="app_description">这是一个展示非常好用的lib的Demo项目</string>
     <string name="tab_components">Components</string>
     <string name="agent_web">AgentWeb</string>
@@ -18,8 +19,10 @@
     <string name="title_choose_city">选择地区</string>
     <string name="title_bar">CustomTitleBar</string>
     <string name="expandable_text">ExpandableTextView is an Android library that allows developers to easily create an TextView which can expand/collapse just like the Google Play\'s app description. Feel free to use it all you want in your Android apps provided that you cite this project.</string>
+
     <string name="github">github</string>
     <string name="copy_github">Copy</string>
+
     <string name="toast_clip_github_url">已复制到剪切板</string>
     <string name="choose_single">选择单张剪切图片</string>
     <string name="choose_date">选择日期</string>
@@ -31,4 +34,9 @@
     <string name="query_county">Query County</string>
     <string name="query_street">Query Street</string>
     <string name="choose_picture">Choose Picture</string>
+    <string name="hint_format_edit_text">格式化输入框</string>
+    <string name="clear">清除</string>
+    <string name="insert">插入数据</string>
+    <string name="query">查询</string>
+    <string name="choose_address">选择地址</string>
 </resources>

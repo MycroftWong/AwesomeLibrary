@@ -1,18 +1,25 @@
 package com.mycroft.awesomelibrary.activity.room.entity;
 
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
+import androidx.room.*;
+import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "city")
+/**
+ * @author mycroft
+ */
+@Entity(tableName = "city",
+        foreignKeys = @ForeignKey(entity = Province.class, parentColumns = "id", childColumns = "province_id"),
+        indices = @Index("province_id"))
 public class City {
+
     @PrimaryKey
     @ColumnInfo(name = "id")
     public int id;
+
+    @SerializedName("province_id")
     @ColumnInfo(name = "province_id")
     public int provinceId;
+
     @ColumnInfo(name = "name")
     public String name;
 

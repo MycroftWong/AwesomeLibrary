@@ -1,5 +1,30 @@
 <resources>
 
+
+    <!-- 通用的Toolbar样式 -->
+    <style name="CommonToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="titleTextAppearance">@style/ToolbarTitleTextAppearance</item>
+    </style>
+
+    <!-- 通用Toolbar的标题样式 -->
+    <style name="ToolbarTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- 通用的TextView样式 -->
+    <style name="CommonTextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/common_text_size</item>
+    </style>
+
+    <!-- 通用的Button样式 -->
+    <style name="CommonButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_common_button</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- CustomTitleBar 样式设置 -->
     <style name="QDTopBar" parent="CustomTitleBar.TopBar">
         <item name="titlebar_bg_color">@android:color/white</item>
         <item name="titlebar_title_text_size">18dp</item>
@@ -9,11 +34,4 @@
         <item name="titlebar_image_btn_height">44dp</item>
     </style>
 
-    <style name="TitleBarActivityTheme" parent="AppTheme">
-        <!--标题栏主题样式-->
-        <item name="CustomTitleBarStyle">@style/QDTopBar</item>
-        <!--设置标题栏高度-->
-        <item name="titlebar_height">44dp</item>
-        <item name="alpha_pressed">0.6</item>
-    </style>
 </resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.edit.FormatEditTextActivity">
+
+    <include layout="@layout/common_toolbar" />
+
+    <me.dkzwm.widget.fet.FormattedEditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:hint="@string/hint_format_edit_text"
+        android:inputType="number"
+        android:lines="1"
+        android:maxLength="13"
+        android:paddingStart="@dimen/common_padding_start_end"
+        android:paddingEnd="@dimen/common_padding_start_end"
+        android:textSize="14sp"
+        app:fet_clearDrawable="@drawable/ic_delete"
+        app:fet_drawablePadding="8dp"
+        app:fet_formatStyle="344"
+        app:fet_mode="mode_simple"
+        app:fet_placeholder="-" />
+
+    <me.dkzwm.widget.fet.FormattedEditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:hint="@string/hint_format_edit_text"
+        android:inputType="number"
+        android:lines="1"
+        android:paddingStart="@dimen/common_padding_start_end"
+        android:paddingEnd="@dimen/common_padding_start_end"
+        android:textSize="14sp"
+        app:fet_clearDrawable="@android:drawable/ic_delete"
+        app:fet_formatStyle="+(**)-***-****-****"
+        app:fet_mark="*"
+        app:fet_mode="mode_complex" />
+
+</LinearLayout>

@@ -14,29 +14,19 @@
         <item name="buttonStyle">@style/CommonButtonStyle</item>
     </style>
 
+    <!-- 拖动时，需要Activity window背景是透明的 -->
     <style name="PicturePreviewTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <style name="CommonToolbarStyle" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="titleTextAppearance">@style/ToolbarTitleTextApprearance</item>
+    <!-- CustomTitleBar的Activity样式设置，有利于配置所有Activity的主题 -->
+    <style name="TitleBarActivityTheme" parent="AppTheme">
+        <!--标题栏主题样式-->
+        <item name="CustomTitleBarStyle">@style/QDTopBar</item>
+        <!--设置标题栏高度-->
+        <item name="titlebar_height">44dp</item>
+        <item name="alpha_pressed">0.6</item>
     </style>
 
-    <style name="ToolbarTitleTextApprearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <style name="CommonTextViewStyle" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/common_text_color</item>
-        <item name="android:textSize">@dimen/common_text_size</item>
-    </style>
-
-    <style name="CommonButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/bg_common_button</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <dimen name="common_text_size">14dp</dimen>
 </resources>

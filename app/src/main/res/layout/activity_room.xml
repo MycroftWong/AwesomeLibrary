@@ -10,28 +10,16 @@
     <include layout="@layout/common_toolbar" />
 
     <Button
-        android:id="@+id/queryProvince"
+        android:id="@+id/queryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/query_province" />
+        android:text="@string/query" />
 
     <Button
-        android:id="@+id/queryCity"
+        android:id="@+id/addressButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/query_city" />
-
-    <Button
-        android:id="@+id/queryCounty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/query_county" />
-
-    <Button
-        android:id="@+id/queryStreet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/query_street" />
+        android:text="@string/choose_address" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
