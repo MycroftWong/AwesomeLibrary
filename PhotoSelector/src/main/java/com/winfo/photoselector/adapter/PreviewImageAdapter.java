@@ -30,14 +30,21 @@ public class PreviewImageAdapter extends RecyclerView.Adapter<PreviewImageAdapte
     private Context mContext;
     private List<Image> mImgList;
 
-    public interface OnItemClcikLitener {
-        void OnItemClcik(PreviewImageAdapter previewImageAdapter, View iteView, int position);
+    public interface OnItemClickListener {
+        /**
+         * 点击监听器
+         *
+         * @param previewImageAdapter
+         * @param iteView
+         * @param position
+         */
+        void onItemClick(PreviewImageAdapter previewImageAdapter, View iteView, int position);
     }
 
-    public OnItemClcikLitener onItemClcikLitener;
+    public OnItemClickListener mOnItemClickListener;
 
-    public void setOnItemClcikLitener(OnItemClcikLitener onItemClcikLitener) {
-        this.onItemClcikLitener = onItemClcikLitener;
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
     }
 
     public PreviewImageAdapter(Context mContext, List<Image> mImgList) {
@@ -53,12 +60,9 @@ public class PreviewImageAdapter extends RecyclerView.Adapter<PreviewImageAdapte
     @Override
     public ImageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final ImageHolder imageHolder = new ImageHolder(LayoutInflater.from(mContext).inflate(R.layout.preview_item, parent, false));
-        imageHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemClcikLitener != null) {
-                    onItemClcikLitener.OnItemClcik(PreviewImageAdapter.this, imageHolder.itemView, imageHolder.getLayoutPosition());
-                }
+        imageHolder.itemView.setOnClickListener(v -> {
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(PreviewImageAdapter.this, imageHolder.itemView, imageHolder.getLayoutPosition());
             }
         });
         return imageHolder;

@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -15,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -24,7 +24,6 @@ import android.widget.TextView;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -54,6 +53,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * @author wangqiang
+ */
 public class ImageSelectorActivity extends AppCompatActivity {
 
     private TextView tvTime;
@@ -179,52 +181,28 @@ public class ImageSelectorActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+        toolbar.setNavigationOnClickListener(v -> finish());
+        btnPreview.setOnClickListener(v -> {
+            ArrayList<Image> images = new ArrayList<>(mAdapter.getSelectImages());
+            toPreviewActivity(true, images, 0);
         });
-        btnPreview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayList<Image> images = new ArrayList<>(mAdapter.getSelectImages());
-                toPreviewActivity(true, images, 0);
+
+        btnConfirm.setOnClickListener(v -> {
+            if (isCrop && isSingle) {
+                //选择之后
+                crop(mAdapter.getSelectImages().get(0).getPath(), UCrop.REQUEST_CROP);
+            } else {
+                confirm();
             }
         });
 
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isCrop && isSingle) {
-                    //选择之后
-                    crop(mAdapter.getSelectImages().get(0).getPath(), UCrop.REQUEST_CROP);
-                } else {
-                    confirm();
-                }
+        findViewById(R.id.btn_folder).setOnClickListener(v -> {
+            if (isInitFolder) {
+                openFolder();
             }
         });
 
-        findViewById(R.id.btn_folder).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isInitFolder) {
-                    openFolder();
-//                    if (isOpenFolder) {
-//                        closeFolder();
-//                    } else {
-//                        openFolder();
-//                    }
-                }
-            }
-        });
-
-        masking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                closeFolder();
-            }
-        });
+        masking.setOnClickListener(v -> closeFolder());
 
         rvImage.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -326,27 +304,19 @@ public class ImageSelectorActivity extends AppCompatActivity {
         if (mFolders != null && !mFolders.isEmpty()) {
             setFolder(mFolders.get(0));
         }
-        mAdapter.setOnImageSelectListener(new ImageAdapter.OnImageSelectListener() {
-            @Override
-            public void OnImageSelect(Image image, boolean isSelect, int selectCount) {
-                setSelectImageCount(selectCount);
-            }
-        });
-        mAdapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
-            @Override
-            public void OnItemClick(Image image, View itemView, int position) {
-                toPreviewActivity(false, mAdapter.getData(), position);
-            }
-        });
+        mAdapter.setOnImageSelectListener((image, isSelect, selectCount) -> setSelectImageCount(selectCount));
+        mAdapter.setOnItemClickListener((image, itemView, position) -> toPreviewActivity(false, mAdapter.getData(), position));
 
-        mAdapter.setOnCameraClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View v) {
-                if (!PermissionsUtils.checkCameraPermission(ImageSelectorActivity.this)) return;
-                if (!PermissionsUtils.checkWriteStoragePermission(ImageSelectorActivity.this))
+        mAdapter.setOnCameraClickListener(v -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (PermissionsUtils.checkCameraPermission(ImageSelectorActivity.this)) {
+                    if (!PermissionsUtils.checkWriteStoragePermission(ImageSelectorActivity.this)) {
+                        return;
+                    }
+                    openCamera();
+                } else {
                     return;
-                openCamera();
+                }
             }
         });
     }
@@ -357,9 +327,9 @@ public class ImageSelectorActivity extends AppCompatActivity {
         try {
             Intent intent = captureManager.dispatchTakePictureIntent();
             //如果设置了裁剪 拍照成功之后直接进行剪切界面，则传递 TAKE_PHOTO_CROP_REQUESTCODE 然后再onActivityResult中进行判断
+            filePath = intent.getStringExtra(ImageCaptureManager.PHOTO_PATH);
             if (isCrop && isSingle) {
                 //获取拍照保存的照片的路径
-                filePath = intent.getStringExtra(ImageCaptureManager.PHOTO_PATH);
                 startActivityForResult(intent, PhotoSelector.TAKE_PHOTO_CROP_REQUESTCODE);
             } else {
                 startActivityForResult(intent, PhotoSelector.TAKE_PHOTO_REQUESTCODE);
@@ -379,12 +349,9 @@ public class ImageSelectorActivity extends AppCompatActivity {
             isInitFolder = true;
             rvFolder.setLayoutManager(new LinearLayoutManager(ImageSelectorActivity.this));
             FolderAdapter adapter = new FolderAdapter(ImageSelectorActivity.this, mFolders);
-            adapter.setOnFolderSelectListener(new FolderAdapter.OnFolderSelectListener() {
-                @Override
-                public void OnFolderSelect(Folder folder) {
-                    setFolder(folder);
-                    closeFolder();
-                }
+            adapter.setOnFolderSelectListener(folder -> {
+                setFolder(folder);
+                closeFolder();
             });
             rvFolder.setAdapter(adapter);
         }
@@ -415,12 +382,6 @@ public class ImageSelectorActivity extends AppCompatActivity {
             rvImage.scrollToPosition(0);
             //如果不是文件夹不是全部图片那么不需要显示牌照
             mAdapter.refresh(folder.getImages(), folder.isUseCamera());
-//            if (!folder.getName().equals("全部图片")) {
-//                mAdapter.refresh(folder.getImages(), false);
-//            } else {
-//                //否则是全部图片则需要显示拍照按钮，传递true
-//                mAdapter.refresh(folder.getImages(), showCamera);
-//            }
         }
     }
 
@@ -449,20 +410,6 @@ public class ImageSelectorActivity extends AppCompatActivity {
      * 弹出文件夹列表
      */
     private void openFolder() {
-//        if (!isOpenFolder) {
-//            masking.setVisibility(View.VISIBLE);
-//            ObjectAnimator animator = ObjectAnimator.ofFloat(rvFolder, "translationY",
-//                    rvFolder.getHeight(), 0).setDuration(300);
-//            animator.addListener(new AnimatorListenerAdapter() {
-//                @Override
-//                public void onAnimationStart(Animator animation) {
-//                    super.onAnimationStart(animation);
-//                    rvFolder.setVisibility(View.VISIBLE);
-//                }
-//            });
-//            animator.start();
-//            isOpenFolder = true;
-//        }
         bottomSheetDialog.show();
     }
 
@@ -470,20 +417,6 @@ public class ImageSelectorActivity extends AppCompatActivity {
      * 收起文件夹列表
      */
     private void closeFolder() {
-//        if (isOpenFolder) {
-//            masking.setVisibility(View.GONE);
-//            ObjectAnimator animator = ObjectAnimator.ofFloat(rvFolder, "translationY",
-//                    0, rvFolder.getHeight()).setDuration(300);
-//            animator.addListener(new AnimatorListenerAdapter() {
-//                @Override
-//                public void onAnimationEnd(Animator animation) {
-//                    super.onAnimationEnd(animation);
-//                    rvFolder.setVisibility(View.GONE);
-//                }
-//            });
-//            animator.start();
-//            isOpenFolder = false;
-//        }
         bottomSheetDialog.dismiss();
     }
 
@@ -592,6 +525,12 @@ public class ImageSelectorActivity extends AppCompatActivity {
                 //拍照完成了，重新加载照片的列表，不进入剪切界面
                 loadImageForSDCard();
                 setSelectImageCount(mAdapter.getSelectImages().size());
+
+                // 部分机型调用手机拍照之后，需要主动去告知系统刷新图片，将该图片加入相册库中
+                if (!TextUtils.isEmpty(filePath)) {
+                    sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filePath))));
+                }
+
                 mSelectedImages = new ArrayList<>();
                 for (Image image : mAdapter.getSelectImages()) {
                     mSelectedImages.add(image.getPath());
@@ -631,7 +570,8 @@ public class ImageSelectorActivity extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
                 }
                 break;
-
+            default:
+                break;
         }
     }
 
@@ -641,7 +581,7 @@ public class ImageSelectorActivity extends AppCompatActivity {
      * @param newConfig newConfig
      */
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         if (mLayoutManager != null && mAdapter != null) {
             //切换为竖屏
@@ -705,19 +645,13 @@ public class ImageSelectorActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setTitle("提示")
                 .setMessage("该相册需要赋予访问存储的权限，请到“设置”>“应用”>“权限”中配置权限。")
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                        finish();
-                    }
-                }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-                startAppSettings();
-                isToSettings = true;
-            }
+                .setNegativeButton("取消", (dialog, which) -> {
+                    dialog.cancel();
+                    finish();
+                }).setPositiveButton("确定", (dialog, which) -> {
+            dialog.cancel();
+            startAppSettings();
+            isToSettings = true;
         }).show();
     }
 
@@ -725,25 +659,19 @@ public class ImageSelectorActivity extends AppCompatActivity {
      * 从SDCard加载图片。
      */
     private void loadImageForSDCard() {
-        ImageModel.loadImageForSDCard(this, new ImageModel.DataCallback() {
-            @Override
-            public void onSuccess(ArrayList<Folder> folders) {
-                mFolders = folders;
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (mFolders != null && !mFolders.isEmpty()) {
-                            initFolderList();
-                            mFolders.get(0).setUseCamera(showCamera);
-                            setFolder(mFolders.get(0));
-                            if (mSelectedImages != null && mAdapter != null) {
-                                mAdapter.setSelectedImages(mSelectedImages);
-                                mSelectedImages = null;
-                            }
-                        }
+        ImageModel.loadImageForSDCard(this, folders -> {
+            mFolders = folders;
+            runOnUiThread(() -> {
+                if (mFolders != null && !mFolders.isEmpty()) {
+                    initFolderList();
+                    mFolders.get(0).setUseCamera(showCamera);
+                    setFolder(mFolders.get(0));
+                    if (mSelectedImages != null && mAdapter != null) {
+                        mAdapter.setSelectedImages(mSelectedImages);
+                        mSelectedImages = null;
                     }
-                });
-            }
+                }
+            });
         });
     }
 

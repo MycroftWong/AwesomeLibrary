@@ -119,12 +119,7 @@ public class RvPreviewActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
 
         setStatusBarVisible(true);
         mImages = tempImages;
@@ -189,36 +184,25 @@ public class RvPreviewActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isConfirm = true;
-                finish();
-            }
+        btnConfirm.setOnClickListener(v -> {
+            isConfirm = true;
+            finish();
         });
 
-        tvSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickSelect();
-            }
-        });
+        tvSelect.setOnClickListener(v -> clickSelect());
 
-        bottomPreviewAdapter.setOnItemClcikLitener(new BottomPreviewAdapter.OnItemClcikLitener() {
-            @Override
-            public void OnItemClcik(int position, Image image) {
-                if (isPreview) {
-                    List<Image> imageList = previewImageAdapter.getData();
-                    for (int i = 0; i < imageList.size(); i++) {
-                        if (imageList.get(i).equals(image)) {
-                            recyclerView.smoothScrollToPosition(i);
-                        }
+        bottomPreviewAdapter.setOnItemClickListener((position, image) -> {
+            if (isPreview) {
+                List<Image> imageList = previewImageAdapter.getData();
+                for (int i = 0; i < imageList.size(); i++) {
+                    if (imageList.get(i).equals(image)) {
+                        recyclerView.smoothScrollToPosition(i);
                     }
-                } else {
-                    recyclerView.smoothScrollToPosition(mSelectImages.get(position).getPosition());
                 }
-                bottomPreviewAdapter.notifyDataSetChanged();
+            } else {
+                recyclerView.smoothScrollToPosition(mSelectImages.get(position).getPosition());
             }
+            bottomPreviewAdapter.notifyDataSetChanged();
         });
     }
 
@@ -236,14 +220,11 @@ public class RvPreviewActivity extends AppCompatActivity {
 //        LinearSnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
 
-        previewImageAdapter.setOnItemClcikLitener(new PreviewImageAdapter.OnItemClcikLitener() {
-            @Override
-            public void OnItemClcik(PreviewImageAdapter previewImageAdapter, View iteView, int position) {
-                if (isShowBar) {
-                    hideBar();
-                } else {
-                    showBar();
-                }
+        previewImageAdapter.setOnItemClickListener((previewImageAdapter, iteView, position) -> {
+            if (isShowBar) {
+                hideBar();
+            } else {
+                showBar();
             }
         });
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -367,7 +348,7 @@ public class RvPreviewActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(RvPreviewActivity.this, "最多只能选" + mMaxCount + "张", Toast.LENGTH_SHORT).show();
             }
-            bottomPreviewAdapter.referesh(mSelectImages);
+            bottomPreviewAdapter.refresh(mSelectImages);
             bottomPreviewAdapter.notifyDataSetChanged();
             changeSelect(image);
         }
@@ -390,7 +371,7 @@ public class RvPreviewActivity extends AppCompatActivity {
         }
         //设置当前选中打的照片的背景
         image.setChecked(true);
-        bottomPreviewAdapter.referesh(mSelectImages);
+        bottomPreviewAdapter.refresh(mSelectImages);
         bottomPreviewAdapter.notifyDataSetChanged();
         if (mSelectImages.contains(image)) {
             bottomRecycleview.smoothScrollToPosition(image.getSelectPosition());

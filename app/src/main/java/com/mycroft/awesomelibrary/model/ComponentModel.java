@@ -9,6 +9,7 @@ import com.mycroft.awesomelibrary.activity.badge.BadgeViewActivity;
 import com.mycroft.awesomelibrary.activity.check.CheckHelperActivity;
 import com.mycroft.awesomelibrary.activity.city.CityPickerActivity;
 import com.mycroft.awesomelibrary.activity.compressor.CompressorActivity;
+import com.mycroft.awesomelibrary.activity.crop.SmartCropperActivity;
 import com.mycroft.awesomelibrary.activity.decoration.ItemDecorationActivity;
 import com.mycroft.awesomelibrary.activity.diooto.DiootoActivity;
 import com.mycroft.awesomelibrary.activity.drag.DragDraweeActivity;

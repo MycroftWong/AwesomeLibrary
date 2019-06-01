@@ -33,6 +33,9 @@ import java.util.ArrayList;
 
 import static android.animation.ObjectAnimator.ofFloat;
 
+/**
+ * @author wangqiang
+ */
 public class PreviewActivity extends AppCompatActivity {
 
     private MyViewPager vpImage;
@@ -45,7 +48,9 @@ public class PreviewActivity extends AppCompatActivity {
 
     //tempImages和tempSelectImages用于图片列表数据的页面传输。
     //之所以不要Intent传输这两个图片列表，因为要保证两位页面操作的是同一个列表数据，同时可以避免数据量大时，
-    // 用Intent传输发生的错误问题。
+    /**
+     * 用Intent传输发生的错误问题。
+     */
     private static ArrayList<Image> tempImages;
     private static ArrayList<Image> tempSelectImages;
 
@@ -126,25 +131,12 @@ public class PreviewActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        findViewById(R.id.btn_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+        findViewById(R.id.btn_back).setOnClickListener(v -> finish());
+        btnConfirm.setOnClickListener(v -> {
+            isConfirm = true;
+            finish();
         });
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isConfirm = true;
-                finish();
-            }
-        });
-        tvSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickSelect();
-            }
-        });
+        tvSelect.setOnClickListener(v -> clickSelect());
     }
 
     /**
@@ -153,14 +145,11 @@ public class PreviewActivity extends AppCompatActivity {
     private void initViewPager() {
         ImagePagerAdapter adapter = new ImagePagerAdapter(this, mImages);
         vpImage.setAdapter(adapter);
-        adapter.setOnItemClickListener(new ImagePagerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position, Image image) {
-                if (isShowBar) {
-                    hideBar();
-                } else {
-                    showBar();
-                }
+        adapter.setOnItemClickListener((position, image) -> {
+            if (isShowBar) {
+                hideBar();
+            } else {
+                showBar();
             }
         });
         vpImage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -283,12 +272,7 @@ public class PreviewActivity extends AppCompatActivity {
                 if (rlTopBar != null) {
                     rlTopBar.setVisibility(View.GONE);
                     //添加延时，保证rlTopBar完全隐藏后再隐藏StatusBar。
-                    rlTopBar.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            setStatusBarVisible(false);
-                        }
-                    }, 5);
+                    rlTopBar.postDelayed(() -> setStatusBarVisible(false), 5);
                 }
             }
         });

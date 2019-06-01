@@ -109,7 +109,6 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             imageHolder.ivSelectIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Toast.makeText(mContext , image.getPosition()+"" ,Toast.LENGTH_SHORT).show();
                     if (mSelectImages.contains(image)) {
                         //如果图片已经选中，就取消选中
                         unSelectImage(image);
@@ -136,9 +135,9 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     if (mItemClickListener != null) {
                         //如果是显示拍照
                         if (showCamera) {
-                            mItemClickListener.OnItemClick(image, imageHolder.itemView, imageHolder.getAdapterPosition() - 1);
+                            mItemClickListener.onItemClick(image, imageHolder.itemView, imageHolder.getAdapterPosition() - 1);
                         } else {
-                            mItemClickListener.OnItemClick(image, imageHolder.itemView, imageHolder.getAdapterPosition());
+                            mItemClickListener.onItemClick(image, imageHolder.itemView, imageHolder.getAdapterPosition());
                         }
                     }
                 }
@@ -156,10 +155,9 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
      * @param image image
      */
     private void selectImage(Image image) {
-//        image.setSelectPosition(mSelectImages.size());
         mSelectImages.add(image);
         if (mSelectListener != null) {
-            mSelectListener.OnImageSelect(image, true, mSelectImages.size());
+            mSelectListener.onImageSelect(image, true, mSelectImages.size());
         }
     }
 
@@ -171,7 +169,7 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private void unSelectImage(Image image) {
         mSelectImages.remove(image);
         if (mSelectListener != null) {
-            mSelectListener.OnImageSelect(image, false, mSelectImages.size());
+            mSelectListener.onImageSelect(image, false, mSelectImages.size());
         }
     }
 
@@ -216,14 +214,6 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private void clearImageSelect() {
         mSelectImages.clear();
         notifyDataSetChanged();
-//        if (mImages != null && mSelectImages.size() == 1) {
-//            int index = mImages.indexOf(mSelectImages.get(0));
-//            if (index != -1) {
-//                mSelectImages.clear();
-//                notifyItemChanged(index);
-//                notifyDataSetChanged();
-//            }
-//        }
     }
 
     public void setSelectedImages(ArrayList<String> selected) {
@@ -287,10 +277,22 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     public interface OnImageSelectListener {
-        void OnImageSelect(Image image, boolean isSelect, int selectCount);
+        /**
+         * 图片选择监听器
+         * @param image
+         * @param isSelect
+         * @param selectCount
+         */
+        void onImageSelect(Image image, boolean isSelect, int selectCount);
     }
 
     public interface OnItemClickListener {
-        void OnItemClick(Image image, View iteView, int position);
+        /**
+         * 选择监听器
+         * @param image
+         * @param iteView
+         * @param position
+         */
+        void onItemClick(Image image, View iteView, int position);
     }
 }

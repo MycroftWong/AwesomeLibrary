@@ -144,6 +144,9 @@ dependencies {
 
     // 图片压缩
     implementation 'me.shouheng.compressor:compressor:1.3.0'
+
+    // 图片文档剪切库
+    implementation 'com.github.pqpo:SmartCropper:v1.2.5@arr'
 }
 repositories {
     mavenCentral()

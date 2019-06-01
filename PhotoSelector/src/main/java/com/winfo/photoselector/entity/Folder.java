@@ -1,6 +1,6 @@
 package com.winfo.photoselector.entity;
 
-import com.winfo.photoselector.utils.StringUtils;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,6 @@ public class Folder {
     private boolean useCamera; // 是否可以调用相机拍照。只有“全部”文件夹才可以拍照
     private String name;
     private ArrayList<Image> images;
-
 
     public Folder(String name) {
         this.name = name;
@@ -48,7 +47,7 @@ public class Folder {
     }
 
     public void addImage(Image image) {
-        if (image != null && StringUtils.isNotEmptyString(image.getPath())) {
+        if (image != null && !TextUtils.isEmpty(image.getPath())) {
             if (images == null) {
                 images = new ArrayList<>();
             }
