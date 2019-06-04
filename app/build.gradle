@@ -29,6 +29,7 @@ android {
 dependencies {
     // 打包时，不会将sqlite-jdbc打入apk中
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation files('libs/pinyin4j-2.5.0.jar')
     compileOnly files('libs/sqlite-jdbc-3.7.2.jar')
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
@@ -161,6 +162,10 @@ dependencies {
 
     implementation "androidx.camera:camera-core:1.0.0-alpha01"
     implementation "androidx.camera:camera-camera2:1.0.0-alpha01"
+
+//    implementation 'com.belerweb:pinyin4j:2.5.0'
+
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 }
 repositories {
     mavenCentral()

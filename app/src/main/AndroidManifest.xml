@@ -25,8 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.camerax.CameraXActivity"></activity>
-        <activity android:name=".activity.gloading.GloadingActivity" /> <!-- 适配华为（huawei）刘海屏 -->
+        <activity android:name=".activity.time.PrettyTimeActivity"></activity>
+        <!-- 适配华为（huawei）刘海屏 -->
         <meta-data
             android:name="android.notch_support"
             android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
@@ -192,7 +192,19 @@
             android:label="@string/immersion_bar"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/ImmersionBarTheme" /> <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
+            android:theme="@style/ImmersionBarTheme" />
+        <activity
+            android:name=".activity.pinyin.PinyinActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.camerax.CameraXActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.gloading.GloadingActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" /> <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
         <!--
 <activity
             android:name="com.yalantis.ucrop.UCropActivity"

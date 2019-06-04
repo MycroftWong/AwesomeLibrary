@@ -20,12 +20,14 @@ import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
 import com.mycroft.awesomelibrary.activity.gloading.GloadingActivity;
 import com.mycroft.awesomelibrary.activity.immersion.ImmersionBarActivity;
 import com.mycroft.awesomelibrary.activity.picker.PickerViewActivity;
+import com.mycroft.awesomelibrary.activity.pinyin.PinyinActivity;
 import com.mycroft.awesomelibrary.activity.room.RoomActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
 import com.mycroft.awesomelibrary.activity.selector.RxGalleyActivity;
 import com.mycroft.awesomelibrary.activity.swipe.SwipePanelActivity;
 import com.mycroft.awesomelibrary.activity.text.FadingTextViewActivity;
 import com.mycroft.awesomelibrary.activity.text.HTextViewActivity;
+import com.mycroft.awesomelibrary.activity.time.PrettyTimeActivity;
 import com.mycroft.awesomelibrary.activity.title.TitleBarActivity;
 
 import java.io.Serializable;
@@ -66,6 +68,8 @@ public class ComponentModel implements Serializable {
         COMPONENT_MODEL_LIST.add(new ComponentModel(19, "SmartCropper", "A library for cropping image in a smart way that can identify the border and correct the cropped image. 智能图片裁剪框架。自动识别边框，手动调节选区，使用透视变换裁剪并矫正选区；适用于身份证，名片，文档等照片的裁剪。", "https://github.com/pqpo/SmartCropper", SmartCropperActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(20, "ImmersionBar", "android 4.4以上沉浸式状态栏和沉浸式导航栏管理，适配横竖屏切换，包括状态栏字体颜色和导航栏图标颜色，适用于Activity、Fragment、DialogFragment、Dialog，PopupWindow，并且适配刘海屏，适配软键盘弹出等问题，一句代码轻松实现，以及对bar的其他设置，详见README。", "https://github.com/gyf-dev/ImmersionBar", ImmersionBarActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(21, "Gloading", "Show global loading status view in a low coupling way for Android App(深度解耦Android App中全局加载中、加载失败及空数据视图)", "https://github.com/luckybilly/Gloading", GloadingActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(22, "pinyin4j", "A copy of http://sourceforge.net/projects/pinyin4j, then deploy it to maven central repository.", "https://github.com/belerweb/pinyin4j", PinyinActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(23, "PrettyTime", "Convert Java/Android Date() objects in just “a few minutes!”", "https://github.com/ocpsoft/prettytime", PrettyTimeActivity.class));
     }
 
     private static final List<ComponentModel> HELPER_LIST = new ArrayList<>();

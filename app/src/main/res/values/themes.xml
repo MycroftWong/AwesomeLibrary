@@ -12,6 +12,7 @@
         <item name="colorControlNormal">@android:color/white</item>
         <item name="android:windowBackground">@android:color/white</item>
         <item name="buttonStyle">@style/CommonButtonStyle</item>
+        <item name="editTextStyle">@style/CommonEditTextStyle</item>
     </style>
 
     <style name="ImmersionBarTheme" parent="AppTheme">

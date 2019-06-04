@@ -48,4 +48,6 @@
     <string name="description_immersion_bar">正常使用Coordinator+AppBar+CollapsingToolbar时，需要在以上控件添加属性fitSystem=true, 而且statusBar的颜色变化并不是很流畅。\n使用了ImmersionBar, 将所有的fitSystem去掉，statusBar的颜色变化和Toolbar一样了</string>
     <string name="load_failed">加载失败</string>
     <string name="load_empty">没有数据</string>
+    <string name="autofill_hints_pinyin">pinyin</string>
+    <string name="hint_pinyin">输入文字转换成拼音</string>
 </resources>
