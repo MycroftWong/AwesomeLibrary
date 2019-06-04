@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.mycroft.awesomelibrary">
 
     <dist:module dist:instant="true" />
@@ -26,6 +25,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.camerax.CameraXActivity"></activity>
+        <activity android:name=".activity.gloading.GloadingActivity" /> <!-- 适配华为（huawei）刘海屏 -->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
         <activity
             android:name=".activity.splash.SplashActivity"
             android:launchMode="singleTask"
@@ -163,7 +171,6 @@
             android:name=".activity.addsub.ShoppingCartAddSubActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.crop.SmartCropperActivity"
             android:launchMode="singleTask"
@@ -176,7 +183,16 @@
             android:name=".activity.edit.FormatEditTextActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
+        <activity
+            android:name=".activity.compressor.CompressorActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.immersion.ImmersionBarActivity"
+            android:label="@string/immersion_bar"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/ImmersionBarTheme" /> <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
         <!--
 <activity
             android:name="com.yalantis.ucrop.UCropActivity"

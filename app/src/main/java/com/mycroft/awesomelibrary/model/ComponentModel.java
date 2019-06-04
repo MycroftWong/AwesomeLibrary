@@ -17,6 +17,8 @@ import com.mycroft.awesomelibrary.activity.drag.DragImageActivity;
 import com.mycroft.awesomelibrary.activity.edit.FormatEditTextActivity;
 import com.mycroft.awesomelibrary.activity.edit.VerificationCodeViewActivity;
 import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
+import com.mycroft.awesomelibrary.activity.gloading.GloadingActivity;
+import com.mycroft.awesomelibrary.activity.immersion.ImmersionBarActivity;
 import com.mycroft.awesomelibrary.activity.picker.PickerViewActivity;
 import com.mycroft.awesomelibrary.activity.room.RoomActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
@@ -26,6 +28,7 @@ import com.mycroft.awesomelibrary.activity.text.FadingTextViewActivity;
 import com.mycroft.awesomelibrary.activity.text.HTextViewActivity;
 import com.mycroft.awesomelibrary.activity.title.TitleBarActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +37,9 @@ import java.util.List;
  *
  * @author mycroft
  */
-public class ComponentModel {
+public class ComponentModel implements Serializable {
+
+    private static final long serialVersionUID = 4133073460077844477L;
 
     private static final List<ComponentModel> COMPONENT_MODEL_LIST = new ArrayList<>();
 
@@ -58,6 +63,9 @@ public class ComponentModel {
         COMPONENT_MODEL_LIST.add(new ComponentModel(16, "AnimShopButton", "A shopping cart button with a telescopic displacement rotation animation ...一个带伸缩位移旋转动画的购物车按钮", "https://github.com/mcxtzhang/AnimShopButton", AnimShopButtonActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(17, "FormatEditText", "FormatEditText can be used as a number formatted text input box, which can be used to format phone numbers, format ID numbers, format bank card numbers, etc. 可配置自定义规则来格式化号码的输入框，可用来格式化电话号码、身份证号码、银行卡号码等。", "https://github.com/dkzwm/FormatEditText", FormatEditTextActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(18, "VerificationCodeView", "正方形验证码输入框", "https://github.com/JackTuoTuo/VerificationCodeView", VerificationCodeViewActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(19, "SmartCropper", "A library for cropping image in a smart way that can identify the border and correct the cropped image. 智能图片裁剪框架。自动识别边框，手动调节选区，使用透视变换裁剪并矫正选区；适用于身份证，名片，文档等照片的裁剪。", "https://github.com/pqpo/SmartCropper", SmartCropperActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(20, "ImmersionBar", "android 4.4以上沉浸式状态栏和沉浸式导航栏管理，适配横竖屏切换，包括状态栏字体颜色和导航栏图标颜色，适用于Activity、Fragment、DialogFragment、Dialog，PopupWindow，并且适配刘海屏，适配软键盘弹出等问题，一句代码轻松实现，以及对bar的其他设置，详见README。", "https://github.com/gyf-dev/ImmersionBar", ImmersionBarActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(21, "Gloading", "Show global loading status view in a low coupling way for Android App(深度解耦Android App中全局加载中、加载失败及空数据视图)", "https://github.com/luckybilly/Gloading", GloadingActivity.class));
     }
 
     private static final List<ComponentModel> HELPER_LIST = new ArrayList<>();
@@ -83,11 +91,11 @@ public class ComponentModel {
     private final Class<? extends Activity> klazz;
     private final boolean deprecated;
 
-    public ComponentModel(int id, String name, String description, String githubUrl, Class<? extends Activity> klazz) {
+    private ComponentModel(int id, String name, String description, String githubUrl, Class<? extends Activity> klazz) {
         this(id, name, description, githubUrl, klazz, false);
     }
 
-    public ComponentModel(int id, String name, String description, String githubUrl, Class<? extends Activity> klazz, boolean deprecated) {
+    private ComponentModel(int id, String name, String description, String githubUrl, Class<? extends Activity> klazz, boolean deprecated) {
         this.id = id;
         this.name = name;
         this.description = description;

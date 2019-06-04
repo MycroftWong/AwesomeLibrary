@@ -1,1 +1,1 @@
-include ':app', ':diooto', ':PhotoSelector', ':loginaction'
+include ':app', ':diooto', ':PhotoSelector', ':loginaction', ':smartcropperlib-v1.2.5-release'

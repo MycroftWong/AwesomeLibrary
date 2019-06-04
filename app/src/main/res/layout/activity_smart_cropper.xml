@@ -14,6 +14,12 @@
         android:layout_height="wrap_content"
         android:text="@string/choose_picture" />
 
+    <Button
+        android:id="@+id/cropButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/crop_picture" />
+
     <me.pqpo.smartcropperlib.view.CropImageView
         android:id="@+id/cropImageView"
         android:layout_width="match_parent"
@@ -26,6 +32,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:contentDescription="@null"
-        android:scaleType="centerInside" />
+        android:scaleType="center" />
 
 </LinearLayout>

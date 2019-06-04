@@ -5,9 +5,11 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.mycroft.awesomelibrary.R;
-import com.mycroft.awesomelibrary.activity.main.MainActivity;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.activity.main.MainActivity;
+import com.mycroft.awesomelibrary.app.Init;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.concurrent.TimeUnit;
@@ -38,12 +40,17 @@ public class SplashActivity extends BaseCommonActivity {
 
     @Override
     protected void initViews(@Nullable Bundle savedInstanceState) {
+        ImmersionBar.with(this).transparentBar().init();
     }
 
     @Override
     protected void loadData(@Nullable Bundle savedInstanceState) {
         Disposable disposable = Observable.just(System.currentTimeMillis())
-                .observeOn(Schedulers.io())
+                .subscribeOn(Schedulers.io())
+                .map(s -> {
+                    Init.Companion.initApp(this);
+                    return s;
+                })
                 .map(s -> {
                     long gap = System.currentTimeMillis() - s;
                     TimeUnit.MILLISECONDS.sleep(SPLASH_TIME - gap);

@@ -13,7 +13,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
+            android:layout_height="?actionBarSize"
             android:layout_gravity="center"
             android:background="@color/blue"
             android:gravity="center"
@@ -26,12 +26,9 @@
                 android:id="@+id/btn_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="end"
                 android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
                 android:foreground="@drawable/btn_foreground_selector">
 
                 <TextView
@@ -41,14 +38,10 @@
                     android:background="@drawable/btn_green_shape"
                     android:gravity="center"
                     android:minWidth="50dp"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="5dp"
+                    android:padding="5dp"
                     android:text="@string/confirm"
                     android:textColor="@android:color/white"
                     android:textSize="14sp" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -72,10 +65,10 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/rv_image"
         android:background="#9e111212"
-        android:paddingBottom="5dp"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
         android:textColor="@android:color/white"
         android:textSize="12sp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
@@ -85,8 +78,8 @@
         android:id="@+id/masking"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/rv_image"
         android:layout_alignTop="@+id/rv_image"
+        android:layout_alignBottom="@+id/rv_image"
         android:background="#c4111212"
         android:visibility="gone" />
 
@@ -95,15 +88,15 @@
         android:id="@+id/rv_folder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/rv_image"
         android:layout_alignTop="@+id/rv_image"
+        android:layout_alignBottom="@+id/rv_image"
         android:layout_marginTop="128dp"
         android:background="@android:color/white"
         android:fadingEdge="none"
         android:fadingEdgeLength="0dp"
         android:overScrollMode="never"
-        android:paddingBottom="3dp"
         android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:scrollbars="vertical"
         android:visibility="gone" />
 
@@ -141,8 +134,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/tv_folder_name"
-                    android:layout_marginLeft="2dp"
                     android:layout_marginStart="2dp"
+                    android:layout_marginLeft="2dp"
                     android:layout_toEndOf="@+id/tv_folder_name"
                     android:layout_toRightOf="@+id/tv_folder_name"
                     android:src="@drawable/text_indicator" />
@@ -175,10 +168,10 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
-            android:layout_toLeftOf="@+id/btn_preview"
+            android:layout_marginBottom="15dp"
             android:layout_toStartOf="@+id/btn_preview"
+            android:layout_toLeftOf="@+id/btn_preview"
             android:background="@android:color/black" />
 
     </RelativeLayout>

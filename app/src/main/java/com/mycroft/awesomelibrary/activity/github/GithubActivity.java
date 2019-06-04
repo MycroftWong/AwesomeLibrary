@@ -24,6 +24,7 @@ import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
+import com.mycroft.awesomelibrary.model.ComponentModel;
 
 /**
  * 显示资源的github
@@ -34,9 +35,9 @@ public class GithubActivity extends BaseCommonActivity {
 
     private static final String EXTRA_GITHUB_URL = "github_url.extra";
 
-    public static Intent getIntent(@NonNull Context context, @NonNull String githubUrl) {
+    public static Intent getIntent(@NonNull Context context, @NonNull ComponentModel componentModel) {
         Intent intent = new Intent(context, GithubActivity.class);
-        intent.putExtra(EXTRA_GITHUB_URL, githubUrl);
+        intent.putExtra(EXTRA_GITHUB_URL, componentModel);
         return intent;
     }
 
@@ -45,21 +46,21 @@ public class GithubActivity extends BaseCommonActivity {
         return R.layout.activity_github;
     }
 
-    private String mGithubUrl;
+    private ComponentModel mComponentModel;
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
         if (savedInstanceState == null) {
-            mGithubUrl = getIntent().getStringExtra(EXTRA_GITHUB_URL);
+            mComponentModel = (ComponentModel) getIntent().getSerializableExtra(EXTRA_GITHUB_URL);
         } else {
-            mGithubUrl = savedInstanceState.getString(EXTRA_GITHUB_URL);
+            mComponentModel = (ComponentModel) savedInstanceState.getSerializable(EXTRA_GITHUB_URL);
         }
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(EXTRA_GITHUB_URL, mGithubUrl);
+        outState.putSerializable(EXTRA_GITHUB_URL, mComponentModel);
     }
 
     private AgentWeb mAgentWeb;
@@ -81,7 +82,7 @@ public class GithubActivity extends BaseCommonActivity {
                 .interceptUnkownUrl()
                 .createAgentWeb()
                 .ready()
-                .go(mGithubUrl);
+                .go(mComponentModel.getGithubUrl());
     }
 
     @Override
@@ -126,7 +127,7 @@ public class GithubActivity extends BaseCommonActivity {
     private void clipGithubUrl() {
         ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         ClipData myClip;
-        String text = mGithubUrl;
+        String text = mComponentModel.getGithubUrl();
         myClip = ClipData.newPlainText("github", text);
         clipboardManager.setPrimaryClip(myClip);
         ToastUtils.showShort(R.string.toast_clip_github_url);

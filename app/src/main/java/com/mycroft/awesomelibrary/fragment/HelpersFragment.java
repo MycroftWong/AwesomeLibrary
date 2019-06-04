@@ -50,7 +50,7 @@ public class HelpersFragment extends BaseCommonFragment {
         adapter.setOnItemClickListener((a, v, position) -> {
             ComponentModel model = mHelperModels.get(position);
             Intent intent = new Intent(getContext(), model.getKlazz());
-            intent.putExtra(BaseCommonComponentActivity.EXTRA_GITHUB_URL, model.getGithubUrl());
+            intent.putExtra(BaseCommonComponentActivity.EXTRA_COMPONENT_MODEL, model);
             startActivity(intent);
         });
 

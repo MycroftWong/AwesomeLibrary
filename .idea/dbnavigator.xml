@@ -23,15 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="936f0c18-135b-48d5-bed4-6d6e0221d879">
-        <schema name="main" object-types="view, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="936f0c18-135b-48d5-bed4-6d6e0221d879">
-      <console name="Connection" type="STANDARD" schema="main" session="Main">select * from &quot;Province&quot;;</console>
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from "Province";]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -88,14 +84,13 @@
           <driver-library value="" />
           <driver value="" />
           <url-type value="FILE" />
-          <host value="" />
-          <port value="" />
-          <database value="" />
+          <host value="localhost" />
+          <port value="1234" />
+          <database value="database" />
           <files>
             <file path="D:\Android\Sample\area.db" schema="main" />
           </files>
-          <os-authentication value="false" />
-          <empty-authentication value="false" />
+          <type value="NONE" />
           <user value="" />
           <deprecated-pwd value="" />
         </database>
@@ -133,7 +128,7 @@
           <max-connection-pool-size value="7" />
           <alternative-statement-delimiter value="" />
         </details>
-        <object-filters hide-empty-schemas="false">
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
           <object-type-filter use-master-settings="true">
             <object-type name="SCHEMA" enabled="true" />
             <object-type name="USER" enabled="true" />

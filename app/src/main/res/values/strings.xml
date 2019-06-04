@@ -43,4 +43,9 @@
     <string name="text_image_before_compress">压缩前的图片</string>
     <string name="text_image_after_compress">压缩后的图片</string>
     <string name="toast_compress_error">压缩失败</string>
+    <string name="crop_picture">Crop Picture</string>
+    <string name="immersion_bar">ImmersionBar</string>
+    <string name="description_immersion_bar">正常使用Coordinator+AppBar+CollapsingToolbar时，需要在以上控件添加属性fitSystem=true, 而且statusBar的颜色变化并不是很流畅。\n使用了ImmersionBar, 将所有的fitSystem去掉，statusBar的颜色变化和Toolbar一样了</string>
+    <string name="load_failed">加载失败</string>
+    <string name="load_empty">没有数据</string>
 </resources>

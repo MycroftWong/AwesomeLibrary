@@ -14,6 +14,12 @@
         <item name="buttonStyle">@style/CommonButtonStyle</item>
     </style>
 
+    <style name="ImmersionBarTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
     <!-- 拖动时，需要Activity window背景是透明的 -->
     <style name="PicturePreviewTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>

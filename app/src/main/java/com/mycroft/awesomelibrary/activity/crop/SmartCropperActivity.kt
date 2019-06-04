@@ -34,7 +34,7 @@ class SmartCropperActivity : BaseCommonComponentActivity() {
                     .start(this)
         }
 
-        d = cropImageView.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
+        d = cropButton.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
             Glide.with(this)
                     .load(cropImageView.crop())
                     .into(imageView)

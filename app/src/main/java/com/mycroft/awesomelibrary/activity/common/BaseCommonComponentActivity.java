@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.github.GithubActivity;
+import com.mycroft.awesomelibrary.model.ComponentModel;
 
 /**
  * 同一处理toolbar, 可以跳转到github
@@ -18,23 +19,23 @@ import com.mycroft.awesomelibrary.activity.github.GithubActivity;
  */
 public abstract class BaseCommonComponentActivity extends BaseCommonActivity {
 
-    public static final String EXTRA_GITHUB_URL = "github_url.extra";
+    public static final String EXTRA_COMPONENT_MODEL = "component_model.extra";
 
-    private String mGithubUrl;
+    private ComponentModel mComponentModel;
 
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
         if (savedInstanceState == null) {
-            mGithubUrl = getIntent().getStringExtra(EXTRA_GITHUB_URL);
+            mComponentModel = (ComponentModel) getIntent().getSerializableExtra(EXTRA_COMPONENT_MODEL);
         } else {
-            mGithubUrl = savedInstanceState.getString(EXTRA_GITHUB_URL);
+            mComponentModel = (ComponentModel) savedInstanceState.getSerializable(EXTRA_COMPONENT_MODEL);
         }
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(EXTRA_GITHUB_URL, mGithubUrl);
+        outState.putSerializable(EXTRA_COMPONENT_MODEL, mComponentModel);
     }
 
     @Override
@@ -51,7 +52,7 @@ public abstract class BaseCommonComponentActivity extends BaseCommonActivity {
                 finish();
                 break;
             case R.id.github:
-                startActivity(GithubActivity.getIntent(this, mGithubUrl));
+                startActivity(GithubActivity.getIntent(this, mComponentModel));
                 break;
             default:
                 break;

@@ -308,15 +308,14 @@ public class ImageSelectorActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener((image, itemView, position) -> toPreviewActivity(false, mAdapter.getData(), position));
 
         mAdapter.setOnCameraClickListener(v -> {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (PermissionsUtils.checkCameraPermission(ImageSelectorActivity.this)) {
-                    if (!PermissionsUtils.checkWriteStoragePermission(ImageSelectorActivity.this)) {
-                        return;
-                    }
-                    openCamera();
-                } else {
-                    return;
-                }
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                openCamera();
+                return;
+            }
+
+            if (PermissionsUtils.checkCameraPermission(ImageSelectorActivity.this)
+                    && PermissionsUtils.checkWriteStoragePermission(ImageSelectorActivity.this)) {
+                openCamera();
             }
         });
     }
@@ -521,15 +520,18 @@ public class ImageSelectorActivity extends AppCompatActivity {
                     setSelectImageCount(mAdapter.getSelectImages().size());
                 }
                 break;
-            case PhotoSelector.TAKE_PHOTO_REQUESTCODE://拍照不裁剪
-                //拍照完成了，重新加载照片的列表，不进入剪切界面
-                loadImageForSDCard();
-                setSelectImageCount(mAdapter.getSelectImages().size());
+
+            //拍照不裁剪
+            case PhotoSelector.TAKE_PHOTO_REQUESTCODE:
 
                 // 部分机型调用手机拍照之后，需要主动去告知系统刷新图片，将该图片加入相册库中
                 if (!TextUtils.isEmpty(filePath)) {
                     sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filePath))));
                 }
+
+                //拍照完成了，重新加载照片的列表，不进入剪切界面
+                loadImageForSDCard();
+                setSelectImageCount(mAdapter.getSelectImages().size());
 
                 mSelectedImages = new ArrayList<>();
                 for (Image image : mAdapter.getSelectImages()) {
