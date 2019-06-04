@@ -39,6 +39,9 @@ import java.util.List;
 
 import static android.animation.ObjectAnimator.ofFloat;
 
+/**
+ * @author mycroft
+ */
 public class RvPreviewActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;

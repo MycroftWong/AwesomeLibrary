@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author mycroft
+ */
 public class ImageModel {
 
     /**
@@ -27,10 +30,10 @@ public class ImageModel {
         //由于扫描图片是耗时的操作，所以要在子线程处理。
         new Thread(() -> {
             //扫描图片
-            Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-            ContentResolver mContentResolver = context.getContentResolver();
+            Uri imageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            ContentResolver contentResolver = context.getContentResolver();
 
-            Cursor mCursor = mContentResolver.query(mImageUri, new String[]{
+            Cursor cursor = contentResolver.query(imageUri, new String[]{
                             MediaStore.Images.Media.DATA,
                             MediaStore.Images.Media.DISPLAY_NAME,
                             MediaStore.Images.Media.DATE_ADDED,
@@ -42,22 +45,23 @@ public class ImageModel {
             ArrayList<Image> images = new ArrayList<>();
 
             //读取扫描到的图片
-            if (mCursor != null) {
-                while (mCursor.moveToNext()) {
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
                     // 获取图片的路径
-                    String path = mCursor.getString(
-                            mCursor.getColumnIndex(MediaStore.Images.Media.DATA));
+                    String path = cursor.getString(
+                            cursor.getColumnIndex(MediaStore.Images.Media.DATA));
                     //获取图片名称
-                    String name = mCursor.getString(
-                            mCursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
+                    String name = cursor.getString(
+                            cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
                     //获取图片时间
-                    long time = mCursor.getLong(
-                            mCursor.getColumnIndex(MediaStore.Images.Media.DATE_ADDED));
-                    if (!".downloading".equals(getExtensionName(path))) { //过滤未下载完成的文件
+                    long time = cursor.getLong(
+                            cursor.getColumnIndex(MediaStore.Images.Media.DATE_ADDED));
+                    //过滤未下载完成的文件
+                    if (!".downloading".equals(getExtensionName(path))) {
                         images.add(new Image(path, time, name));
                     }
                 }
-                mCursor.close();
+                cursor.close();
             }
             Collections.reverse(images);
             callback.onSuccess(splitFolder(images));

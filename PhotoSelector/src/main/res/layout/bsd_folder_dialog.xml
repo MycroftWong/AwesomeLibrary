@@ -4,7 +4,6 @@
     android:background="@color/white"
     android:layout_height="match_parent">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_folder"
         android:layout_width="match_parent"

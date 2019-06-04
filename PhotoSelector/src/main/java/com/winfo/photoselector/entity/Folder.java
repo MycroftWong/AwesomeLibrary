@@ -6,10 +6,14 @@ import java.util.ArrayList;
 
 /**
  * 图片文件夹实体类
+ * @author mycroft
  */
 public class Folder {
 
-    private boolean useCamera; // 是否可以调用相机拍照。只有“全部”文件夹才可以拍照
+    /**
+     * 是否可以调用相机拍照。只有“全部”文件夹才可以拍照
+     */
+    private boolean useCamera;
     private String name;
     private ArrayList<Image> images;
 

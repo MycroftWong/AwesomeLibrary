@@ -29,11 +29,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="end"
                 android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
                 android:foreground="@drawable/btn_foreground_selector">
 
                 <TextView
@@ -93,8 +91,8 @@
                 android:id="@+id/tv_select"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:drawableLeft="@drawable/ic_image_un_select"
+                android:layout_alignParentEnd="true"
+                android:drawableStart="@drawable/ic_image_un_select"
                 android:drawablePadding="10dp"
                 android:gravity="center"
                 android:paddingLeft="12dp"
@@ -108,7 +106,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
-                android:layout_toLeftOf="@+id/tv_select"
+                android:layout_toStartOf="@+id/tv_select"
                 android:background="@android:color/black" />
 
         </RelativeLayout>
