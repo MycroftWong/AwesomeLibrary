@@ -11,6 +11,8 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType
+import java.lang.StringBuilder
+import java.util.*
 
 class PinyinActivity : BaseCommonComponentActivity() {
 
@@ -41,28 +43,30 @@ class PinyinActivity : BaseCommonComponentActivity() {
     private fun transferSimpleChinese(text: String): String {
         val charArray = text.toCharArray()
         val format = HanyuPinyinOutputFormat()
-        format.caseType = HanyuPinyinCaseType.LOWERCASE
+        format.caseType = HanyuPinyinCaseType.UPPERCASE
         format.toneType = HanyuPinyinToneType.WITHOUT_TONE
         format.vCharType = HanyuPinyinVCharType.WITH_V
 
         var pinyin: Array<String?>
 
-        var allString = ""
+        val allString = StringBuilder()
 
         for (item in charArray) {
             if (item.toString().matches(Regex("[\\u4E00-\\u9FA5]+"))) {
                 try {
                     pinyin = PinyinHelper.toHanyuPinyinStringArray(item, format)
-                    allString += pinyin[0]
+                    LogUtils.e(Arrays.asList(pinyin).toString())
+                    allString.append(pinyin[0]).append(" ")
                 } catch (e: Exception) {
                     e.printStackTrace()
+                    LogUtils.e(e)
                 }
 
             } else {
-                allString += Character.toString(item)
+                allString.append(Character.toString(item))
             }
         }
 
-        return allString
+        return allString.toString()
     }
 }

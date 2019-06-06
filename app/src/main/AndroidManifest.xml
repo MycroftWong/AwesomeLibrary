@@ -25,7 +25,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.time.PrettyTimeActivity"></activity>
         <!-- 适配华为（huawei）刘海屏 -->
         <meta-data
             android:name="android.notch_support"
@@ -37,7 +36,8 @@
         <activity
             android:name=".activity.splash.SplashActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -204,7 +204,13 @@
         <activity
             android:name=".activity.gloading.GloadingActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" /> <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.time.PrettyTimeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <!-- 注意这里的android:theme="@style/AppTheme" AppTheme一定要是NoActionbar类型的主题 -->
         <!--
 <activity
             android:name="com.yalantis.ucrop.UCropActivity"

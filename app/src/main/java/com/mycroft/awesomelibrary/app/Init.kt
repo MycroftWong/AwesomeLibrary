@@ -2,6 +2,7 @@ package com.mycroft.awesomelibrary.app
 
 import android.content.Context
 import com.blankj.utilcode.util.LogUtils
+import com.facebook.common.logging.FLog
 import com.facebook.fresco.helper.Phoenix
 import com.facebook.fresco.helper.config.PhoenixConfig
 import com.facebook.imagepipeline.backends.okhttp3.OkHttpNetworkFetcher
@@ -39,6 +40,7 @@ class Init {
             }
             LogUtils.getConfig().isLogSwitch = true
 
+            FLog.setMinimumLoggingLevel(FLog.INFO)
             val requestListeners = HashSet<RequestListener>()
             requestListeners.add(RequestLoggingListener())
             val imagePipelineConfig = PhoenixConfig.Builder(appContext)
