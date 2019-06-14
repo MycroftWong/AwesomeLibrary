@@ -33,7 +33,7 @@ dependencies {
     compileOnly files('libs/sqlite-jdbc-3.7.2.jar')
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
+    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
     testImplementation 'junit:junit:4.13-beta-3'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -118,10 +118,10 @@ dependencies {
     implementation 'com.github.MycroftWong:ShopButton:v1.1'
 
     // room
-    implementation 'androidx.room:room-runtime:2.1.0-rc01'
-    kapt 'androidx.room:room-compiler:2.1.0-rc01'
-    implementation 'androidx.room:room-testing:2.1.0-rc01'
-    implementation 'androidx.room:room-rxjava2:2.1.0-rc01'
+    implementation 'androidx.room:room-runtime:2.1.0'
+    kapt 'androidx.room:room-compiler:2.1.0'
+    implementation 'androidx.room:room-testing:2.1.0'
+    implementation 'androidx.room:room-rxjava2:2.1.0'
 
     // coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
@@ -160,8 +160,8 @@ dependencies {
     // 加载库，没有发现内存泄漏问题
     implementation 'com.billy.android:gloading:1.0.1'
 
-    implementation "androidx.camera:camera-core:1.0.0-alpha01"
-    implementation "androidx.camera:camera-camera2:1.0.0-alpha01"
+    implementation "androidx.camera:camera-core:1.0.0-alpha02"
+    implementation "androidx.camera:camera-camera2:1.0.0-alpha02"
 
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
     implementation project(path: ':pinyin4j-2.5.0')
