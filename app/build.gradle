@@ -19,8 +19,8 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [
-                        "room.schemaLocation":"$projectDir/schemas".toString(),
-                        "room.incremental":"true"]
+                        "room.schemaLocation": "$projectDir/schemas".toString(),
+                        "room.incremental"   : "true"]
             }
         }
     }
@@ -41,12 +41,12 @@ android {
             resolutionStrategy {
                 eachDependency { DependencyResolveDetails details ->
                     if (details.requested.group == 'io.reactivex.rxjava3' &&
-                    details.requested.name == 'rxjava') {
+                            details.requested.name == 'rxjava') {
                         details.useVersion '3.0.0-RC0'
                         details.because 'Unified the version of RxJava3'
                     }
                     if (details.requested.group == 'com.github.bumptech.glide' &&
-                    details.requested.name == 'glide') {
+                            details.requested.name == 'glide') {
                         details.useVersion('4.9.0')
                         details.because('use glide 4.9.0')
                     }
@@ -60,6 +60,8 @@ dependencies {
     // 打包时，不会将sqlite-jdbc打入apk中
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
 //    implementation files('libs/pinyin4j-2.5.0.jar')
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     compileOnly files('libs/sqlite-jdbc-3.7.2.jar')
 
     testImplementation "junit:junit:${versions.junit}"
@@ -214,6 +216,8 @@ dependencies {
     implementation 'com.github.qingmei2:rximagepicker_support_zhihu:3.0.0-beta01'     // 知乎图片选择器
     implementation 'com.github.qingmei2:rximagepicker_support_wechat:3.0.0-beta01'
     implementation project(path: ':fresco-helper')    // 微信图片选择器
+
+    implementation 'org.jaaksi:pickerview:2.0.1'
 }
 repositories {
     mavenCentral()

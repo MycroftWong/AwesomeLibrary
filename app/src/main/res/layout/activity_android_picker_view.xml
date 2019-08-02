@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.picker.PickerViewActivity">
-
+    tools:context=".activity.picker.AndroidPickerViewActivity">
 
     <include layout="@layout/common_toolbar" />
 
@@ -21,5 +20,9 @@
         android:layout_height="wrap_content"
         android:text="@string/choose_time" />
 
-
+    <Button
+        android:id="@+id/chooseCityButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_city" />
 </LinearLayout>

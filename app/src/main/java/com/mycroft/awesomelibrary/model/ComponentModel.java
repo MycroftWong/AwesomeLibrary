@@ -19,6 +19,7 @@ import com.mycroft.awesomelibrary.activity.edit.VerificationCodeViewActivity;
 import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
 import com.mycroft.awesomelibrary.activity.gloading.GloadingActivity;
 import com.mycroft.awesomelibrary.activity.immersion.ImmersionBarActivity;
+import com.mycroft.awesomelibrary.activity.picker.AndroidPickerViewActivity;
 import com.mycroft.awesomelibrary.activity.picker.PickerViewActivity;
 import com.mycroft.awesomelibrary.activity.pinyin.PinyinActivity;
 import com.mycroft.awesomelibrary.activity.room.RoomActivity;
@@ -60,8 +61,8 @@ public class ComponentModel implements Serializable {
         COMPONENT_MODEL_LIST.add(new ComponentModel(11, "RecyclerItemDecoration", "An Android ItemDecorations library which easily add ItemDecoration to RecyclerView items. Currently Contains PinnedHeaderItemDecoration, DividerItemDecoration, OffsetsItemDecoration, ShaderItemDecoration", "https://github.com/dinuscxj/RecyclerItemDecoration", ItemDecorationActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(12, "FadingTextView", "A TextView that changes its content automatically every few seconds", "https://github.com/rosenpin/fading-text-view", FadingTextViewActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(13, "HTextView", "Animation effects to text, not really textview", "https://github.com/hanks-zyh/HTextView", HTextViewActivity.class));
-        COMPONENT_MODEL_LIST.add(new ComponentModel(14, "RxGalleryFinal", "图片选择库，单选/多选、拍照、裁剪、压缩，自定义。包括视频选择和录制。", "https://github.com/FinalTeam/RxGalleryFinal", RxGalleyActivity.class, true));
-        COMPONENT_MODEL_LIST.add(new ComponentModel(15, "Android-PickerView", "This is a picker view for android , support linkage effect, timepicker and optionspicker.（时间选择器、省市区三级联动）", "https://github.com/Bigkoo/Android-PickerView", PickerViewActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(14, "RxGalleryFinal", "图片选择库，单选/多选、拍照、裁剪、压缩，自定义。包括视频选择和录制。", "https://github.com/FinalTeam/RxGalleryFinal", RxGalleyActivity.class, true, "非常不好用"));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(15, "Android-PickerView", "This is a picker view for android , support linkage effect, timepicker and optionspicker.（时间选择器、省市区三级联动）", "https://github.com/Bigkoo/Android-PickerView", AndroidPickerViewActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(16, "AddSubUtils", "对购物车加减按钮控件的简单封装，几行代码就搞定，采用链式调用，而且样式支持自定义，最重要的是在ListView中和RecyclerView中处理了复用item导致数据错乱的问题。", "https://github.com/Jmengfei/AddSubUtils", ShoppingCartAddSubActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(16, "AnimShopButton", "A shopping cart button with a telescopic displacement rotation animation ...一个带伸缩位移旋转动画的购物车按钮", "https://github.com/mcxtzhang/AnimShopButton", AnimShopButtonActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(17, "FormatEditText", "FormatEditText can be used as a number formatted text input box, which can be used to format phone numbers, format ID numbers, format bank card numbers, etc. 可配置自定义规则来格式化号码的输入框，可用来格式化电话号码、身份证号码、银行卡号码等。", "https://github.com/dkzwm/FormatEditText", FormatEditTextActivity.class));
@@ -72,6 +73,7 @@ public class ComponentModel implements Serializable {
         COMPONENT_MODEL_LIST.add(new ComponentModel(22, "pinyin4j", "A copy of http://sourceforge.net/projects/pinyin4j, then deploy it to maven central repository.", "https://github.com/belerweb/pinyin4j", PinyinActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(23, "PrettyTime", "Convert Java/Android Date() objects in just “a few minutes!”", "https://github.com/ocpsoft/prettytime", PrettyTimeActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(24, "RxImagePicker", "RxJava2 and RxJava3 external support. Android flexible picture selector, provides the support for theme of Zhihu and WeChat (灵活的Android图片选择器，提供了知乎和微信主题的支持）. ", "https://github.com/qingmei2/RxImagePicker", RxImagePickerActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(25, "pickerview", "One very very user-friendly Picker library（内部提供两种常用类型的Picker：时间选择器（支持聚合）和联动选择器（支持不联动）。支持扩展自定义Picker。） ", "https://github.com/jaaksi/pickerview", PickerViewActivity.class, false, "设置样式比较复杂"));
     }
 
     private static final List<ComponentModel> HELPER_LIST = new ArrayList<>();
@@ -97,17 +99,20 @@ public class ComponentModel implements Serializable {
     private final Class<? extends Activity> klazz;
     private final boolean deprecated;
 
+    private final String comment;
+
     private ComponentModel(int id, String name, String description, String githubUrl, Class<? extends Activity> klazz) {
-        this(id, name, description, githubUrl, klazz, false);
+        this(id, name, description, githubUrl, klazz, false, null);
     }
 
-    private ComponentModel(int id, String name, String description, String githubUrl, Class<? extends Activity> klazz, boolean deprecated) {
+    private ComponentModel(int id, String name, String description, String githubUrl, Class<? extends Activity> klazz, boolean deprecated, String comment) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.githubUrl = githubUrl;
         this.klazz = klazz;
         this.deprecated = deprecated;
+        this.comment = comment;
     }
 
     public int getId() {
@@ -132,5 +137,9 @@ public class ComponentModel implements Serializable {
 
     public boolean isDeprecated() {
         return deprecated;
+    }
+
+    public String getComment() {
+        return comment;
     }
 }

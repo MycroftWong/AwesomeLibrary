@@ -1,18 +1,14 @@
 package com.mycroft.awesomelibrary.activity.picker;
 
-import android.graphics.Color;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-
-import com.bigkoo.pickerview.builder.TimePickerBuilder;
-import com.bigkoo.pickerview.view.TimePickerView;
-import com.blankj.utilcode.util.ToastUtils;
+import com.blankj.utilcode.constant.TimeConstants;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
+
+import org.jaaksi.pickerview.picker.TimePicker;
+import org.jaaksi.pickerview.widget.PickerView;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -27,8 +23,6 @@ public class PickerViewActivity extends BaseCommonComponentActivity {
     Button chooseDateButton;
     @BindView(R.id.chooseTimeButton)
     Button chooseTimeButton;
-    @BindView(R.id.chooseCityButton)
-    Button chooseCityButton;
 
     @Override
     protected int getResId() {
@@ -46,7 +40,7 @@ public class PickerViewActivity extends BaseCommonComponentActivity {
 
     }
 
-    @OnClick({R.id.chooseDateButton, R.id.chooseTimeButton, R.id.chooseCityButton})
+    @OnClick({R.id.chooseDateButton, R.id.chooseTimeButton})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.chooseDateButton:
@@ -55,24 +49,14 @@ public class PickerViewActivity extends BaseCommonComponentActivity {
             case R.id.chooseTimeButton:
                 chooseTime();
                 break;
-            case R.id.chooseCityButton:
-                chooseCity();
-                break;
             default:
                 break;
         }
     }
 
     private void chooseDate() {
-        Calendar preCalendar = Calendar.getInstance();
-        preCalendar.set(1990, 0, 1);
-
-        Calendar start = Calendar.getInstance();
-        start.set(1900, 0, 1);
-        Calendar end = Calendar.getInstance();
-
-        TimePickerView pickerView =
-                new TimePickerBuilder(this, (date, v) -> {
+        new TimePicker.Builder(this, TimePicker.TYPE_DATE,
+                (picker, date) -> {
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(date);
                     chooseDateButton.setText(String.format(Locale.CHINA, "%d年%d月%d日",
@@ -80,43 +64,44 @@ public class PickerViewActivity extends BaseCommonComponentActivity {
                             calendar.get(Calendar.MONTH) + 1,
                             calendar.get(Calendar.DAY_OF_MONTH)));
                 })
-                        .setTitleText(getString(R.string.choose_date))
-                        .setTitleColor(Color.BLACK)
-                        .setCancelColor(Color.BLACK)
-                        .setSubmitColor(Color.BLACK)
-                        .setTextColorCenter(Color.BLACK)
-                        .setTextColorOut(ContextCompat.getColor(this, R.color.common_text_color))
-                        .setRangDate(start, end)
-                        .setDate(preCalendar)
-                        .isDialog(false)
-                        .build();
-
-        pickerView.show(true);
+                // 设置选中时间
+                //.setSelectedDate()
+                .setSelectedDate(System.currentTimeMillis() - TimeConstants.DAY * 360L)
+                // 设置pickerview样式
+                .setInterceptor((pickerView, params) -> {
+                    pickerView.setVisibleItemCount(5);
+                    // 将年月设置为循环的
+                    int type = (int) pickerView.getTag();
+                    if (type == TimePicker.TYPE_YEAR || type == TimePicker.TYPE_MONTH) {
+                        pickerView.setIsCirculation(true);
+                    }
+                })
+                .create()
+                .show();
     }
 
     private void chooseTime() {
-        Calendar preCalendar = Calendar.getInstance();
-        preCalendar.set(Calendar.HOUR, 0);
-        preCalendar.set(Calendar.MINUTE, 0);
-
-        TimePickerView pickerView =
-                new TimePickerBuilder(this, (date, v) -> {
+        new TimePicker.Builder(this, TimePicker.TYPE_TIME,
+                (picker, date) -> {
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(date);
-
-                    chooseTimeButton.setText(String.format(Locale.CHINA, "%d时%d分",
-                            calendar.get(Calendar.HOUR),
+                    chooseDateButton.setText(String.format(Locale.CHINA, "%d时%d分",
+                            calendar.get(Calendar.HOUR_OF_DAY),
                             calendar.get(Calendar.MINUTE)));
                 })
-                        .setType(new boolean[]{false, false, false, true, true, false})
-                        .setDate(preCalendar)
-                        .isDialog(false)
-                        .build();
-
-        pickerView.show(true);
-    }
-
-    private void chooseCity() {
-        ToastUtils.showShort(R.string.not_support_now);
+                // 设置时间区间
+                // 设置选中时间
+                .setSelectedDate(System.currentTimeMillis() - TimeConstants.DAY * 360L)
+                // 设置pickerview样式
+                .setInterceptor((pickerView, params) -> {
+                    pickerView.setVisibleItemCount(5);
+                    // 将年月设置为循环的
+                    int type = (int) pickerView.getTag();
+                    if (type == TimePicker.TYPE_YEAR || type == TimePicker.TYPE_MONTH) {
+                        pickerView.setIsCirculation(true);
+                    }
+                })
+                .create()
+                .show();
     }
 }
