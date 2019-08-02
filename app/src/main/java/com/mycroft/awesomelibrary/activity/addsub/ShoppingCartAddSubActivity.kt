@@ -11,7 +11,7 @@ class ShoppingCartAddSubActivity : BaseCommonComponentActivity() {
         return R.layout.activity_shopping_cart_add_sub
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
     }
 

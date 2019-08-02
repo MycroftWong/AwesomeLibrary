@@ -43,8 +43,8 @@ public class PictureSelectorActivity extends BaseCommonComponentActivity {
     private ItemTouchHelper mItemTouchHelper;
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
-        super.initViews(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
         ButterKnife.bind(this);
 
         mAdapter = new DraggableImageAdapter(mImages, mItemClickListener);
@@ -57,7 +57,7 @@ public class PictureSelectorActivity extends BaseCommonComponentActivity {
     private final ArrayList<String> mImages = new ArrayList<>();
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
 
     }
 

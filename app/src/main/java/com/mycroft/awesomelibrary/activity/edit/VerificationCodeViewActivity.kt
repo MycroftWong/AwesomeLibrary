@@ -14,8 +14,8 @@ class VerificationCodeViewActivity : BaseCommonComponentActivity() {
         return R.layout.activity_verification_code_view
     }
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
+    override fun initViews() {
+        super.initViews()
 
         clearButton.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
             verificationCodeView.clearInputContent()
@@ -33,7 +33,7 @@ class VerificationCodeViewActivity : BaseCommonComponentActivity() {
         })
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
 
     }

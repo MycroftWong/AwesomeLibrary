@@ -46,8 +46,8 @@ public class ItemDecorationActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
-        super.initViews(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
         ButterKnife.bind(this);
 
         ItemDecorationAdapter adapter = new ItemDecorationAdapter(mItemDecorationModels);
@@ -57,7 +57,7 @@ public class ItemDecorationActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
     }
 
     static class ItemDecorationAdapter extends BaseQuickAdapter<ItemDecorationModel, BaseViewHolder> {

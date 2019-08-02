@@ -16,14 +16,14 @@ class PrettyTimeActivity : BaseCommonComponentActivity() {
         return R.layout.activity_pretty_time
     }
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
+    override fun initViews() {
+        super.initViews()
 
         chooseTimeButton.clicks().throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe { chooseTime() }
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
     }
 

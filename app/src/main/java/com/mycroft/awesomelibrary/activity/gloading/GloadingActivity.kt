@@ -36,8 +36,8 @@ class GloadingActivity : BaseCommonComponentActivity() {
         }
     }
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
+    override fun initViews() {
+        super.initViews()
         recyclerView.adapter = object : BaseQuickAdapter<String, BaseViewHolder>(android.R.layout.simple_list_item_1, data) {
             override fun convert(helper: BaseViewHolder?, item: String?) {
                 helper?.setText(android.R.id.text1, item)
@@ -45,7 +45,7 @@ class GloadingActivity : BaseCommonComponentActivity() {
         }
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
         holder.showLoading()
 
         GlobalScope.launch {

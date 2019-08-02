@@ -21,8 +21,8 @@ class PinyinActivity : BaseCommonComponentActivity() {
         return R.layout.activity_pinyin
     }
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
+    override fun initViews() {
+        super.initViews()
 
         editText.setOnEditorActionListener { v, actionId, event ->
             LogUtils.e(v, actionId, event)
@@ -36,7 +36,7 @@ class PinyinActivity : BaseCommonComponentActivity() {
 
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
     }
 

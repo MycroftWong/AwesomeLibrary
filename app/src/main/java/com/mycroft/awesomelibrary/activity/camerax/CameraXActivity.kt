@@ -12,14 +12,11 @@ class CameraXActivity : BaseCommonComponentActivity() {
         return R.layout.activity_camera_x
     }
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
-
-
+    override fun initViews() {
 
 //        CameraX.bindToLifecycle(this, )
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
     }
 }

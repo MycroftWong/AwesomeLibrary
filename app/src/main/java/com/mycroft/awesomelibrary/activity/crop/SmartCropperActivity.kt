@@ -20,8 +20,8 @@ class SmartCropperActivity : BaseCommonComponentActivity() {
         return R.layout.activity_smart_cropper
     }
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
+    override fun initViews() {
+        super.initViews()
         var d = chooseButton.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
             PhotoSelector.builder()
                     .setShowCamera(true)
@@ -41,7 +41,7 @@ class SmartCropperActivity : BaseCommonComponentActivity() {
         }
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
     }
 

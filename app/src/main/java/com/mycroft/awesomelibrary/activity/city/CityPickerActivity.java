@@ -43,8 +43,8 @@ public class CityPickerActivity extends BaseCommonComponentActivity {
     private final CityPickerView mCityPickerView = new CityPickerView();
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
-        super.initViews(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
         ButterKnife.bind(this);
 
         chooseCityButton.setOnClickListener(v -> chooseCity());
@@ -83,7 +83,7 @@ public class CityPickerActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
     }
 
     private void chooseCity() {

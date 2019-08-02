@@ -22,6 +22,7 @@ import com.mycroft.awesomelibrary.activity.immersion.ImmersionBarActivity;
 import com.mycroft.awesomelibrary.activity.picker.PickerViewActivity;
 import com.mycroft.awesomelibrary.activity.pinyin.PinyinActivity;
 import com.mycroft.awesomelibrary.activity.room.RoomActivity;
+import com.mycroft.awesomelibrary.activity.rximagepicker.RxImagePickerActivity;
 import com.mycroft.awesomelibrary.activity.selector.PictureSelectorActivity;
 import com.mycroft.awesomelibrary.activity.selector.RxGalleyActivity;
 import com.mycroft.awesomelibrary.activity.swipe.SwipePanelActivity;
@@ -70,6 +71,7 @@ public class ComponentModel implements Serializable {
         COMPONENT_MODEL_LIST.add(new ComponentModel(21, "Gloading", "Show global loading status view in a low coupling way for Android App(深度解耦Android App中全局加载中、加载失败及空数据视图)", "https://github.com/luckybilly/Gloading", GloadingActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(22, "pinyin4j", "A copy of http://sourceforge.net/projects/pinyin4j, then deploy it to maven central repository.", "https://github.com/belerweb/pinyin4j", PinyinActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(23, "PrettyTime", "Convert Java/Android Date() objects in just “a few minutes!”", "https://github.com/ocpsoft/prettytime", PrettyTimeActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(24, "RxImagePicker", "RxJava2 and RxJava3 external support. Android flexible picture selector, provides the support for theme of Zhihu and WeChat (灵活的Android图片选择器，提供了知乎和微信主题的支持）. ", "https://github.com/qingmei2/RxImagePicker", RxImagePickerActivity.class));
     }
 
     private static final List<ComponentModel> HELPER_LIST = new ArrayList<>();

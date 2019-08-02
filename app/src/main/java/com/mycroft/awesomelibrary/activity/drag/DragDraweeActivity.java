@@ -52,8 +52,8 @@ public class DragDraweeActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
-        super.initViews(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
         ButterKnife.bind(this);
         BaseQuickAdapter<String, BaseViewHolder> adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_drag_drawee, mImageUrls) {
             @Override
@@ -83,7 +83,7 @@ public class DragDraweeActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
         EventBus.getDefault().register(this);
     }
 

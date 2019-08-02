@@ -1,10 +1,8 @@
 package com.mycroft.awesomelibrary.activity.badge;
 
-import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.mycroft.awesomelibrary.R;
@@ -28,16 +26,11 @@ public class BadgeViewActivity extends BaseCommonComponentActivity {
         return R.layout.activity_badge_view;
     }
 
-    @Override
-    protected void initFields(@Nullable Bundle savedInstanceState) {
-        super.initFields(savedInstanceState);
-    }
-
     private Badge mBadge;
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
-        super.initViews(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
         ButterKnife.bind(this);
 
         mBadge = new QBadgeView(this)
@@ -61,7 +54,7 @@ public class BadgeViewActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
 
     }
 

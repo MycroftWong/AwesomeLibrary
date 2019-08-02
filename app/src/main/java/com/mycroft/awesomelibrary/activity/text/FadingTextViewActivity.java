@@ -20,7 +20,7 @@ public class FadingTextViewActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
 
     }
 }

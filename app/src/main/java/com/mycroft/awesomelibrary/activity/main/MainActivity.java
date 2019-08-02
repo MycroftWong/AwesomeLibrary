@@ -8,14 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Lifecycle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
 import com.mycroft.awesomelibrary.fragment.ComponentsFragment;
 import com.mycroft.awesomelibrary.fragment.HelpersFragment;
+import com.mycroft.lib.util.FragmentSwitcher;
 
 /**
  * @author mycroft
@@ -31,22 +30,20 @@ public class MainActivity extends BaseCommonActivity {
         return R.layout.activity_main;
     }
 
+    private FragmentSwitcher fragmentSwitcher;
+
     @Override
     protected void initFields(@Nullable Bundle savedInstanceState) {
-
+        fragmentSwitcher = new FragmentSwitcher(getSupportFragmentManager(), R.id.fragmentContainer, this::getItem);
     }
-
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
 
     @Override
 
-    protected void initViews(@Nullable Bundle savedInstanceState) {
-        toolbar = findViewById(R.id.toolbar);
-        tabLayout = findViewById(R.id.tabLayout);
-
+    protected void initViews() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_components));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_helpers));
 
@@ -55,7 +52,7 @@ public class MainActivity extends BaseCommonActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
 
     }
 
@@ -70,12 +67,10 @@ public class MainActivity extends BaseCommonActivity {
         }
     }
 
-    private Fragment mCurrentFragment;
-
     private final TabLayout.OnTabSelectedListener mOnTabSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
-            startFragment(tab.getPosition());
+            fragmentSwitcher.startFragment(tab.getPosition());
         }
 
         @Override
@@ -87,39 +82,4 @@ public class MainActivity extends BaseCommonActivity {
         }
     };
 
-    private void startFragment(int pos) {
-        // 下面是一连串的处理fragment切换的代码
-        FragmentTransaction ft = getSupportFragmentManager()
-                .beginTransaction();
-
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag(makeFragmentName(pos));
-
-        if (fragment == null) {
-            fragment = getItem(pos);
-
-            if (mCurrentFragment != null) {
-                ft.hide(mCurrentFragment);
-            }
-
-            ft.add(R.id.fragmentContainer, fragment, makeFragmentName(pos))
-                    .setMaxLifecycle(fragment, Lifecycle.State.RESUMED);
-            mCurrentFragment = fragment;
-        } else {
-            if (fragment != mCurrentFragment) {
-                ft.show(fragment)
-                        .setMaxLifecycle(fragment, Lifecycle.State.RESUMED);
-                if (mCurrentFragment != null) {
-                    ft.hide(mCurrentFragment)
-                            .setMaxLifecycle(mCurrentFragment, Lifecycle.State.STARTED);
-                }
-                mCurrentFragment = fragment;
-            }
-        }
-
-        ft.commitAllowingStateLoss();
-    }
-
-    private static String makeFragmentName(long id) {
-        return "android:switcher:" + R.id.fragmentContainer + ":" + id;
-    }
 }

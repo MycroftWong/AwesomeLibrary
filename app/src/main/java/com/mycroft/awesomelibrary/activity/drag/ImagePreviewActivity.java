@@ -77,7 +77,7 @@ public class ImagePreviewActivity extends BaseCommonActivity {
     private boolean mScrolling = false;
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
+    protected void initViews() {
         ButterKnife.bind(this);
 
         viewPager.setAdapter(new ImagePagerAdapter(mPictureUrls));
@@ -104,7 +104,7 @@ public class ImagePreviewActivity extends BaseCommonActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
         mDragCloseHelper = new DragCloseHelper(this);
         mDragCloseHelper.setShareElementMode(true);
         mDragCloseHelper.setDragCloseViews(container, viewPager);

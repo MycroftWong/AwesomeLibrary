@@ -26,8 +26,8 @@ class ImmersionBarActivity : BaseCommonComponentActivity() {
         }
     }
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
+    override fun initViews() {
+        super.initViews()
 
         immersionBar {
             titleBar(toolbar)
@@ -36,7 +36,7 @@ class ImmersionBarActivity : BaseCommonComponentActivity() {
         Glide.with(this).asBitmap().load(Constants.CAPTAIN_AMERICA).into(imageView)
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
     }
 

@@ -48,7 +48,7 @@ public class PinnedHeaderActivity extends BaseCommonActivity {
     private final List<SectionItem> mSectionModels = new ArrayList<>();
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
+    protected void initViews() {
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -64,7 +64,7 @@ public class PinnedHeaderActivity extends BaseCommonActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
     }
 
     @Override

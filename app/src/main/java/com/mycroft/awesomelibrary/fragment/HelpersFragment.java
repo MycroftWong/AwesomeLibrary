@@ -34,7 +34,8 @@ public class HelpersFragment extends BaseCommonFragment {
     }
 
     @Override
-    protected void initFields(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         mHelperModels.addAll(ComponentModel.getHelpers());
     }
 

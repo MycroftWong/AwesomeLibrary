@@ -76,7 +76,7 @@ public class DraweePreviewActivity extends BaseCommonActivity {
     private boolean mScrolling = false;
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
+    protected void initViews() {
         ButterKnife.bind(this);
 
         Window window = getWindow();
@@ -102,7 +102,7 @@ public class DraweePreviewActivity extends BaseCommonActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
         //初始化拖拽返回
         mDragCloseHelper = new DragCloseHelper(this);
         mDragCloseHelper.setShareElementMode(true);

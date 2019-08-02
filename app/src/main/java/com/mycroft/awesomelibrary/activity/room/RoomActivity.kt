@@ -45,8 +45,8 @@ class RoomActivity : BaseCommonComponentActivity() {
     }
 
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
+    override fun initViews() {
+        super.initViews()
 
         queryButton.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe { showQueryDialog() }
 
@@ -60,7 +60,7 @@ class RoomActivity : BaseCommonComponentActivity() {
         }
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
     }
 

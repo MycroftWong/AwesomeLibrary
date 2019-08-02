@@ -39,7 +39,7 @@ public class LineDividerActivity extends BaseCommonActivity {
     private static final int DEFAULT_VIEW_TYPE = -0xff;
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
+    protected void initViews() {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -54,7 +54,7 @@ public class LineDividerActivity extends BaseCommonActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
 
     }
 

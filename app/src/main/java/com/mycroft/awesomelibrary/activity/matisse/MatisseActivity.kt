@@ -3,9 +3,9 @@ package com.mycroft.awesomelibrary.activity.matisse
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.facebook.drawee.view.SimpleDraweeView
 import com.jakewharton.rxbinding3.view.clicks
 import com.lxj.matisse.Matisse
 import com.lxj.matisse.MimeType
@@ -27,20 +27,20 @@ class MatisseActivity : BaseCommonComponentActivity() {
 
     private val imageList = mutableListOf<Uri>()
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
+    override fun initViews() {
+        super.initViews()
 
         recyclerView.adapter = object : BaseQuickAdapter<Uri, BaseViewHolder>(R.layout.item_image_preview, imageList) {
             override fun convert(helper: BaseViewHolder?, item: Uri?) {
-                val draweeView = helper?.getView<SimpleDraweeView>(R.id.draweeView)
-                draweeView?.setImageURI(item, null)
+                val imageView = helper?.getView<ImageView>(R.id.imageView)
+//                imageView?.setImageURI(item, null)
             }
         }
 
         chooseButton.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe { choosePicture() }
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
     }
 

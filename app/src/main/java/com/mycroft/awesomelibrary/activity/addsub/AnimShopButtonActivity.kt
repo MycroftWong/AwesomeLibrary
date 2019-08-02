@@ -11,6 +11,6 @@ class AnimShopButtonActivity : BaseCommonComponentActivity() {
         return R.layout.activity_anim_shop_button
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
     }
 }

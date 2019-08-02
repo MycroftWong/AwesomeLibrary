@@ -39,12 +39,12 @@ public class SplashActivity extends BaseCommonActivity {
     }
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
+    protected void initViews() {
         ImmersionBar.with(this).transparentBar().init();
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
         Disposable disposable = Observable.just(System.currentTimeMillis())
                 .subscribeOn(Schedulers.io())
                 .map(s -> {

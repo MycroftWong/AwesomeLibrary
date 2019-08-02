@@ -11,7 +11,7 @@ class FormatEditTextActivity : BaseCommonComponentActivity() {
         return R.layout.activity_format_edit_text
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
     }
 }

@@ -5,7 +5,6 @@ import com.blankj.utilcode.util.LogUtils
 import com.facebook.common.logging.FLog
 import com.facebook.fresco.helper.Phoenix
 import com.facebook.fresco.helper.config.PhoenixConfig
-import com.facebook.imagepipeline.backends.okhttp3.OkHttpNetworkFetcher
 import com.facebook.imagepipeline.listener.RequestListener
 import com.facebook.imagepipeline.listener.RequestLoggingListener
 import com.mycroft.lib.net.RemoteService
@@ -29,10 +28,13 @@ class Init {
 
             val appContext = context.applicationContext
 
+            var httpLoggingInterceptor = HttpLoggingInterceptor()
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
             RemoteService.init(appContext) {
                 OkHttpClient.Builder()
                         .cache(Cache(File(appContext.cacheDir, "net"), 10.toLong().shl(20)))
-                        .addNetworkInterceptor(HttpLoggingInterceptor { LogUtils.E })
+                        .addNetworkInterceptor(httpLoggingInterceptor)
                         .connectTimeout(10, TimeUnit.SECONDS)
                         .readTimeout(15, TimeUnit.SECONDS)
                         .writeTimeout(20, TimeUnit.SECONDS)
@@ -44,7 +46,6 @@ class Init {
             val requestListeners = HashSet<RequestListener>()
             requestListeners.add(RequestLoggingListener())
             val imagePipelineConfig = PhoenixConfig.Builder(appContext)
-                    .setNetworkFetcher(OkHttpNetworkFetcher(RemoteService.getImpl().httpClient))
                     .setRequestListeners(requestListeners)
                     .build()
 

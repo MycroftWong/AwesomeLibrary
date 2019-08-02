@@ -33,15 +33,15 @@ public class ExpandableTextViewActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
-        super.initViews(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
         ButterKnife.bind(this);
 
         expandableTextView.setText(getString(R.string.expandable_text));
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
 
     }
 

@@ -34,8 +34,8 @@ public class AgentWebActivity extends BaseCommonComponentActivity {
     private AgentWeb mAgentWeb;
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
-        super.initViews(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
 
         mAgentWeb = AgentWeb.with(this)
                 .setAgentWebParent(findViewById(R.id.webContainer), new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
@@ -57,7 +57,7 @@ public class AgentWebActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
     }
 
     private final WebViewClient mWebViewClient = new WebViewClient() {

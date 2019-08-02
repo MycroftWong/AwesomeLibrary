@@ -4,15 +4,25 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion = '29.0.0'
+
+    compileSdkVersion versions.compileSdkVersion
+    buildToolsVersion versions.buildToolsVersion
+
     defaultConfig {
         applicationId "com.mycroft.awesomelibrary"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true"]
+            }
+        }
     }
     buildTypes {
         release {
@@ -21,8 +31,28 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
+        sourceCompatibility = versions.jdk
+        targetCompatibility = versions.jdk
+    }
+
+    configurations {
+        compile.exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+        all {
+            resolutionStrategy {
+                eachDependency { DependencyResolveDetails details ->
+                    if (details.requested.group == 'io.reactivex.rxjava3' &&
+                    details.requested.name == 'rxjava') {
+                        details.useVersion '3.0.0-RC0'
+                        details.because 'Unified the version of RxJava3'
+                    }
+                    if (details.requested.group == 'com.github.bumptech.glide' &&
+                    details.requested.name == 'glide') {
+                        details.useVersion('4.9.0')
+                        details.because('use glide 4.9.0')
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -32,27 +62,33 @@ dependencies {
 //    implementation files('libs/pinyin4j-2.5.0.jar')
     compileOnly files('libs/sqlite-jdbc-3.7.2.jar')
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
-    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
-    testImplementation 'junit:junit:4.13-beta-3'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.androidxjunit}"
 
-    implementation 'com.github.MycroftWong:Lib:v1.5'
+    implementation 'com.github.MycroftWong:Lib:v1.9'
+
+    implementation "com.facebook.fresco:fresco:${versions.fresco}"
+    implementation "com.facebook.fresco:animated-base:${versions.fresco}"
+    implementation "com.facebook.fresco:animated-gif:${versions.fresco}"
+    implementation "com.facebook.fresco:webpsupport:${versions.fresco}"
+    implementation "com.facebook.fresco:animated-webp:${versions.fresco}"
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
+    implementation "androidx.exifinterface:exifinterface:${versions.exifinterface}"
 
     // agent web
-    implementation 'com.just.agentweb:agentweb:4.0.3-alpha@aar' // (必选)
+    implementation 'com.just.agentweb:agentweb:4.0.3-beta@aar' // (必选)
     implementation 'com.just.agentweb:filechooser:4.0.3-alpha@aar'// (可选)
     implementation 'com.just.agentweb:download:4.0.3-alpha@aar' // (可选)
     implementation 'com.github.Justson:Downloader:v4.0.3'   // (可选)
 
     // glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation "com.github.bumptech.glide:glide:${versions.glide}"
+    kapt "com.github.bumptech.glide:compiler:${versions.glide}"
 
     // butter knife
-    implementation 'com.jakewharton:butterknife:10.1.0'
-    kapt 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation "com.jakewharton:butterknife:${versions.butterknife}"
+    kapt "com.jakewharton:butterknife-compiler:${versions.butterknife}"
 
     // 拖动图片效果，仿iOS图片查看效果，进入时并不好用
     implementation 'me.panpf:sketch:2.6.2-b1'
@@ -103,7 +139,7 @@ dependencies {
     }
 
     implementation 'com.contrarywind:Android-PickerView:4.1.8'
-    implementation 'androidx.core:core-ktx:1.2.0-alpha01'
+    implementation 'androidx.core:core-ktx:1.2.0-alpha02'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     implementation 'com.github.gminibird:CheckHelper:1.1', {
@@ -118,10 +154,10 @@ dependencies {
     implementation 'com.github.MycroftWong:ShopButton:v1.1'
 
     // room
-    implementation 'androidx.room:room-runtime:2.1.0'
-    kapt 'androidx.room:room-compiler:2.1.0'
-    implementation 'androidx.room:room-testing:2.1.0'
-    implementation 'androidx.room:room-rxjava2:2.1.0'
+    implementation "androidx.room:room-runtime:${versions.room}"
+    implementation "androidx.room:room-rxjava2:${versions.room}"
+    kapt "androidx.room:room-compiler:${versions.room}"
+    implementation "androidx.room:room-testing:${versions.room}"
 
     // coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
@@ -130,6 +166,8 @@ dependencies {
     // Matisse
     implementation('com.lxj:matisse:1.0.1') {
         exclude module: 'ucrop'
+        exclude group: 'it.sephiroth.android.library.imagezoom', module: 'library'
+        exclude group: 'it.sephiroth.android.library.easing', module: 'library'
     }
 
     implementation 'me.dkzwm.widget.fet:core:0.0.8.androidxKT'
@@ -160,11 +198,22 @@ dependencies {
     // 加载库，没有发现内存泄漏问题
     implementation 'com.billy.android:gloading:1.0.1'
 
-    implementation "androidx.camera:camera-core:1.0.0-alpha02"
-    implementation "androidx.camera:camera-camera2:1.0.0-alpha02"
+    implementation "androidx.camera:camera-core:1.0.0-alpha03"
+    implementation "androidx.camera:camera-camera2:1.0.0-alpha03"
 
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
     implementation project(path: ':pinyin4j-2.5.0')
+
+    // 最基础的架构，仅提供了系统默认的图片选择和拍照功能
+    implementation 'com.github.qingmei2:rximagepicker:3.0.0-beta01'
+
+// 提供了自定义UI图片选择器的基本组件，自定义UI的需求需要添加该依赖
+    implementation 'com.github.qingmei2:rximagepicker_support:3.0.0-beta01'
+
+// 如果需要额外的UI支持，请选择依赖对应的UI拓展库
+    implementation 'com.github.qingmei2:rximagepicker_support_zhihu:3.0.0-beta01'     // 知乎图片选择器
+    implementation 'com.github.qingmei2:rximagepicker_support_wechat:3.0.0-beta01'
+    implementation project(path: ':fresco-helper')    // 微信图片选择器
 }
 repositories {
     mavenCentral()

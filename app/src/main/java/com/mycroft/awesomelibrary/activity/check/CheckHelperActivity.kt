@@ -29,8 +29,8 @@ class CheckHelperActivity : BaseCommonComponentActivity() {
 
     private val checkHelper = SingleCheckHelper()
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
+    override fun initViews() {
+        super.initViews()
         val adapter = CheckableAdapter(checkableDataList, checkHelper)
 
         checkHelper.isCanCancel = false
@@ -51,6 +51,6 @@ class CheckHelperActivity : BaseCommonComponentActivity() {
         checkHelper.register(CheckableData::class.java, checker)
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
     }
 }

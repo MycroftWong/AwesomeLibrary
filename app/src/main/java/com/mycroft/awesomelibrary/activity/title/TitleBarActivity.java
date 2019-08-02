@@ -33,8 +33,8 @@ public class TitleBarActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void initViews(@Nullable Bundle savedInstanceState) {
-        super.initViews(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
         ButterKnife.bind(this);
 
         titleBar.setTitle(getTitle().toString());
@@ -49,7 +49,7 @@ public class TitleBarActivity extends BaseCommonComponentActivity {
     }
 
     @Override
-    protected void loadData(@Nullable Bundle savedInstanceState) {
+    protected void loadData() {
 
     }
 

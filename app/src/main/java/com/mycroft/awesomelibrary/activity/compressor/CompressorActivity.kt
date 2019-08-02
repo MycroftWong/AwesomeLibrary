@@ -32,13 +32,11 @@ class CompressorActivity : BaseCommonComponentActivity() {
         return R.layout.activity_compressor
     }
 
-    override fun initViews(savedInstanceState: Bundle?) {
-        super.initViews(savedInstanceState)
-
+    override fun initViews() {
         chooseButton.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe { chooseSinglePicture() }
     }
 
-    override fun loadData(savedInstanceState: Bundle?) {
+    override fun loadData() {
 
     }
 
