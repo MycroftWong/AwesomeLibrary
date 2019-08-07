@@ -54,6 +54,9 @@ public abstract class BaseCommonComponentActivity extends BaseCommonActivity {
             case R.id.github:
                 startActivity(GithubActivity.getIntent(this, mComponentModel));
                 break;
+            case R.id.description:
+                // TODO: 2019/8/7  简单介绍
+                break;
             default:
                 break;
         }
@@ -63,6 +66,8 @@ public abstract class BaseCommonComponentActivity extends BaseCommonActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_common_component_model, menu);
+        MenuItem menuItem = menu.findItem(R.id.description);
+        menuItem.setVisible(false);
         return true;
     }
 }

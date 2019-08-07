@@ -36,10 +36,10 @@ public class HelpersFragment extends BaseCommonFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mHelperModels.addAll(ComponentModel.getHelpers());
+        helperModels.addAll(ComponentModel.getHelpers());
     }
 
-    private final List<ComponentModel> mHelperModels = new ArrayList<>();
+    private final List<ComponentModel> helperModels = new ArrayList<>();
 
     @Nullable
     @Override
@@ -47,9 +47,9 @@ public class HelpersFragment extends BaseCommonFragment {
         View view = inflater.inflate(R.layout.fragment_components, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        ComponentAdapter adapter = new ComponentAdapter(mHelperModels);
+        ComponentAdapter adapter = new ComponentAdapter(helperModels);
         adapter.setOnItemClickListener((a, v, position) -> {
-            ComponentModel model = mHelperModels.get(position);
+            ComponentModel model = helperModels.get(position);
             Intent intent = new Intent(getContext(), model.getKlazz());
             intent.putExtra(BaseCommonComponentActivity.EXTRA_COMPONENT_MODEL, model);
             startActivity(intent);

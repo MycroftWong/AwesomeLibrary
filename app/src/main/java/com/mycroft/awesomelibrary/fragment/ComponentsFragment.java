@@ -35,10 +35,10 @@ public class ComponentsFragment extends BaseCommonFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mComponentModels.addAll(ComponentModel.getComponents());
+        componentModels.addAll(ComponentModel.getComponents());
     }
 
-    private final List<ComponentModel> mComponentModels = new ArrayList<>();
+    private final List<ComponentModel> componentModels = new ArrayList<>();
 
     @Nullable
     @Override
@@ -46,9 +46,9 @@ public class ComponentsFragment extends BaseCommonFragment {
         View view = inflater.inflate(R.layout.fragment_components, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        ComponentAdapter adapter = new ComponentAdapter(mComponentModels);
+        ComponentAdapter adapter = new ComponentAdapter(componentModels);
         adapter.setOnItemClickListener((a, v, position) -> {
-            ComponentModel model = mComponentModels.get(position);
+            ComponentModel model = componentModels.get(position);
             if (model.isDeprecated()) {
                 ToastUtils.showShort(R.string.toast_component_is_bad);
                 return;

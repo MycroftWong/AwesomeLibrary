@@ -165,13 +165,6 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
 
-    // Matisse
-    implementation('com.lxj:matisse:1.0.1') {
-        exclude module: 'ucrop'
-        exclude group: 'it.sephiroth.android.library.imagezoom', module: 'library'
-        exclude group: 'it.sephiroth.android.library.easing', module: 'library'
-    }
-
     implementation 'me.dkzwm.widget.fet:core:0.0.8.androidxKT'
 
     // rxbinding
@@ -209,15 +202,21 @@ dependencies {
     // 最基础的架构，仅提供了系统默认的图片选择和拍照功能
     implementation 'com.github.qingmei2:rximagepicker:3.0.0-beta01'
 
-// 提供了自定义UI图片选择器的基本组件，自定义UI的需求需要添加该依赖
+    // 提供了自定义UI图片选择器的基本组件，自定义UI的需求需要添加该依赖
     implementation 'com.github.qingmei2:rximagepicker_support:3.0.0-beta01'
 
-// 如果需要额外的UI支持，请选择依赖对应的UI拓展库
-    implementation 'com.github.qingmei2:rximagepicker_support_zhihu:3.0.0-beta01'     // 知乎图片选择器
-    implementation 'com.github.qingmei2:rximagepicker_support_wechat:3.0.0-beta01'
-    implementation project(path: ':fresco-helper')    // 微信图片选择器
+    // 如果需要额外的UI支持，请选择依赖对应的UI拓展库
+    implementation 'com.github.qingmei2:rximagepicker_support_zhihu:3.0.0-beta01'       // 知乎图片选择器
+    implementation 'com.github.qingmei2:rximagepicker_support_wechat:3.0.0-beta01'      // 微信图片选择器
+    implementation project(path: ':fresco-helper')
 
     implementation 'org.jaaksi:pickerview:2.0.1'
+
+    // apk update
+    implementation 'com.teprinciple:updateapputilsX:2.0.2'
+
+    // luban
+    implementation 'top.zibin:Luban-turbo:1.0.0'
 }
 repositories {
     mavenCentral()

@@ -50,4 +50,6 @@
     <string name="load_empty">没有数据</string>
     <string name="autofill_hints_pinyin">pinyin</string>
     <string name="hint_pinyin">输入文字转换成拼音</string>
+    <string name="update">Update</string>
+    <string name="description">介绍</string>
 </resources>

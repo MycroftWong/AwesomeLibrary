@@ -19,6 +19,7 @@ import com.mycroft.awesomelibrary.activity.edit.VerificationCodeViewActivity;
 import com.mycroft.awesomelibrary.activity.expand.ExpandableTextViewActivity;
 import com.mycroft.awesomelibrary.activity.gloading.GloadingActivity;
 import com.mycroft.awesomelibrary.activity.immersion.ImmersionBarActivity;
+import com.mycroft.awesomelibrary.activity.luban.LubanActivity;
 import com.mycroft.awesomelibrary.activity.picker.AndroidPickerViewActivity;
 import com.mycroft.awesomelibrary.activity.picker.PickerViewActivity;
 import com.mycroft.awesomelibrary.activity.pinyin.PinyinActivity;
@@ -31,6 +32,7 @@ import com.mycroft.awesomelibrary.activity.text.FadingTextViewActivity;
 import com.mycroft.awesomelibrary.activity.text.HTextViewActivity;
 import com.mycroft.awesomelibrary.activity.time.PrettyTimeActivity;
 import com.mycroft.awesomelibrary.activity.title.TitleBarActivity;
+import com.mycroft.awesomelibrary.activity.update.UpdateActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,7 +50,7 @@ public class ComponentModel implements Serializable {
     private static final List<ComponentModel> COMPONENT_MODEL_LIST = new ArrayList<>();
 
     static {
-        COMPONENT_MODEL_LIST.add(new ComponentModel(1, "AgentWeb", "AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库，提供了 Android WebView 一系列的问题解决方案 ，并且轻量和极度灵活，体验请下载的 agentweb.apk， 或者你也可以到 Google Play 里面下载 AgentWeb ， 详细使用请参照上面的 Sample 。", "https://github.com/Justson/AgentWeb", AgentWebActivity.class));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(1, "AgentWeb", "AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库，提供了 Android WebView 一系列的问题解决方案 ，并且轻量和极度灵活，体验请下载的 agentweb.apk， 或者你也可以到 Google Play 里面下载 AgentWeb ， 详细使用请参照上面的 Sample 。", "https://github.com/Justson/AgentWeb", AgentWebActivity.class, false, "虽然退出后释放了WebView占用内存，但是在使用时WebView占用内存仍然很高，建议在单独进程中使用"));
         COMPONENT_MODEL_LIST.add(new ComponentModel(2, "Diooto", "微博,微信图库效果,微信视频拖放效果,适配状态栏 、屏幕旋转 、全屏 、长图、GIF、视频", "https://github.com/moyokoo/Diooto", DiootoActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(3, "PictureSelector", "Android图片选择器，仿微信的图片选择器的样式和效果。可横竖屏切换显示, 自定义配置，单选，多选，是否显示拍照，material design风格，单选裁剪，拍照裁剪，滑动翻页预览，双击放大，缩放", "https://github.com/wj576038874/PhotoSelector", PictureSelectorActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(4, "DragCloseHelper", "仿微信朋友圈图片拖动关闭，Fresco实现", "https://github.com/bauer-bao/DragCloseHelper", DragDraweeActivity.class));
@@ -74,6 +76,7 @@ public class ComponentModel implements Serializable {
         COMPONENT_MODEL_LIST.add(new ComponentModel(23, "PrettyTime", "Convert Java/Android Date() objects in just “a few minutes!”", "https://github.com/ocpsoft/prettytime", PrettyTimeActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(24, "RxImagePicker", "RxJava2 and RxJava3 external support. Android flexible picture selector, provides the support for theme of Zhihu and WeChat (灵活的Android图片选择器，提供了知乎和微信主题的支持）. ", "https://github.com/qingmei2/RxImagePicker", RxImagePickerActivity.class));
         COMPONENT_MODEL_LIST.add(new ComponentModel(25, "pickerview", "One very very user-friendly Picker library（内部提供两种常用类型的Picker：时间选择器（支持聚合）和联动选择器（支持不联动）。支持扩展自定义Picker。） ", "https://github.com/jaaksi/pickerview", PickerViewActivity.class, false, "设置样式比较复杂"));
+        COMPONENT_MODEL_LIST.add(new ComponentModel(26, "UpdateAppUtils", "一行代码快速实现app版本更新 ", "https://github.com/teprinciple/UpdateAppUtils", UpdateActivity.class, false, "测试中"));
     }
 
     private static final List<ComponentModel> HELPER_LIST = new ArrayList<>();
@@ -82,6 +85,7 @@ public class ComponentModel implements Serializable {
         HELPER_LIST.add(new ComponentModel(1001, "CheckHelper", "RecylerView 列表选择工具，提供单选、多选等解耦 Api", "https://github.com/gminibird/CheckHelper", CheckHelperActivity.class));
         HELPER_LIST.add(new ComponentModel(1002, "Room", "Room 数据库框架", "https://github.com/humazed/RoomAsset", RoomActivity.class));
         HELPER_LIST.add(new ComponentModel(1003, "Compressor", "Modern and advanced: an easy to use image compress library for Android.", "https://github.com/Shouheng88/Compressor", CompressorActivity.class));
+        HELPER_LIST.add(new ComponentModel(1004, "Luban", "Luban(鲁班)—Image compression with efficiency very close to WeChat Moments/可能是最接近微信朋友圈的图片压缩算法", "https://github.com/Curzibn/Luban", LubanActivity.class));
     }
 
     public static List<ComponentModel> getComponents() {

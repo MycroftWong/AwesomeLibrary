@@ -3,7 +3,6 @@ package com.mycroft.awesomelibrary.activity.compressor
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
 import android.text.format.Formatter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -18,6 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_compressor.*
 import me.shouheng.compress.Compress
+import me.shouheng.compress.RequestBuilder
 import me.shouheng.compress.strategy.Strategies
 import java.io.File
 import java.util.concurrent.TimeUnit
@@ -68,18 +68,24 @@ class CompressorActivity : BaseCommonComponentActivity() {
     }
 
     private fun compressImage(imageFile: File) {
-        val d = Compress.with(this, imageFile).setQuality(90)
+        Compress.with(this, imageFile)
+                .setQuality(90)
                 .strategy(Strategies.luban())
-                .asFlowable()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    compressdDraweeView.setImageURI(Uri.fromFile(it), null)
-                    showFileSize(afterText, it)
-                }, {
-                    ToastUtils.showShort(R.string.toast_compress_error)
-                    LogUtils.e(it)
+                .setCompressListener(object : RequestBuilder.Callback<File> {
+                    override fun onSuccess(result: File?) {
+                        compressdDraweeView.setImageURI(Uri.fromFile(result), null)
+                        showFileSize(afterText, result!!)
+                    }
+
+                    override fun onError(throwable: Throwable?) {
+                        ToastUtils.showShort(R.string.toast_compress_error)
+                        LogUtils.e(throwable)
+                    }
+
+                    override fun onStart() {
+                    }
                 })
+                .launch()
     }
 
     private fun showFileSize(textView: TextView, file: File) {

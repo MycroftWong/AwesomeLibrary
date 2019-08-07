@@ -28,8 +28,7 @@
         <!-- 适配华为（huawei）刘海屏 -->
         <meta-data
             android:name="android.notch_support"
-            android:value="true" />
-        <!-- 适配小米（xiaomi）刘海屏 -->
+            android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
@@ -157,10 +156,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.matisse.MatisseActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.room.RoomActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
@@ -216,6 +211,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.picker.PickerViewActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.update.UpdateActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.luban.LubanActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
