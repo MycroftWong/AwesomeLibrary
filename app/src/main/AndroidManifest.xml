@@ -63,11 +63,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.selector.PictureSelectorActivity"
-            android:label="PictureSelector"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.drag.DragDraweeActivity"
             android:label="@string/drag_image"
             android:launchMode="singleTask"
@@ -141,10 +136,6 @@
             android:screenOrientation="portrait" /> <!--  -->
         <activity
             android:name=".activity.text.HTextViewActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.selector.RxGalleyActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity

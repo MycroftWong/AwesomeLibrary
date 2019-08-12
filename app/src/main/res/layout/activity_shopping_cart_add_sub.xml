@@ -10,7 +10,6 @@
     <include layout="@layout/common_toolbar" />
 
     <com.jmf.addsubutils.AddSubUtils
-        android:id="@+id/addSub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

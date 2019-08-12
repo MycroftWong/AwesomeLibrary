@@ -6,10 +6,7 @@
     <string name="agent_web">AgentWeb</string>
     <string name="main">Awesome Library</string>
     <string name="diooto">Diooto</string>
-    <string name="hint_drag_image">拖动图片可排序</string>
-    <string name="share_drawee_name">drawee_view</string>
     <string name="drag_image">DragCloseHelper</string>
-    <string name="share_image_name">imageView</string>
     <string name="badge_view">BadgeView</string>
     <string name="shopping_cart">ShoppingCart</string>
     <string name="choose_city">Choose City</string>
@@ -24,26 +21,18 @@
     <string name="copy_github">Copy</string>
 
     <string name="toast_clip_github_url">已复制到剪切板</string>
-    <string name="choose_single">选择单张剪切图片</string>
     <string name="choose_date">选择日期</string>
     <string name="choose_time">选择时间</string>
     <string name="not_support_now">暂时未实现</string>
     <string name="tab_helpers">Helpers</string>
-    <string name="query_province">Query Province</string>
-    <string name="query_city">Query City</string>
-    <string name="query_county">Query County</string>
-    <string name="query_street">Query Street</string>
     <string name="choose_picture">Choose Picture</string>
     <string name="hint_format_edit_text">格式化输入框</string>
     <string name="clear">清除</string>
-    <string name="insert">插入数据</string>
     <string name="query">查询</string>
     <string name="choose_address">选择地址</string>
     <string name="toast_component_is_bad">组件功能太差，不能使用</string>
     <string name="text_image_before_compress">压缩前的图片</string>
     <string name="text_image_after_compress">压缩后的图片</string>
-    <string name="toast_compress_error">压缩失败</string>
-    <string name="crop_picture">Crop Picture</string>
     <string name="immersion_bar">ImmersionBar</string>
     <string name="description_immersion_bar">正常使用Coordinator+AppBar+CollapsingToolbar时，需要在以上控件添加属性fitSystem=true, 而且statusBar的颜色变化并不是很流畅。\n使用了ImmersionBar, 将所有的fitSystem去掉，statusBar的颜色变化和Toolbar一样了</string>
     <string name="load_failed">加载失败</string>

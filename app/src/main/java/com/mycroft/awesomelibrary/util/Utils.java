@@ -1,14 +1,15 @@
 package com.mycroft.awesomelibrary.util;
 
+import android.widget.ImageView;
+
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.facebook.drawee.view.SimpleDraweeView;
-import com.facebook.fresco.helper.ImageLoader;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.decoration.PinnedHeaderActivity;
+import com.mycroft.lib.net.GlideApp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,7 +50,7 @@ public class Utils {
             "http://img.esthetics.cn/Uploads/Picture/2019-05-06/5ccf96aa9c275.png",
     };
 
-    public static ArrayList<String> getSampleImages() {
+    private static ArrayList<String> getSampleImages() {
         return new ArrayList<>(Arrays.asList(SAMPLE_IMAGE_URLS));
     }
 
@@ -84,13 +85,13 @@ public class Utils {
 
     static class ImageAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
         ImageAdapter(@Nullable List<String> data) {
-            super(R.layout.item_section_drawee, data);
+            super(R.layout.item_section_image, data);
         }
 
         @Override
         protected void convert(BaseViewHolder helper, String item) {
-            SimpleDraweeView draweeView = helper.getView(R.id.draweeView);
-            ImageLoader.loadImage(draweeView, item);
+            ImageView imageView = helper.getView(R.id.imageView);
+            GlideApp.with(imageView).load(item).into(imageView);
         }
     }
 }

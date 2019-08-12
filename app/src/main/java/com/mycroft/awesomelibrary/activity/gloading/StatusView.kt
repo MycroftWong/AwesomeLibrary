@@ -6,9 +6,9 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import com.billy.android.loading.Gloading
 import com.jakewharton.rxbinding3.view.clicks
 import com.mycroft.awesomelibrary.R
+import com.mycroft.lib.view.Loading
 import kotlinx.android.synthetic.main.layout_status_view.view.*
 import java.util.concurrent.TimeUnit
 
@@ -29,23 +29,23 @@ class StatusView(context: Context, private val retryTask: Runnable) : FrameLayou
 
     fun setStatus(status: Int) {
         when (status) {
-            Gloading.STATUS_LOAD_SUCCESS -> {
+            Loading.STATUS_LOAD_SUCCESS -> {
                 visibility = View.GONE
             }
 
-            Gloading.STATUS_LOADING -> {
+            Loading.STATUS_LOADING -> {
                 loadingView.visibility = View.VISIBLE
                 failedView.visibility = View.GONE
                 emptyView.visibility = View.GONE
             }
 
-            Gloading.STATUS_LOAD_FAILED -> {
+            Loading.STATUS_LOAD_FAILED -> {
                 loadingView.visibility = View.GONE
                 failedView.visibility = View.VISIBLE
                 emptyView.visibility = View.GONE
             }
 
-            Gloading.STATUS_EMPTY_DATA -> {
+            Loading.STATUS_EMPTY_DATA -> {
                 loadingView.visibility = View.GONE
                 failedView.visibility = View.GONE
                 emptyView.visibility = View.VISIBLE

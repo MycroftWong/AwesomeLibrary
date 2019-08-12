@@ -15,6 +15,7 @@ import com.qingmei2.rximagepicker.core.RxImagePicker;
 import com.qingmei2.rximagepicker.entity.Result;
 import com.qingmei2.rximagepicker_extension.MimeType;
 import com.qingmei2.rximagepicker_extension_wechat.WechatConfigrationBuilder;
+import com.qingmei2.rximagepicker_extension_wechat.engine.impl.WechatGlideEngine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,7 @@ public class RxImagePickerActivity extends BaseCommonComponentActivity {
 
             disposable = imagePicker.openGallery(this,
                     new WechatConfigrationBuilder(MimeType.INSTANCE.ofImage(), false)
-                            .imageEngine(WechatGlideEngine.getInstance())
+                            .imageEngine(new WechatGlideEngine())
                             .maxSelectable(9)
                             .countable(true)
                             .spanCount(3)

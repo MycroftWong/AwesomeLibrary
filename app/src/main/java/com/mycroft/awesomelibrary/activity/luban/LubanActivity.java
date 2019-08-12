@@ -4,15 +4,15 @@ import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.text.format.Formatter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.facebook.drawee.view.SimpleDraweeView;
-import com.facebook.fresco.helper.ImageLoader;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity;
 import com.mycroft.awesomelibrary.activity.rximagepicker.WechatImagePicker;
+import com.mycroft.lib.net.GlideApp;
 import com.qingmei2.rximagepicker.core.RxImagePicker;
 import com.qingmei2.rximagepicker_extension.MimeType;
 import com.qingmei2.rximagepicker_extension_wechat.WechatConfigrationBuilder;
@@ -32,12 +32,12 @@ public class LubanActivity extends BaseCommonComponentActivity {
 
     @BindView(R.id.beforeText)
     TextView beforeText;
-    @BindView(R.id.draweeView)
-    SimpleDraweeView draweeView;
+    @BindView(R.id.imageView)
+    ImageView imageView;
     @BindView(R.id.afterText)
     TextView afterText;
-    @BindView(R.id.compressdDraweeView)
-    SimpleDraweeView compressdDraweeView;
+    @BindView(R.id.compressdImageView)
+    ImageView compressdImageView;
 
     @Override
     protected int getResId() {
@@ -70,7 +70,8 @@ public class LubanActivity extends BaseCommonComponentActivity {
 
     @SuppressLint("CheckResult")
     private void compress(Uri uri) {
-        draweeView.setImageURI(uri);
+        GlideApp.with(this).load(uri)
+                .into(imageView);
 
         showFileSize(beforeText, uri);
 
@@ -82,7 +83,7 @@ public class LubanActivity extends BaseCommonComponentActivity {
                 .map(files -> files.get(0))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(file -> {
-                            ImageLoader.loadFile(compressdDraweeView, file.getAbsolutePath());
+                            GlideApp.with(this).load(file).into(compressdImageView);
                             showFileSize(afterText, Uri.fromFile(file));
                         },
                         throwable -> {

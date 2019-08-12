@@ -2,6 +2,7 @@ package com.mycroft.awesomelibrary.activity.decoration;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -11,11 +12,10 @@ import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.SectionEntity;
 import com.dinuscxj.itemdecoration.PinnedHeaderDecoration;
-import com.facebook.drawee.view.SimpleDraweeView;
-import com.facebook.fresco.helper.ImageLoader;
 import com.mycroft.awesomelibrary.R;
 import com.mycroft.awesomelibrary.activity.common.BaseCommonActivity;
 import com.mycroft.awesomelibrary.util.Utils;
+import com.mycroft.lib.net.GlideApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +81,7 @@ public class PinnedHeaderActivity extends BaseCommonActivity {
     static class SectionAdapter extends BaseSectionQuickAdapter<SectionItem, BaseViewHolder> {
 
         SectionAdapter(List<SectionItem> data) {
-            super(R.layout.item_section_drawee, android.R.layout.simple_list_item_1, data);
+            super(R.layout.item_section_image, android.R.layout.simple_list_item_1, data);
         }
 
         @Override
@@ -91,8 +91,10 @@ public class PinnedHeaderActivity extends BaseCommonActivity {
 
         @Override
         protected void convert(BaseViewHolder helper, SectionItem item) {
-            SimpleDraweeView draweeView = helper.getView(R.id.draweeView);
-            ImageLoader.loadImage(draweeView, item.t.image);
+            ImageView imageView = helper.getView(R.id.imageView);
+            GlideApp.with(helper.itemView).load(item.t.image)
+                    .placeholder(R.drawable.bg_placeholder)
+                    .into(imageView);
         }
     }
 

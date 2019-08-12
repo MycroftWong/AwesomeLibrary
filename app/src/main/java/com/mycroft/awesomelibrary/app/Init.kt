@@ -2,11 +2,6 @@ package com.mycroft.awesomelibrary.app
 
 import android.content.Context
 import com.blankj.utilcode.util.LogUtils
-import com.facebook.common.logging.FLog
-import com.facebook.fresco.helper.Phoenix
-import com.facebook.fresco.helper.config.PhoenixConfig
-import com.facebook.imagepipeline.listener.RequestListener
-import com.facebook.imagepipeline.listener.RequestLoggingListener
 import com.mycroft.lib.net.RemoteService
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -28,7 +23,7 @@ class Init {
 
             val appContext = context.applicationContext
 
-            var httpLoggingInterceptor = HttpLoggingInterceptor()
+            val httpLoggingInterceptor = HttpLoggingInterceptor()
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
             RemoteService.init(appContext) {
@@ -41,15 +36,6 @@ class Init {
                         .build()
             }
             LogUtils.getConfig().isLogSwitch = true
-
-            FLog.setMinimumLoggingLevel(FLog.INFO)
-            val requestListeners = HashSet<RequestListener>()
-            requestListeners.add(RequestLoggingListener())
-            val imagePipelineConfig = PhoenixConfig.Builder(appContext)
-                    .setRequestListeners(requestListeners)
-                    .build()
-
-            Phoenix.init(appContext, imagePipelineConfig)
 
             initialized = true
         }

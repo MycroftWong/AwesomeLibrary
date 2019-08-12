@@ -1,11 +1,11 @@
 package com.mycroft.awesomelibrary.activity.gloading
 
 import android.view.View
-import com.billy.android.loading.Gloading
+import com.mycroft.lib.view.LoadingAdapter
+import com.mycroft.lib.view.LoadingHolder
 
-class LoadingAdapter : Gloading.Adapter {
-
-    override fun getView(holder: Gloading.Holder?, convertView: View?, status: Int): View {
+class LoadingAdapter : LoadingAdapter {
+    override fun getView(holder: LoadingHolder?, convertView: View?, status: Int): View {
         var statusView: StatusView? = null
         if (convertView != null && convertView is StatusView) {
             statusView = convertView

@@ -1,1 +1,1 @@
-include ':app', ':diooto', ':PhotoSelector', ':loginaction', ':smartcropperlib-v1.2.5-release', ':pinyin4j-2.5.0', ':fresco-helper'
+include ':app', ':pinyin4j-2.5.0'

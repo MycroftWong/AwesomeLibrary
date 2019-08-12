@@ -11,13 +11,11 @@
 
     <!--使用默认UI属性-->
     <com.mcxtzhang.lib.AnimShopButton
-        android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:maxCount="3" />
     <!--设置了两圆间距-->
     <com.mcxtzhang.lib.AnimShopButton
-        android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:count="3"
@@ -25,7 +23,6 @@
         app:maxCount="99" />
     <!--仿饿了么-->
     <com.mcxtzhang.lib.AnimShopButton
-        android:id="@+id/btnEle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:addEnableBgColor="#3190E8"

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,11 +31,18 @@
                 android:padding="@dimen/common_padding_start_end"
                 android:text="@string/text_image_before_compress" />
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/draweeView"
+            <com.mycroft.awesomelibrary.view.SquareLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:viewAspectRatio="1" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop" />
+
+            </com.mycroft.awesomelibrary.view.SquareLayout>
 
             <TextView
                 android:id="@+id/afterText"
@@ -45,11 +51,18 @@
                 android:padding="@dimen/common_padding_start_end"
                 android:text="@string/text_image_after_compress" />
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/compressdDraweeView"
+
+            <com.mycroft.awesomelibrary.view.SquareLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:viewAspectRatio="1" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/compressdImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop" />
+            </com.mycroft.awesomelibrary.view.SquareLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

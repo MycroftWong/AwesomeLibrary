@@ -1,11 +1,11 @@
 package com.mycroft.awesomelibrary.activity.gloading
 
-import android.os.Bundle
-import com.billy.android.loading.Gloading
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.mycroft.awesomelibrary.R
 import com.mycroft.awesomelibrary.activity.common.BaseCommonComponentActivity
+import com.mycroft.lib.view.Loading
+import com.mycroft.lib.view.LoadingHolder
 import kotlinx.android.synthetic.main.activity_gloading.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -27,8 +27,8 @@ class GloadingActivity : BaseCommonComponentActivity() {
         return@lazy list
     }
 
-    private val holder: Gloading.Holder by lazy {
-        Gloading.from(LoadingAdapter()).wrap(recyclerView).withRetry {
+    private val holder: LoadingHolder by lazy {
+        Loading.from(LoadingAdapter()).wrap(recyclerView).withRetry {
             GlobalScope.launch {
                 TimeUnit.SECONDS.sleep(2)
                 withContext(Dispatchers.Main) { holder.showLoadSuccess() }
